@@ -1,14 +1,12 @@
 <!doctype html>
 <html>
 	<head>
-		<title><?php echo $title ?></title>
+		<title><?php echo $title ? $title : 'lmvc' ?></title>
 		<meta charset="utf-8">
 	</head>
 	<body>
-		<div class="app-frame">
-		<h1><?php echo $welcome ?></h1>
-		
-		<?php include($view) ?>
-		
+		<div class="app-frame">		
+			<?php include($view) ?>
+		</div>
 	</body>
 </html>
