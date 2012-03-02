@@ -25,9 +25,7 @@ class EntityManager {
 	}
 
 	private function __construct() {
-		if (is_null($this->pdoConnection)) {
-			$this->pdoConnection = new PDO(App::get()->config->dsn, App::get()->config->user, App::get()->config->password);
-		}
+		$this->pdoConnection = new PDO(App::get()->config->dsn, App::get()->config->user, App::get()->config->password);
 	}
 	
 }
