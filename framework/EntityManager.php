@@ -2,30 +2,51 @@
 
 class EntityManager {
 
-	private static $object=null;
-	private $pdoConnection=null;
+	private static $object = null;
+	private $pdoConnection;
 
-	private static function get() {
+	static function get() {
 		if (is_null(self::$object)) {
 			self::$object = new EntityManager();
 		}
 		return self::$object;
 	}
 
-	static function save($entity) {
-		var_dump($entity->classname, $entity->model);
+	function save($entity) {
+		$sqlBuilder = new SQLBuilder($entity->model, $entity->classname, $this->pdoConnection);
+		if (is_null($entity->id)) {
+			$entity = $sqlBuilder->insert($entity);
+		} else {
+			$entity = $sqlBuilder->update($entity);
+		}
+		return $entity;
 	}
 
-	static function delete($entity) {
-
+	function delete($entity) {
+		$sqlBuilder = new SQLBuilder($entity->model, $entity->classname, $this->pdoConnection);
+		return $sqlBuilder->delete($entity);
 	}
 
-	static function find($query, $params, $classname) {
+	function find($query, $params, $classname) {
 		var_dump($query, $params, $classname);
 	}
 
 	private function __construct() {
 		$this->pdoConnection = new PDO(App::get()->config->dsn, App::get()->config->user, App::get()->config->password);
+		$this->pdoConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+	}
+
+	function createTable($classname) {
+		$entity = new $classname();
+		$sqlBuilder = new SQLBuilder($entity->model, $entity->classname, $this->pdoConnection);
+		$sqlBuilder->create();		
+	}
+
+	function dropTable($classname) {
+		$entity = new $classname();
+		$sqlBuilder = new SQLBuilder($entity->model, $entity->classname, $this->pdoConnection);
+		$sqlBuilder->drop();
 	}
 	
 }

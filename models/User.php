@@ -2,11 +2,11 @@
 
 class User extends Model {
 	
-	private $id = array('type' => int, 'primary' => true, 'increment' => 'auto');
-	private $username = array('type' => string, 'unique' => true, 'notnull' => true);
-	private $password = array('type' => 'password', 'notnull' => true);
-	private $fullname = array('type' => string, 'notnull' => true);
+	public $id = array('type' => int, 'primary' => true, 'increment' => 'auto');
+	public $username = array('type' => string, 'unique' => true, 'notnull' => true);
+	public $password = array('type' => 'string', 'notnull' => true);
+	public $fullname = array('type' => string);
 	
-	private $articles = array('entity' => 'Article', 'fetch' => 'LAZY', 'cascade' => 'ALL', 'type' => 'OneToMany', 'mappedBy' => 'user');
+	public $articles = array('entity' => 'Article', 'fetch' => 'LAZY', 'cascade' => 'ALL', 'type' => 'OneToMany', 'mappedBy' => 'user');
 
 }

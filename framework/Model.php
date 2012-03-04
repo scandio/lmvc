@@ -7,6 +7,9 @@ abstract class Model {
 	function __construct() {
 		$reflection = new ReflectionClass($this);
         $this->__model = unserialize(strtolower(serialize($reflection->getdefaultProperties())));
+        foreach (array_keys($this->__model) as $key) {
+           $this->$key = null;
+        }
    	}
 
    	final function __get($name) {
@@ -22,19 +25,27 @@ abstract class Model {
    	}
 
    	function save() {
-   		EntityManager::save($this);
+   		EntityManager::get()->save($this);
    	}
 
    	function delete() {
-   		EntityManager::delete($this);
+   		EntityManager::get()->delete($this);
    	}
 
    	static function find($query, $params) {
-   		EntityManager::find($query, $params, get_called_class());
+   		EntityManager::get()->find($query, $params, get_called_class());
    	}
 
    	static function findById($id) {
    		return self::find('byId', array($id));
    	}
+
+      static function createTable() {
+         return EntityManager::get()->createTable(get_called_class());
+      }
+
+      static function dropTable() {
+         return EntityManager::get()->dropTable(get_called_class());
+      }
 
 }

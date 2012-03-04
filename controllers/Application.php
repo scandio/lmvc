@@ -6,11 +6,15 @@ class Application extends Controller {
 		self::render();
 	}
 
-	static function abc() {
-		$user = User::findById(1);
+	static function create() {
+		User::dropTable();
+		User::createTable();
 		$user = new User();
+		$user->username = 'user1';
+		$user->password = 'password1';
+		$user->fullname = 'The First User';
 		$user->save();
-		//self::render($user);
+		var_dump($user);
 	}
 	
 }
