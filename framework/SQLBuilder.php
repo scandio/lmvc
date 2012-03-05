@@ -70,8 +70,7 @@ class SQLBuilder {
 		$statement = "INSERT INTO " . $this->table . " (" . implode(', ', array_keys($fields)) . ") VALUES (" . implode(', ', $fieldsParams) . ")";
 		$pdoStatement = $this->pdoConnection->prepare($statement);
 		$pdoStatement->execute($this->fieldData($fields, $entity));
-		var_dump($this->fieldData($fields, $entity));
-		$entity->id = $pdoStatement->lastInsertId();
+		$entity->id = $this->pdoConnection->lastInsertId();
 		return $entity;
 	}
 
@@ -90,8 +89,23 @@ class SQLBuilder {
 		return $pdoStatement->execute(array('id' => $entity->id));
 	}
 
-	function select($query, $order) {
-		return "SELECT * FROM {$this->table} WHERE {$query} ORDER BY {$order}";
+	function select($query=null, $order=null, $params=null) {
+		$queryArray = explode('_', $this->underScored($query));
+		$result = '';
+		if ($queryArray[0] == 'by') {
+			for ($i = 1; $i < count($queryArray); $i++) { 
+				if($i % 2 == 1) {
+					$result .= $queryArray[$i] . ' =  :' . $queryArray[$i];
+				} else {
+					$result .= ' ' . strtoupper($queryArray[$i]) . ' ';
+				}
+			}
+			$query = $result;
+		}
+		$statement = "SELECT * FROM " . $this->table . (!is_null($query) ? " WHERE " . $query : "") . (!is_null($order) ? " ORDER BY " . $order :"");
+		$pdoStatement = $this->pdoConnection->prepare($statement);
+		$pdoStatement->execute($params);
+		return $pdoStatement->fetchAll();
 	}
 
 	private function underScored($camelCased) {

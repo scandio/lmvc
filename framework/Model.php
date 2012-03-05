@@ -25,19 +25,19 @@ abstract class Model {
    	}
 
    	function save() {
-   		EntityManager::get()->save($this);
+   		return EntityManager::get()->save($this);
    	}
 
    	function delete() {
    		EntityManager::get()->delete($this);
    	}
 
-   	static function find($query, $params) {
-   		EntityManager::get()->find($query, $params, get_called_class());
+   	static function find($query=null, $order=null, $params=null) {
+   		return EntityManager::get()->find($query, $order, $params, get_called_class());
    	}
 
    	static function findById($id) {
-   		return self::find('byId', array($id));
+   		return self::find('byId', null,  array('id' => $id));
    	}
 
       static function createTable() {

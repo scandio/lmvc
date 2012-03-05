@@ -27,8 +27,10 @@ class EntityManager {
 		return $sqlBuilder->delete($entity);
 	}
 
-	function find($query, $params, $classname) {
-		var_dump($query, $params, $classname);
+	function find($query=null, $order=null, $params=null, $classname) {
+		$entity = new $classname();
+		$sqlBuilder = new SQLBuilder($entity->model, $entity->classname, $this->pdoConnection);		
+		return $sqlBuilder->select($query, $order, $params);
 	}
 
 	private function __construct() {
