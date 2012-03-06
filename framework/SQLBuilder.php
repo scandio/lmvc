@@ -48,6 +48,8 @@ class SQLBuilder {
 			$type ='TEXT';
 		} elseif ($field['type'] == 'int') {
 			$type = 'INTEGER';
+		} elseif ($field['type'] == 'datetime') {
+			$type = 'TEXT';
 		}
 		if ($field['notnull'] == true) {
 			$type .= ' NOT NULL';  

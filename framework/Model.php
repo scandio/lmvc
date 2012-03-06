@@ -25,7 +25,8 @@ abstract class Model {
    	}
 
    	function save() {
-   		return EntityManager::get()->save($this);
+   		$result = EntityManager::get()->save($this);
+         $this->id = $result->id;
    	}
 
    	function delete() {

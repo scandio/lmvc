@@ -7,6 +7,6 @@ class User extends Model {
 	public $password = array('type' => 'string', 'notnull' => true);
 	public $fullname = array('type' => string);
 	
-	public $articles = array('entity' => 'Article', 'fetch' => 'LAZY', 'cascade' => 'ALL', 'type' => 'OneToMany', 'mappedBy' => 'user');
+	public $tweets = array('entity' => 'Tweet', 'fetch' => 'LAZY', 'cascade' => 'ALL', 'type' => 'OneToMany', 'mappedBy' => 'user');
 
 }

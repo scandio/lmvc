@@ -36,7 +36,7 @@ abstract class Controller {
 		self::prepareRenderArgs($renderArgs);
 		extract(App::get()->renderArgs);
 		$view = 'views/' . strtolower(App::get()->controller) . '/' . strtolower(App::get()->action) . '.html';
-		include('views/app.html');
+		include('views/main.html');
 	}
 	
 	static function redirect($method) {
