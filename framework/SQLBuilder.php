@@ -2,48 +2,18 @@
 
 class SQLBuilder {
 
-	private $relTypes = array('onetoone', 'onetomany', 'manytoone', 'manytomany');
-	private $fields;
-	private $relations;
-	private $table;
-	private $pdoConnection;
+	static function drop($entity) {
+		return "DROP TABLE " . self::underScored($entity->classname);
+	}
 
-	function __construct($model, $classname, $pdoConnection) {
-		foreach ($model as $key => $value) {
-			if (in_array($value['type'], $this->relTypes)) {
-				$this->relations[$key] = $value;
-			} else {
-				$this->fields[$key] = $value;
-			}
+	static function create($entity) {
+		foreach ($entity->fields as $key => $value) {
+			$fields[] = $key . ' ' . self::buildFieldType($value); 
 		}
-		$this->table = $this->underScored($classname);
-		$this->pdoConnection = $pdoConnection;
+		return "CREATE TABLE " . self::underScored($entity->classname) . " (" . implode(', ', $fields) . ")";
 	}
 
-	private static function fieldFilter($field) {
-		return !(array_key_exists('increment', $field) && $field['increment'] == 'auto');
-	}
-
-	private function fieldData($fields, $entity) {
-		foreach ($fields as $key => $value) {
-			$fieldData[$key] = $entity->$key;
-		}
-		return $fieldData;
-	}
-
-	function drop() {
-		return $this->pdoConnection->exec("DROP TABLE " . $this->table);
-	}
-
-	function create() {
-		foreach ($this->fields as $key => $value) {
-			$fields[] = $key . ' ' . $this->buildFieldType($value); 
-		}
-		$statement = "CREATE TABLE " . $this->table . " (" . implode(', ', $fields) . ")";
-		return $this->pdoConnection->exec($statement);
-	}
-
-	private function buildFieldType($field) {
+	private static function buildFieldType($field) {
 		if ($field['type'] == 'string') {
 			$type ='TEXT';
 		} elseif ($field['type'] == 'int') {
@@ -65,34 +35,29 @@ class SQLBuilder {
 		}
 		return $type;
 	}
+	
+	private static function fieldFilter($field) {
+		return !(array_key_exists('increment', $field) && $field['increment'] == 'auto');
+	}
 
-	function insert($entity) {
-		$fields = array_filter($this->fields, 'SQLBuilder::fieldFilter');
+	static function insert($entity) {
+		$fields = array_filter($entity->fields, 'SQLBuilder::fieldFilter');
 		$fieldsParams = array_map(function($value) { return ':' . $value; }, array_keys($fields));
-		$statement = "INSERT INTO " . $this->table . " (" . implode(', ', array_keys($fields)) . ") VALUES (" . implode(', ', $fieldsParams) . ")";
-		$pdoStatement = $this->pdoConnection->prepare($statement);
-		$pdoStatement->execute($this->fieldData($fields, $entity));
-		$entity->id = $this->pdoConnection->lastInsertId();
-		return $entity;
+		return "INSERT INTO " . self::underScored($entity->classname) . " (" . implode(', ', array_keys($fields)) . ") VALUES (" . implode(', ', $fieldsParams) . ")";
 	}
 
-	function update($entity) {
-		$fields = array_filter($this->fields, 'SQLBuilder::fieldFilter');
+	static function update($entity) {
+		$fields = array_filter($entity->fields, 'SQLBuilder::fieldFilter');
 		$setFields = array_map(function($value) { return $value . ' = :' . $value; }, array_keys($fields));
-		$statement = "UPDATE " . $this->table . " SET " . $setFields . " WHERE id = :id";
-		$pdoStatement = $this->pdoConnection->prepare($statement);
-		$pdoStatement->execute(fieldData($this->fields, $entity));
-		return $entity;
+		return "UPDATE " . self::underScored($entity->classname) . " SET " . $setFields . " WHERE id = :id";
 	}
 
-	function delete($entity) {
-		$statement = "DELETE FROM " . $this->table . " WHERE id = :id";
-		$pdoStatement = $this->pdoConnection->prepare($statement);
-		return $pdoStatement->execute(array('id' => $entity->id));
+	static function delete($entity) {
+		return "DELETE FROM " . self::underScored($entity->classname) . " WHERE id = :id";
 	}
 
-	function select($query=null, $order=null, $params=null) {
-		$queryArray = explode('_', $this->underScored($query));
+	static function select($entity, $query=null, $order=null, $params=null) {
+		$queryArray = explode('_', self::underScored($query));
 		$result = '';
 		if ($queryArray[0] == 'by') {
 			for ($i = 1; $i < count($queryArray); $i++) { 
@@ -104,13 +69,10 @@ class SQLBuilder {
 			}
 			$query = $result;
 		}
-		$statement = "SELECT * FROM " . $this->table . (!is_null($query) ? " WHERE " . $query : "") . (!is_null($order) ? " ORDER BY " . $order :"");
-		$pdoStatement = $this->pdoConnection->prepare($statement);
-		$pdoStatement->execute($params);
-		return $pdoStatement->fetchAll();
+		return "SELECT * FROM " . self::underScored($entity->classname) . (!is_null($query) ? " WHERE " . $query : "") . (!is_null($order) ? " ORDER BY " . $order :"");
 	}
 
-	private function underScored($camelCased) {
+	private static function underScored($camelCased) {
 		return strtolower(preg_replace('/([^A-Z])([A-Z])/', "$1_$2", $camelCased)); 
 	}
 

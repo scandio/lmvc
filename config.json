@@ -1,5 +1,6 @@
 {
 	"dsn":"sqlite:app.sq3",
 	"user":"",
-	"password":""
+	"password":"",
+	"sqlBuilder": "SQLBuilder"
 }

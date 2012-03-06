@@ -28,7 +28,7 @@ class Application extends Controller {
 		$user = User::find('byUsernameAndId', null, array('username' => 'user2', 'id' => 2));
 		//var_dump($user);
 		$tweet = new Tweet();
-		$tweet->content = "yeah!";
+		$tweet->content = "yeah! it works";
 		$tweet->created = "2012-03-06";
 		$tweet->save();
 		self::render(array('tweet' => $tweet));

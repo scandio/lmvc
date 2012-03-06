@@ -72,7 +72,7 @@ class App {
 		$this->renderArgs[$name] = $value;
 	}
 		
-	function run() {
+	function run($config='config.json') {
 		$this->config = json_decode(file_get_contents($config));
 		call_user_func_array($this->controller . '::beforeAction', $this->params);
 		call_user_func_array($this->controller . '::' . $this->action, $this->params);
