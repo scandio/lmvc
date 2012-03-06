@@ -14,12 +14,7 @@ class App {
 	private $config=array();
 	
 	static function dispatch($configFile='config.json') {
-		self::get()->configure($configFile);
-		self::get()->run();
-	}
-
-	private function configure($config) {
-		$this->config = json_decode(file_get_contents($config));
+		self::get()->run($configFile);
 	}
 
 	static function get() {
@@ -64,23 +59,7 @@ class App {
 	}
 	
 	function __get($name) {
-		if ($name == 'request') {
-			return $this->request;
-		} elseif ($name == 'controller') {
-			return $this->controller;
-		} elseif ($name == 'action') {
-			return $this->action;
-		} elseif ($name == 'renderArgs') {
-			return $this->renderArgs;
-		} elseif ($name == 'requestMethod') {
-			return $this->requestMethod;
-		} elseif ($name == 'host') {
-			return $this->host;
-		} elseif ($name == 'uri') {
-			return $this->uri;
-		} elseif ($name == 'config') {
-			return $this->config;
-		}
+		return (in_array($name, array('request', 'controller', 'action', 'renderArgs', 'requestMethod', 'host', 'uri', 'config'))) ? $this->$name : null;
 	}
 	
 	function __set($name, $value) {
@@ -94,6 +73,7 @@ class App {
 	}
 		
 	function run() {
+		$this->config = json_decode(file_get_contents($config));
 		call_user_func_array($this->controller . '::beforeAction', $this->params);
 		call_user_func_array($this->controller . '::' . $this->action, $this->params);
 		call_user_func_array($this->controller . '::afterAction', $this->params);
