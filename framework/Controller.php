@@ -16,12 +16,7 @@ abstract class Controller {
 	}
 	
 	private static function prepareRenderArgs($renderArgs) {
-		if (!is_null($renderArgs)) {
-			if (!is_array($renderArgs)) {
-				$renderArgs = array($renderArgs);
-			}
-			App::get()->renderArgs = array_merge(App::get()->renderArgs, $renderArgs);
-		}
+		App::get()->renderArgs = array_merge(App::get()->renderArgs, $renderArgs);
 	}
 	
 	static function renderJson($renderArgs=null) {
@@ -41,26 +36,10 @@ abstract class Controller {
 	
 	static function redirect($method) {
 		$method = explode('::', $method);
-		if ($method[0] == 'Application') {
-			$controller = '/';
-		} else {
-			$controller = '/' . strtolower($method[0]) . '/';
-		}
-		if ($method[1] == 'index') {
-			$action = '';
-		} else {
-			$action = $method[1];
-		}
+		$controller = ($method[0] == 'Application') ? '/' : '/' . strtolower($method[0]) . '/';
+		$controller = ($method[1] == 'index') ? '/' : '/' . $method[1];
 		header('Location: http://' . App::get()->host . App::get()->uri . $controller . $action );
 		exit;
-	}
-	
-	static function beforeAction() {
-		
-	}
-	
-	static function afterAction() {
-		
 	}
 	
 }
