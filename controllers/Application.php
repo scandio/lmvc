@@ -7,10 +7,10 @@ class Application extends Controller {
 	}
 
 	static function create() {
-		User::dropTable();
-		User::createTable();
-		Tweet::dropTable();
-		Tweet::createTable();
+		EntityManager::get()->dropTable('User');
+		EntityManager::get()->createTable('User');
+		EntityManager::get()->dropTable('Tweet');
+		EntityManager::get()->createTable('Tweet');
 		$user = new User();
 		$user->username = 'user1';
 		$user->password = 'password1';
