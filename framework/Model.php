@@ -48,12 +48,4 @@ abstract class Model {
 		return self::find('byId', null,  array('id' => $id));
 	}
 
-   static function createTable() {
-      return EntityManager::get()->createTable(get_called_class());
-   }
-
-   static function dropTable() {
-      return EntityManager::get()->dropTable(get_called_class());
-   }
-
 }
