@@ -8,5 +8,6 @@ class User extends Model {
 	public $fullname = array('type' => string);
 	
 	public $tweets = array('entity' => 'Tweet', 'fetch' => 'LAZY', 'cascade' => 'ALL', 'type' => 'OneToMany', 'mappedBy' => 'user');
+	public $followings = array('entity' => 'User', 'fetch' => 'LAZY', 'cascade' => 'DETACH', 'type' => 'OneToMany');
 
 }
