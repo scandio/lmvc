@@ -3,14 +3,14 @@
 class SQLBuilder {
 
 	static function drop($entity) {
-		return "DROP TABLE " . self::underScored($entity->classname);
+		return "DROP TABLE " . self::underScored($entity->__classname);
 	}
 
 	static function create($entity) {
-		foreach ($entity->fields as $key => $value) {
+		foreach ($entity->__fields as $key => $value) {
 			$fields[] = $key . ' ' . self::buildFieldType($value); 
 		}
-		return "CREATE TABLE " . self::underScored($entity->classname) . " (" . implode(', ', $fields) . ")";
+		return "CREATE TABLE " . self::underScored($entity->__classname) . " (" . implode(', ', $fields) . ")";
 	}
 
 	private static function buildFieldType($field) {
@@ -41,19 +41,19 @@ class SQLBuilder {
 	}
 
 	static function insert($entity) {
-		$fields = array_filter($entity->fields, 'SQLBuilder::fieldFilter');
+		$fields = array_filter($entity->__fields, 'SQLBuilder::fieldFilter');
 		$fieldsParams = array_map(function($value) { return ':' . $value; }, array_keys($fields));
-		return "INSERT INTO " . self::underScored($entity->classname) . " (" . implode(', ', array_keys($fields)) . ") VALUES (" . implode(', ', $fieldsParams) . ")";
+		return "INSERT INTO " . self::underScored($entity->__classname) . " (" . implode(', ', array_keys($fields)) . ") VALUES (" . implode(', ', $fieldsParams) . ")";
 	}
 
 	static function update($entity) {
-		$fields = array_filter($entity->fields, 'SQLBuilder::fieldFilter');
+		$fields = array_filter($entity->__fields, 'SQLBuilder::fieldFilter');
 		$setFields = array_map(function($value) { return $value . ' = :' . $value; }, array_keys($fields));
-		return "UPDATE " . self::underScored($entity->classname) . " SET " . $setFields . " WHERE id = :id";
+		return "UPDATE " . self::underScored($entity->__classname) . " SET " . $setFields . " WHERE id = :id";
 	}
 
 	static function delete($entity) {
-		return "DELETE FROM " . self::underScored($entity->classname) . " WHERE id = :id";
+		return "DELETE FROM " . self::underScored($entity->__classname) . " WHERE id = :id";
 	}
 
 	static function select($entity, $query=null, $order=null, $params=null) {
@@ -69,7 +69,7 @@ class SQLBuilder {
 			}
 			$query = $result;
 		}
-		return "SELECT * FROM " . self::underScored($entity->classname) . (!is_null($query) ? " WHERE " . $query : "") . (!is_null($order) ? " ORDER BY " . $order :"");
+		return "SELECT * FROM " . self::underScored($entity->__classname) . (!is_null($query) ? " WHERE " . $query : "") . (!is_null($order) ? " ORDER BY " . $order :"");
 	}
 
 	private static function underScored($camelCased) {

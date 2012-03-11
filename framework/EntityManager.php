@@ -14,8 +14,8 @@ class EntityManager {
 	}
 
 	private function fieldData($entity) {
-		foreach ($entity->fields as $key => $value) {
-			if($key != 'id' && $key != '__model') {
+		foreach ($entity->__fields as $key => $value) {
+			if($key != 'id') {
 				$fieldData[$key] = $entity->$key;
 			}
 		}
