@@ -57,18 +57,4 @@ class EntityManager {
 		$this->pdoConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
 
-	function createTable($classname) {
-		$entity = new $classname();
-		$sqlBuilder = $this->sqlBuilder;
-		$statement = $sqlBuilder::create($entity);		
-		return $this->pdoConnection->exec($statement);
-	}
-
-	function dropTable($classname) {
-		$entity = new $classname();
-		$sqlBuilder = $this->sqlBuilder;
-		$statement = $sqlBuilder::drop($entity);
-		return $this->pdoConnection->exec($statement);
-	}
-	
 }

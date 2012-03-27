@@ -3,6 +3,7 @@
 class Application extends Controller {
 	
 	static function index() {
+        ModelManager::get();
 		self::render(array('name'=>'dich!'));
 	}
 
