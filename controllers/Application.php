@@ -3,7 +3,9 @@
 class Application extends Controller {
 	
 	static function index() {
-		self::render(array('name'=>'dich!'));
+        $tweets = Tweet::find(null, 'date');
+        self::setRenderArg('tweets', $tweets);
+        self::render();
 	}
 
 	static function create() {

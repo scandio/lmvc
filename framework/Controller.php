@@ -27,7 +27,7 @@ abstract class Controller {
 		echo json_encode(App::get()->renderArgs);
 	}
 	
-	static function render($renderArgs=null) {
+	static function render($renderArgs=array()) {
 		self::prepareRenderArgs($renderArgs);
 		extract(App::get()->renderArgs);
 		$view = 'views/' . strtolower(App::get()->controller) . '/' . strtolower(App::get()->action) . '.html';
@@ -37,7 +37,7 @@ abstract class Controller {
 	static function redirect($method) {
 		$method = explode('::', $method);
 		$controller = ($method[0] == 'Application') ? '/' : '/' . strtolower($method[0]) . '/';
-		$controller = ($method[1] == 'index') ? '/' : '/' . $method[1];
+		$action = ($method[1] == 'index') ? '/' : '/' . $method[1];
 		header('Location: http://' . App::get()->host . App::get()->uri . $controller . $action );
 		exit;
 	}

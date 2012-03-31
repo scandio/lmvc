@@ -12,10 +12,18 @@ class App {
 	private $host;
 	private $uri;
 	private $config=array();
-	
-	static function dispatch($configFile='config.json') {
-		self::get()->run($configFile);
-	}
+    private $pdo=null;
+
+    private function __construct() {
+        $this->host = $_SERVER['HTTP_HOST'];
+        $this->uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+        $this->requestMethod = $_SERVER['REQUEST_METHOD'];
+        $slug = explode('/', $_GET['app-slug']);
+        $slug = $this->setController($slug);
+        $this->params = $this->setAction($slug);
+        $this->request['GET'] = array_slice($_GET,1);
+        $this->request['POST'] = $_POST;
+    }
 
 	static function get() {
 		if (is_null(self::$object)) {
@@ -23,7 +31,18 @@ class App {
 		}
 		return self::$object;
 	}
-	
+
+    static function dispatch($configFile=null) {
+        self::get()->run($configFile);
+    }
+
+    function db() {
+        if(is_null($this->pdo)) {
+            $this->pdo = new PDO($this->config['db']);
+        }
+        return $this->pdo;
+    }
+
 	private function setController($slug) {
 		$this->controller = ucfirst($slug[0]);
 		if (!class_exists($this->controller)) {
@@ -47,17 +66,6 @@ class App {
 		return $slug;
 	}
 	
-	private function __construct() {
-		$this->host = $_SERVER['HTTP_HOST'];
-		$this->uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-		$this->requestMethod = $_SERVER['REQUEST_METHOD'];
-		$slug = explode('/', $_GET['app-slug']);
-		$slug = $this->setController($slug);
-		$this->params = $this->setAction($slug);
-		$this->request['GET'] = array_slice($_GET,1);
-		$this->request['POST'] = $_POST;
-	}
-	
 	function __get($name) {
 		return (in_array($name, array('request', 'controller', 'action', 'renderArgs', 'requestMethod', 'host', 'uri', 'config'))) ? $this->$name : null;
 	}
@@ -72,8 +80,12 @@ class App {
 		$this->renderArgs[$name] = $value;
 	}
 		
-	function run($config='config.json') {
-		$this->config = json_decode(file_get_contents($config));
+	function run($config=null) {
+        if(is_null($config)) {
+            $this->config['db'] = 'sqlite:db.sq3';
+        } else {
+            $this->config = json_decode(file_get_contents($config));
+        }
 		call_user_func_array($this->controller . '::' . $this->action, $this->params);
 	}
 	

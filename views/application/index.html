@@ -1,1 +1,7 @@
-<p>Test für <?= $name ?></p>
+<ul>
+<?php
+    foreach($tweets as $tweet) {
+        ?><li><span><?= $tweet->date ?></span><?= $tweet->content ?></li><?php
+    }
+?>
+</ul>
