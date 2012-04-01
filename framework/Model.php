@@ -1,6 +1,14 @@
 <?php
 
-class Model {
+abstract class Model {
+
+    private $id=null;
+
+    function __get($name) {
+        if ($name == 'id') {
+            return $this->id;
+        }
+    }
 
     function save() {
         if (is_null($this->id)) {
@@ -40,6 +48,10 @@ class Model {
         $stmt = App::get()->db()->prepare($sql);
         $stmt->execute($params);
         return $stmt->fetchAll(PDO::FETCH_CLASS, get_called_class());
+    }
+
+    static function findAll($order=null) {
+        return self::find(null, $order);
     }
 
     static function findById($id) {

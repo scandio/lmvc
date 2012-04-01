@@ -3,13 +3,18 @@
 class Application extends Controller {
 	
 	static function index() {
-        $tweets = Tweet::find(null, 'date');
+        $tweets = Tweet::findAll('date desc');
         self::setRenderArg('tweets', $tweets);
         self::render();
 	}
 
 	static function create() {
-		self::render();
+        $tweet = new Tweet();
+        $tweet->date = strftime('%Y-%m-%d %H:%M:%S');
+        $tweet->content = App::get()->request['POST']['content'];
+        $tweet->user_id = 2;
+        $tweet->save();
+		self::redirect('Application::index');
 	}
 
 }

@@ -36,8 +36,8 @@ abstract class Controller {
 	
 	static function redirect($method) {
 		$method = explode('::', $method);
-		$controller = ($method[0] == 'Application') ? '/' : '/' . strtolower($method[0]) . '/';
-		$action = ($method[1] == 'index') ? '/' : '/' . $method[1];
+		$controller = ($method[0] == 'Application') ? '/' : '/' . strtolower($method[0]);
+		$action = ($method[1] == 'index') ? '' : '/' . $method[1];
 		header('Location: http://' . App::get()->host . App::get()->uri . $controller . $action );
 		exit;
 	}
