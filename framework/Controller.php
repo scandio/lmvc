@@ -7,12 +7,7 @@ abstract class Controller {
 	}
 	
 	static function request($requestMethod=null) {
-		if (!empty($requestMethod)) {
-			$result = App::get()->request[strtoupper($requestMethod)];
-		} else {
-			$result = array_merge(App::get()->request['POST'], App::get()->request['GET']);
-		}
-		return $result;
+		return (object) App::get()->request;
 	}
 	
 	private static function prepareRenderArgs($renderArgs) {

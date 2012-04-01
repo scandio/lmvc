@@ -21,8 +21,8 @@ class App {
         $slug = explode('/', $_GET['app-slug']);
         $slug = $this->setController($slug);
         $this->params = $this->setAction($slug);
-        $this->request['GET'] = array_slice($_GET,1);
-        $this->request['POST'] = $_POST;
+        $this->request = array_slice($_GET,1);
+        $this->request = array_merge($this->request, $_POST);
     }
 
 	static function get() {
