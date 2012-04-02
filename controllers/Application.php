@@ -2,18 +2,18 @@
 
 class Application extends Controller {
 	
-	static function index() {
+	public static function index() {
         $tweets = Tweet::findAll('date desc');
         App::get()->setRenderArg('tweets', $tweets);
         self::render();
 	}
 
-    static function getAll() {
+    public static function getAll() {
         $tweets = Tweet::findAll('date desc');
         self::renderJson(array('tweets' => $tweets));
     }
 
-    static function createUser() {
+    public static function createUser() {
         $user = new User();
         $user->username = 'test2';
         $user->password = 'okok';
@@ -23,7 +23,7 @@ class Application extends Controller {
         var_dump($x->id);
     }
 
-	static function create() {
+	public static function create() {
         $tweet = new Tweet();
         $tweet->date = strftime('%Y-%m-%d %H:%M:%S');
         $tweet->content = App::get()->request->content;

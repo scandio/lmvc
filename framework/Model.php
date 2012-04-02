@@ -2,7 +2,7 @@
 
 abstract class Model {
 
-    function save() {
+    public function save() {
         if (is_null($this->id)) {
             $sql = SQLBuilder::insert(get_class($this));
         } else {
@@ -26,7 +26,7 @@ abstract class Model {
         return $result;
     }
 
-    function delete() {
+    public function delete() {
         if(!is_null($this->id)) {
             $sql = SQLBuilder::delete(get_class($this));
             $stmt = App::get()->db()->prepare($sql);
@@ -34,18 +34,18 @@ abstract class Model {
         }
     }
 
-    static function find($query=null, $order=null, $params=array()) {
+    public static function find($query=null, $order=null, $params=array()) {
         $sql = SQLBuilder::select(get_called_class(), $query, $order);
         $stmt = App::get()->db()->prepare($sql);
         $stmt->execute($params);
         return $stmt->fetchAll(PDO::FETCH_CLASS, get_called_class());
     }
 
-    static function findAll($order=null) {
+    public static function findAll($order=null) {
         return self::find(null, $order);
     }
 
-    static function findById($id) {
+    public static function findById($id) {
         $result = self::find('id = :id', null, array('id' => $id));
         return $result[0];
     }

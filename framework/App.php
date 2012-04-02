@@ -25,18 +25,18 @@ class App {
         $this->request = array_merge($this->request, $_POST);
     }
 
-	static function get() {
+	public static function get() {
 		if (is_null(self::$object)) {
 			self::$object = new App();
 		}
 		return self::$object;
 	}
 
-    static function dispatch($configFile=null) {
+    public static function dispatch($configFile=null) {
         self::get()->run($configFile);
     }
 
-    function db() {
+    public function db() {
         if(is_null($this->pdo)) {
             $this->pdo = new PDO($this->config['db']);
         }
@@ -66,7 +66,7 @@ class App {
 		return $slug;
 	}
 
-	function __get($name) {
+	public function __get($name) {
         if (in_array($name, array('controller', 'action', 'requestMethod', 'host', 'uri', 'renderArgs'))) {
             return $this->$name;
         } elseif (in_array($name, array('request', 'config'))) {
@@ -74,17 +74,17 @@ class App {
         }
 	}
 	
-    function __set($name, $value) {
+    public function __set($name, $value) {
 		if ($name == 'renderArgs' && is_array($value)) {
 			$this->renderArgs = $value;
 		}
 	}
 	
-	function setRenderArg($name, $value) {
+	public function setRenderArg($name, $value) {
 		$this->renderArgs[$name] = $value;
 	}
 
-	function run($config=null) {
+	public function run($config=null) {
         if(is_null($config)) {
             $this->config['db'] = 'sqlite:db.sq3';
         } else {
