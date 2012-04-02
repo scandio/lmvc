@@ -2,10 +2,6 @@
 
 abstract class Controller {
 
-	static function setRenderArg($name, $value) {
-		App::get()->setRenderArg($name, $value);
-	}
-	
 	private static function prepareRenderArgs($renderArgs) {
 		App::get()->renderArgs = array_merge(App::get()->renderArgs, $renderArgs);
 	}

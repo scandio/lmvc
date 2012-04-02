@@ -66,15 +66,15 @@ class App {
 		return $slug;
 	}
 
-    function request() {
-        return (object) $this->request;
-    }
-	
 	function __get($name) {
-		return (in_array($name, array('controller', 'action', 'renderArgs', 'requestMethod', 'host', 'uri', 'config'))) ? $this->$name : null;
+        if (in_array($name, array('controller', 'action', 'requestMethod', 'host', 'uri', 'renderArgs'))) {
+            return $this->$name;
+        } elseif (in_array($name, array('request', 'config'))) {
+            return (object)$this->$name;
+        }
 	}
 	
-	function __set($name, $value) {
+    function __set($name, $value) {
 		if ($name == 'renderArgs' && is_array($value)) {
 			$this->renderArgs = $value;
 		}
@@ -83,7 +83,7 @@ class App {
 	function setRenderArg($name, $value) {
 		$this->renderArgs[$name] = $value;
 	}
-		
+
 	function run($config=null) {
         if(is_null($config)) {
             $this->config['db'] = 'sqlite:db.sq3';
