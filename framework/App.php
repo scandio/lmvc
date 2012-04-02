@@ -65,9 +65,13 @@ class App {
 		}
 		return $slug;
 	}
+
+    function request() {
+        return (object) $this->request;
+    }
 	
 	function __get($name) {
-		return (in_array($name, array('request', 'controller', 'action', 'renderArgs', 'requestMethod', 'host', 'uri', 'config'))) ? $this->$name : null;
+		return (in_array($name, array('controller', 'action', 'renderArgs', 'requestMethod', 'host', 'uri', 'config'))) ? $this->$name : null;
 	}
 	
 	function __set($name, $value) {

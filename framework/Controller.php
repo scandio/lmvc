@@ -6,10 +6,6 @@ abstract class Controller {
 		App::get()->setRenderArg($name, $value);
 	}
 	
-	static function request($requestMethod=null) {
-		return (object) App::get()->request;
-	}
-	
 	private static function prepareRenderArgs($renderArgs) {
 		App::get()->renderArgs = array_merge(App::get()->renderArgs, $renderArgs);
 	}

@@ -26,7 +26,7 @@ class Application extends Controller {
 	static function create() {
         $tweet = new Tweet();
         $tweet->date = strftime('%Y-%m-%d %H:%M:%S');
-        $tweet->content = self::request()->content;
+        $tweet->content = App::get()->request()->content;
         $tweet->user_id = 2;
         $tweet->save();
 		self::redirect('/');
