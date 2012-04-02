@@ -2,34 +2,25 @@
 
 abstract class Model {
 
-    private $id=null;
-
-    function __get($name) {
-        if ($name == 'id') {
-            return $this->id;
-        }
-    }
-
     function save() {
         if (is_null($this->id)) {
             $sql = SQLBuilder::insert(get_class($this));
-            $stmt = App::get()->db()->prepare($sql);
-            $stmt->execute($this->getSaveData(true));
-            $this->id = App::get()->db()->lastInsertId();
         } else {
             $sql = SQLBuilder::update(get_class($this));
-            $stmt = App::get()->db()->prepare($sql);
-            $stmt->execute($this->getSaveData());
         }
+        $stmt = App::get()->db()->prepare($sql);
+        $stmt->execute($this->getSaveData());
+        $this->id = (is_null($this->id)) ? App::get()->db()->lastInsertId() : $this->id;
         return $this;
     }
 
-    private function getSaveData($forInsert=false) {
-        $reflection = new ReflectionClass($this);
-        $properties = $reflection->getdefaultProperties();
-        foreach ($properties as $key => $property) {
-            if (($forInsert && $key != 'id') || !$forInsert) {
-                $result[$key] = $this->$key;
+    private function getSaveData() {
+        $reflection = new ReflectionObject($this);
+        $properties = $reflection->getProperties();
+        foreach ($properties as $property) {
+            if ($property->getName() != 'id') {
+                $property->setAccessible(true);
+                $result[$property->getName()] = $property->getValue($this);
             }
         }
         return $result;

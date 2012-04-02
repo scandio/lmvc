@@ -3,10 +3,19 @@
     <input type="submit" name="ok" value="Tweet" />
 </form>
 
-<ul>
-<?php
-    foreach($tweets as $tweet) {
-        ?><li><span><?= $tweet->date ?></span><?= $tweet->content ?></li><?php
-    }
-?>
-</ul>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Content</th>
+        <th>User ID</th>
+    </tr>
+<?php foreach($tweets as $tweet): ?>
+    <tr>
+        <td><?= $tweet->id ?></td>
+        <td><?= $tweet->date ?></td>
+        <td><?= $tweet->content ?></td>
+        <td><?= $tweet->user_id ?></td>
+    </tr>
+<?php endforeach ?>
+</table>
