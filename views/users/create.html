@@ -1,0 +1,18 @@
+<script type="text/javascript">
+	$(function(){
+		$('#ca').click(function(){
+			window.location.href='<?= App::get()->uri ?>/users';
+		});	
+	});
+</script>
+
+<form action="" method="POST">
+	<label id="lbl-username" for="username">Username</label>
+	<input type="text" name="username" id="username" />
+	<label id="lbl-password" for="password">Password</label>
+	<input type="text" name="password" id="password" />
+	<label id="lbl-fullname" for="fullname">Fullname</label>
+	<input type="text" name="fullname" id="fullname" />
+	<input type="submit" name="ok" id="ok" value="Save" />
+	<input type="button" name="ca" id="ca" value="Cancel" />
+</form>

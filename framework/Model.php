@@ -5,20 +5,22 @@ abstract class Model {
     public function save() {
         if (is_null($this->id)) {
             $sql = SQLBuilder::insert(get_class($this));
+            $stmt = App::get()->db()->prepare($sql);
+            $stmt->execute($this->getSaveData(true));
+            $this->id = App::get()->db()->lastInsertId();
         } else {
             $sql = SQLBuilder::update(get_class($this));
+            $stmt = App::get()->db()->prepare($sql);
+            $stmt->execute($this->getSaveData());
         }
-        $stmt = App::get()->db()->prepare($sql);
-        $stmt->execute($this->getSaveData());
-        $this->id = (is_null($this->id)) ? App::get()->db()->lastInsertId() : $this->id;
         return $this;
     }
 
-    private function getSaveData() {
+    private function getSaveData($forInsert=false) {
         $reflection = new ReflectionObject($this);
         $properties = $reflection->getProperties();
         foreach ($properties as $property) {
-            if ($property->getName() != 'id') {
+            if (!$forInsert || $property->getName() != 'id') {
                 $property->setAccessible(true);
                 $result[$property->getName()] = $property->getValue($this);
             }

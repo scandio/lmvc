@@ -23,13 +23,13 @@ class Application extends Controller {
         var_dump($x->id);
     }
 
-	public static function create() {
+public static function create() {
         $tweet = new Tweet();
         $tweet->date = strftime('%Y-%m-%d %H:%M:%S');
         $tweet->content = App::get()->request->content;
         $tweet->user_id = 2;
         $tweet->save();
-		self::redirect('/');
-	}
+        self::redirect('/');
+}
 
 }
