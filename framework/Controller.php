@@ -24,5 +24,13 @@ abstract class Controller {
 	public static function redirect($url) {
 		header('Location: http://' . App::get()->host . App::get()->uri . $url);
 	}
-	
+
+    public static function preProcess() {
+
+    }
+
+    public static function postProcess() {
+
+    }
+
 }

@@ -1,6 +1,6 @@
 <?php
 
-class Users extends Controller {
+class Users extends SecureController {
 
 	public static function index() {
 		self::render(array('users' => User::findAll('username')));

@@ -90,7 +90,9 @@ class App {
         } else {
             $this->config = json_decode(file_get_contents($config));
         }
-		call_user_func_array($this->controller . '::' . $this->action, $this->params);
+        call_user_func_array($this->controller . '::preProcess', $this->params);
+        call_user_func_array($this->controller . '::' . $this->action, $this->params);
+        call_user_func_array($this->controller . '::postProcess', $this->params);
 	}
 	
 }
