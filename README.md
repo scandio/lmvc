@@ -15,7 +15,7 @@ Currently there is no documentation for anything. But there is a simple tweet fu
 How To
 ------
 
-You habe to change the .htaccess file if you want to try it
+You have to change the .htaccess file if you want to try it
 
     RewriteRule ^(.*)$ /path/to/your/index.php?app-slug=$1 [L,QSA]
 
