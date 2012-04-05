@@ -1,5 +1,7 @@
 <?php
-include_once('framework/initialize.php');
+session_start();
 setlocale(LC_ALL, "de_DE");
 date_default_timezone_set('Europe/Berlin');
+include_once('framework/AutoloadManager.php');
+AutoloadManager::initialize();
 App::dispatch();
