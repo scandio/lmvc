@@ -18,6 +18,13 @@ abstract class Controller {
 		self::prepareRenderArgs($renderArgs);
 		extract(App::get()->renderArgs);
 		$view = 'views/' . strtolower(App::get()->controller) . '/' . strtolower(App::get()->action) . '.html';
+        if (!file_exists($view)) {
+            $reflection = new ReflectionClass(get_called_class());
+            $classFileName = $reflection->getFileName();
+            $reducer = 'controller/' . App::get()->controller . '.php';
+            // TODO build new view
+            $view = 'views/' . strtolower(App::get()->controller) . '/' . strtolower(App::get()->action) . '.html';
+        }
 		include('views/main.html');
 	}
 	
