@@ -1,6 +1,6 @@
 <?php
 
-class Application extends Controller {
+class Application extends SecureController {
 	
 	public static function index() {
         $tweets = Tweet::findAll('date desc');

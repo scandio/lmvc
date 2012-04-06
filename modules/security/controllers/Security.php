@@ -17,4 +17,9 @@ class Security extends Controller {
         }
     }
 
+    public static function logout($to='/security/login') {
+        $_SESSION['currentUser'] = null;
+        self::redirect('/security/login');
+    }
+
 }

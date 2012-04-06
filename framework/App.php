@@ -94,5 +94,13 @@ class App {
         call_user_func_array($this->controller . '::' . $this->action, $this->params);
         call_user_func_array($this->controller . '::postProcess', $this->params);
 	}
-	
+
+    public static function camelCaseTo($camelCasedString, $delimiter='-') {
+        return strtolower(preg_replace('/(?<=\\w)(?=[A-Z])/',$delimiter . "$1", $camelCasedString));
+    }
+
+    public static function camelCaseFrom($otherString, $delimiter='-') {
+        return lcfirst(implode('', array_map(function($data) { return ucfirst($data); }, explode($delimiter, $otherString))));
+    }
+
 }
