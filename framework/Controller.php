@@ -21,9 +21,9 @@ abstract class Controller {
         if (!file_exists($view)) {
             $reflection = new ReflectionClass(get_called_class());
             $classFileName = $reflection->getFileName();
-            $reducer = 'controller/' . App::get()->controller . '.php';
-            // TODO build new view
-            $view = 'views/' . strtolower(App::get()->controller) . '/' . strtolower(App::get()->action) . '.html';
+            $reducer = 'controllers/' . strtolower(App::get()->controller) . '.php';
+            $module = end(explode('/', substr($classFileName, 0,  strpos($classFileName, $reducer)-1)));
+            $view = 'modules/' . $module . '/views/' . strtolower(App::get()->controller) . '/' . strtolower(App::get()->action) . '.html';
         }
 		include('views/main.html');
 	}

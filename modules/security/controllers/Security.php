@@ -10,10 +10,10 @@ class Security extends Controller {
         $user = User::authenticate(App::get()->request->username, App::get()->request->password);
         if (is_object($user)) {
             $_SESSION['currentUser'] = $user->id;
-            self::redirect('/users');
+            self::redirect($_SESSION['afterLogin']);
         } else {
             $_SESSION['currentUser'] = null;
-            self::redirect('/login');
+            self::redirect('/security/login');
         }
     }
 
