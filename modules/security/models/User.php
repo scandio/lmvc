@@ -23,4 +23,8 @@ class User extends Model {
         $result = User::find('username = :username AND password = :password', null, array('username' => $username, 'password' => md5($password)));
         return $result[0];
     }
+
+    public static function getCurrentUser() {
+        return User::findById($_SESSION['currentUser']);
+    }
 }

@@ -9,6 +9,19 @@
 		</script>
 	</head>
 	<body>
+    <div id="header">
+        <ul class="nav">
+            <li><a href="<?= App::get()->uri ?>/">Twitter</a></li>
+            <li><a href="<?= App::get()->uri ?>/users">Users</a></li>
+            <li><a href="<?= App::get()->uri ?><?= (is_null($currentUser)) ? '/security/login' : '/security/logout' ?>"><?= (is_null($currentUser)) ? 'Login' : 'Logout' ?></a></li>
+            <li><?= (!is_null($currentUser)) ? $currentUser->username : 'Anonymous' ?></li>
+        </ul>
+    </div>
+    <div id="content">
         <?php include($view) ?>
+    </div>
+    <div id="footer">
+
+    </div>
 	</body>
 </html>

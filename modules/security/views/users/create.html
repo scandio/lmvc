@@ -6,7 +6,7 @@
 	});
 </script>
 
-<form action="" method="POST">
+<form action="<?= App::get()->uri ?>/users/create" method="POST">
 	<label id="lbl-username" for="username">Username</label>
 	<input type="text" name="username" id="username" />
 	<label id="lbl-password" for="password">Password</label>
