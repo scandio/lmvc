@@ -44,7 +44,7 @@ class App {
     }
 
 	private function setController($slug) {
-		$this->controller = ucfirst($slug[0]);
+		$this->controller = ucfirst(App::camelCaseFrom($slug[0]));
 		if (!class_exists($this->controller)) {
 			$this->controller = 'Application';
 		} else {
@@ -54,7 +54,7 @@ class App {
 	}
 	
 	private function setAction($slug) {
-		$this->action = $slug[0];
+		$this->action = self::camelCaseFrom($slug[0]);
 		if (is_callable($this->controller . '::' . strtolower($this->requestMethod) . ucfirst($this->action))) {
 			$this->action = strtolower($this->requestMethod) . ucfirst($this->action);
 			$slug = array_slice($slug,1);

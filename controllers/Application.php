@@ -21,7 +21,7 @@ class Application extends SecureController {
         $tweet->content = App::get()->request->content;
         $tweet->user_id = User::getCurrentUser()->id;
         $tweet->save();
-        self::redirect('/');
+        self::redirect('Application::index');
     }
 
 }

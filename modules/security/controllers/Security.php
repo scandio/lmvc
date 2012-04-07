@@ -13,13 +13,13 @@ class Security extends Controller {
             self::redirect($_SESSION['afterLogin']);
         } else {
             $_SESSION['currentUser'] = null;
-            self::redirect('/security/login');
+            self::redirect('Security::login');
         }
     }
 
-    public static function logout($to='/security/login') {
+    public static function logout($to='Security::login') {
         $_SESSION['currentUser'] = null;
-        self::redirect('/security/login');
+        self::redirect($to);
     }
 
 }

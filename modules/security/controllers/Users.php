@@ -19,13 +19,13 @@ class Users extends SecureController {
 		$user->password = App::get()->request->password;
 		$user->fullname = App::get()->request->fullname;
 		$user->save();
-		self::redirect('/users');
+		self::redirect('Users::index');
 	}
 
 	public static function delete($id) {
 		$user = User::findById($id);
 		$user->delete();
-		self::redirect('/users');
+		self::redirect('Users::index');
 	}
 
 	public static function edit($id) {

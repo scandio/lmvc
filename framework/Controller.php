@@ -17,7 +17,7 @@ abstract class Controller {
 	public static function render($renderArgs=array()) {
 		self::prepareRenderArgs($renderArgs);
 		extract(App::get()->renderArgs);
-		$view = 'views/' . strtolower(App::get()->controller) . '/' . strtolower(App::get()->action) . '.html';
+		$view = 'views/' . App::camelCaseTo(App::get()->controller) . '/' . App::camelCaseTo(App::get()->action) . '.html';
         if (!file_exists($view)) {
             $reflection = new ReflectionClass(get_called_class());
             $classFileName = $reflection->getFileName();
@@ -28,9 +28,12 @@ abstract class Controller {
 		include('views/main.html');
 	}
 	
-	public static function redirect($url) {
-		header('Location: http://' . App::get()->host . App::get()->uri . $url);
-	}
+    public static function redirect($method) {
+        $method = explode('::', $method);
+        $controller = ($method[0] == 'Application') ? '/' : '/' . App::camelCaseTo($method[0]);
+        $action = ($method[1] == 'index') ? '/' : '/' . App::camelCaseTo($method[1]);
+        header('Location: http://' . App::get()->host . App::get()->uri . $controller . $action );
+    }
 
     public static function preProcess() {
 
