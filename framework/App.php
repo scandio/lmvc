@@ -3,6 +3,8 @@
 class App {
 	
 	private static $object=null;
+    private static $config=array();
+
 	private $controller;
 	private $action;
 	private $params;
@@ -11,7 +13,6 @@ class App {
 	private $requestMethod;
 	private $host;
 	private $uri;
-	private $config=array();
     private $pdo=null;
 
     private function __construct() {
@@ -32,13 +33,45 @@ class App {
 		return self::$object;
 	}
 
-    public static function dispatch($configFile=null) {
-        self::get()->run($configFile);
+    public static function initialize($configFile=null) {
+        if (!is_null($configFile)) {
+            App::configure(json_decode(file_get_contents($configFile)));
+        } else {
+            App::configure((object)array('db' => 'sqlite:db.sq3', 'appPath'  => './', 'frameworkPath' => './framework/', 'modulePath' => './modules/', 'paths' => array('controllers', 'models', 'framework')));
+        }
+    }
+
+    private static function configure($config) {
+        self::$config = $config;
+        self::setAutoload();
+    }
+
+    private static function setAutoload() {
+        $modules = array_filter(scandir(self::$config->modulePath), function($dirFile) {
+            return (!is_file($dirFile) && $dirFile != '.' && $dirFile != '..');
+        });
+        set_include_path(get_include_path() . self::getPath($modules));
+        spl_autoload_register(function ($classname){
+            spl_autoload($classname);
+        });
+    }
+
+    private static function getPath($modules=array()) {
+        $result  = PATH_SEPARATOR . self::$config->frameworkPath . implode(PATH_SEPARATOR . self::$config->frameworkPath, self::$config->paths);
+        $result .= PATH_SEPARATOR . self::$config->appPath . implode(PATH_SEPARATOR . self::$config->appPath, self::$config->paths);
+        foreach ($modules as $module) {
+            $result .= PATH_SEPARATOR . self::$config->modulePath . $module . '/' . implode(PATH_SEPARATOR . self::$config->modulePath . $module . '/' , self::$config->paths);
+        }
+        return $result;
+    }
+
+    public static function dispatch() {
+        self::get()->run();
     }
 
     public function db() {
         if(is_null($this->pdo)) {
-            $this->pdo = new PDO($this->config['db']);
+            $this->pdo = new PDO(self::$config->db);
         }
         return $this->pdo;
     }
@@ -69,8 +102,10 @@ class App {
 	public function __get($name) {
         if (in_array($name, array('controller', 'action', 'requestMethod', 'host', 'uri', 'renderArgs'))) {
             return $this->$name;
-        } elseif (in_array($name, array('request', 'config'))) {
+        } elseif (in_array($name, array('request'))) {
             return (object)$this->$name;
+        } elseif (in_array($name, array('config'))) {
+            return (object)self::$config;
         }
 	}
 	
@@ -84,12 +119,7 @@ class App {
 		$this->renderArgs[$name] = $value;
 	}
 
-	public function run($config=null) {
-        if(is_null($config)) {
-            $this->config['db'] = 'sqlite:db.sq3';
-        } else {
-            $this->config = json_decode(file_get_contents($config));
-        }
+	public function run() {
         call_user_func_array($this->controller . '::preProcess', $this->params);
         call_user_func_array($this->controller . '::' . $this->action, $this->params);
         call_user_func_array($this->controller . '::postProcess', $this->params);
