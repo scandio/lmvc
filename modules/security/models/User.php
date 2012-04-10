@@ -2,21 +2,18 @@
 
 class User extends Model {
 	
-	public $id;
-    public $username;
+	private $id;
+    private $username;
 	private $password;
-	public $fullname;
+	private $fullname;
 
-    public function __get($name) {
-        if ($name == 'password') {
-            return $this->password;
-        }
-    }
+    private $tweets = ONE_TO_MANY_RELATION;
 
     public function __set($name, $value) {
         if ($name == 'password') {
-            $this->password = md5($value);
+            $value = md5($value);
         }
+        parent::__set($name, $value);
     }
 
     public static function authenticate($username, $password) {

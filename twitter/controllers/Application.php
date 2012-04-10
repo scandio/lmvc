@@ -19,7 +19,7 @@ class Application extends SecureController {
         $tweet = new Tweet();
         $tweet->date = strftime('%Y-%m-%d %H:%M:%S');
         $tweet->content = App::get()->request->content;
-        $tweet->user_id = User::getCurrentUser()->id;
+        $tweet->user = User::getCurrentUser();
         $tweet->save();
         self::redirect('Application::index');
     }

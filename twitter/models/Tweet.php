@@ -2,9 +2,10 @@
 
 class Tweet extends Model {
 
-    public $id;
-    public $date;
-    public $content;
-    public $user_id;
+    private $id;
+    private $date;
+    private $content;
+
+    private $user = MANY_TO_ONE_RELATION;
 
 }
