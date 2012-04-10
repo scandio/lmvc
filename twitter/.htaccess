@@ -2,4 +2,4 @@ Options +FollowSymLinks
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /~ckoch/lmvc/index.php?app-slug=$1 [L,QSA]
+RewriteRule ^(.*)$ /~ckoch/lmvc/twitter/index.php?app-slug=$1 [L,QSA]
