@@ -59,3 +59,66 @@ Try to call
 
     http://host/base-path/accounts/
 
+### Rendering views
+
+Currently LMVC supports to rendering options. First the standard HTML rendering. Second the JSON output. The class Controller is having two static methods for that. All data that have to be passed to the template or to JSON must be set by setRenderArg().
+
+Example for HTML rendering:
+
+    class Accounts extends Controller {
+
+        public static function index() {
+            self::render()
+        }
+
+    }
+
+This renders the the view (template) path/views/controller/action.html. In this case views/accounts/index.html. To pass some data to the template you can...
+
+    class Accounts extends Controller {
+
+        public static function index() {
+            App::get()->setRenderArg('name', 'John Doe');
+            self::render()
+        }
+
+    }
+
+or
+
+    class Accounts extends Controller {
+
+        public static function index() {
+            self::render(array('name' => 'John Doe'));
+        }
+
+    }
+
+or both. There is no specific template language. It's just PHP. Every render argument is accessible as a local variable.
+
+    <h1>Hello <?= $name ?></h1>
+
+Example for JSON rendering
+
+    class Accounts extends Controller {
+
+        public static function index() {
+            self::renderJson(array('name' => 'John Doe'));
+        }
+
+    }
+
+has an output like
+
+    {"name": "John Doe"}
+
+t.b.c.
+
+
+
+
+
+
+
+
+
