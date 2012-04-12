@@ -8,8 +8,9 @@ class Article extends Model {
     private $teaser;
     private $content;
 
-    private $user = MANY_TO_ONE_RELATION;
-
-    private $location = ONE_TO_ONE_INVERSED_RELATION;
+    private $user      = MANY_TO_ONE_RELATION;
+    private $location  = ONE_TO_ONE_INVERSED_RELATION;
+    private $comments  = ONE_TO_MANY_RELATION;
+    private $tags      = MANY_TO_MANY_RELATION;
 
 }

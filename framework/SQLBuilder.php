@@ -19,8 +19,8 @@ class SQLBuilder {
         return "DELETE FROM " . strtolower($classname) . " WHERE id = :id";
     }
 
-    public static function select($classname, $query, $order) {
-        return "SELECT * FROM " . strtolower($classname) . (!is_null($query) ? " WHERE " . $query : "") . (!is_null($order) ? " ORDER BY " . $order :"");
+    public static function select($classname, $query, $order, $over=null) {
+        return "SELECT " . strtolower($classname) . ".* FROM " . strtolower($classname) . (!is_null($over) ? ', ' . $over : '') . (!is_null($query) ? " WHERE " . $query : "") . (!is_null($order) ? " ORDER BY " . $order :"");
     }
 
 }
