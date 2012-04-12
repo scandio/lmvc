@@ -101,12 +101,13 @@ class App {
 
 	public function __get($name) {
         if (in_array($name, array('controller', 'action', 'requestMethod', 'host', 'uri', 'renderArgs'))) {
-            return $this->$name;
+            $result = $this->$name;
         } elseif (in_array($name, array('request'))) {
-            return (object)$this->$name;
+            $result = (object)$this->$name;
         } elseif (in_array($name, array('config'))) {
-            return (object)self::$config;
+            $result = (object)self::$config;
         }
+        return $result;
 	}
 	
     public function __set($name, $value) {

@@ -54,7 +54,7 @@ abstract class Model {
     public function __set($name, $value) {
         if ($name == '__data') {
             $this->__data = $value;
-        }elseif (array_key_exists($name, $this->__relations)) {
+        } elseif (array_key_exists($name, $this->__relations)) {
             if (is_object($value) && ($this->__relations[$name] == MANY_TO_ONE_RELATION || $this->__relations[$name] == ONE_TO_ONE_RELATION )) {
                 $this->__data[$name . '_id'] = $value->id;
             }

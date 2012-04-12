@@ -25,7 +25,7 @@ abstract class Controller {
             $module = end(explode('/', substr($classFileName, 0,  strpos($classFileName, $reducer)-1)));
             $view = App::get()->config->modulePath . $module . '/views/' . strtolower(App::get()->controller) . '/' . strtolower(App::get()->action) . '.html';
         }
-		include(App::get()->config->appPath. 'views/main.html');
+		include(App::get()->config->appPath . 'views/main.html');
 	}
 	
     public static function redirect($method) {
