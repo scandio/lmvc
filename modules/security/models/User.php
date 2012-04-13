@@ -17,8 +17,7 @@ class User extends Model {
     }
 
     public static function authenticate($username, $password) {
-        $result = User::find('username = :username AND password = :password', null, array('username' => $username, 'password' => md5($password)));
-        return $result[0];
+        return User::findFirst('username = :username AND password = :password', null, array('username' => $username, 'password' => md5($password)));
     }
 
     public static function getCurrentUser() {

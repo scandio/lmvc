@@ -12,7 +12,7 @@ This project contains a very small MVC framework written with simple PHP classes
 * Convention over configuration
 * No annotations or other stuff like that
 
-Currently there is no documentation for anything. But there is a simple tweet function implemented.
+Currently there is no documentation for anything. But there is a simple tweet app implemented.
 
 How To
 ------

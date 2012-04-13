@@ -71,11 +71,15 @@ $tag3 = new Tag();
 $tag3->name = 'tag3';
 $tag3->save();
 
+//$tag->articles->add($article);
+//$article->tags->add($tag);
+
 App::get()->db()->exec("drop table article_tag;");
 App::get()->db()->exec("create table article_tag (article_id integer, tag_id integer);");
 App::get()->db()->exec("insert into article_tag (article_id, tag_id) values (1,1);");
 App::get()->db()->exec("insert into article_tag (article_id, tag_id) values (1,3);");
 
-var_dump(Article::findById(1)->tags);
-var_dump($tag->articles);
-
+foreach (Article::findById(1)->tags as $tagx) {
+    var_dump("\nxxx\n",$tagx->articles);
+}
+//var_dump($tag->articles);

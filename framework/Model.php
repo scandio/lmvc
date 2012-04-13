@@ -39,13 +39,13 @@ abstract class Model {
                 $result = $class::findFirst(strtolower(get_class($this)) . '_id = :id', null, array('id' => $this->__data['id']));
             } elseif ($this->__relations[$name] == ONE_TO_MANY_RELATION) {
                 $class = ucfirst(substr($name, 0, strlen($name)-1));
-                $result = $class::find(strtolower(get_class($this)) . '_id = :id', null, array('id' => $this->__data['id']));
+                $result = new Relation($this->__relations[$name], $class, $class::find(strtolower(get_class($this)) . '_id = :id', null, array('id' => $this->__data['id'])));
             } elseif ($this->__relations[$name] == MANY_TO_MANY_RELATION || $this->__relations[$name] == MANY_TO_MANY_INVERSED_RELATION) {
                 $local = strtolower(get_class($this));
                 $remote = substr($name, 0, strlen($name)-1);
                 $overTable = ($this->__relations[$name] == MANY_TO_MANY_INVERSED_RELATION) ? $remote . '_' . $local : $local . '_' . $remote;
                 $class = ucfirst($remote);
-                $result = $class::find("{$overTable}.{$local}_id = :id AND {$overTable}.{$remote}_id = {$remote}.id",null, array('id' => $this->__data['id']), $overTable);
+                $result = new Relation($this->__relations[$name], $class, $class::find("{$overTable}.{$local}_id = :id AND {$overTable}.{$remote}_id = {$remote}.id",null, array('id' => $this->__data['id']), $overTable));
             }
         }
         return ($result) ? $result : $this->__data[$name];
