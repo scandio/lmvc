@@ -10,6 +10,7 @@ define('MANY_TO_MANY_INVERSED_RELATION', 'MANY_TO_MANY_INVERSED_RELATION');
 abstract class Model {
 
     private $__data=array();
+    private $__relationalData=array();
     private $__fields=array();
     private $__relations=array();
 
@@ -31,6 +32,9 @@ abstract class Model {
         if ($name == '__data') {
             $result = $this->__data;
         } elseif (array_key_exists($name, $this->__relations)) {
+            if (array_key_exists($name, $this->__relationalData)) {
+                return $this->__relationalData[$name];
+            }
             if ($this->__relations[$name] == MANY_TO_ONE_RELATION || $this->__relations[$name] == ONE_TO_ONE_RELATION) {
                 $class = ucfirst($name);
                 $result = $class::findById($this->__data[$name . '_id']);
@@ -39,13 +43,16 @@ abstract class Model {
                 $result = $class::findFirst(strtolower(get_class($this)) . '_id = :id', null, array('id' => $this->__data['id']));
             } elseif ($this->__relations[$name] == ONE_TO_MANY_RELATION) {
                 $class = ucfirst(substr($name, 0, strlen($name)-1));
-                $result = new Relation($this->__relations[$name], $class, $class::find(strtolower(get_class($this)) . '_id = :id', null, array('id' => $this->__data['id'])));
+                $result = new Relation($this->__relations[$name], $this, $class, $class::find(strtolower(get_class($this)) . '_id = :id', null, array('id' => $this->__data['id'])));
             } elseif ($this->__relations[$name] == MANY_TO_MANY_RELATION || $this->__relations[$name] == MANY_TO_MANY_INVERSED_RELATION) {
                 $local = strtolower(get_class($this));
                 $remote = substr($name, 0, strlen($name)-1);
                 $overTable = ($this->__relations[$name] == MANY_TO_MANY_INVERSED_RELATION) ? $remote . '_' . $local : $local . '_' . $remote;
                 $class = ucfirst($remote);
-                $result = new Relation($this->__relations[$name], $class, $class::find("{$overTable}.{$local}_id = :id AND {$overTable}.{$remote}_id = {$remote}.id",null, array('id' => $this->__data['id']), $overTable));
+                $result = new Relation($this->__relations[$name], $this, $class, $class::find("{$overTable}.{$local}_id = :id AND {$overTable}.{$remote}_id = {$remote}.id",null, array('id' => $this->__data['id']), $overTable));
+            }
+            if ($result) {
+                $this->__relationalData[$name] = $result;
             }
         }
         return ($result) ? $result : $this->__data[$name];
@@ -73,6 +80,14 @@ abstract class Model {
             $sql = SQLBuilder::update($this);
             $stmt = App::get()->db()->prepare($sql);
             $stmt->execute($this->getSaveData());
+        }
+        foreach ($this->__relations as $relationName => $relationType ) {
+            if ($relationType == MANY_TO_MANY_RELATION || $relationType == MANY_TO_MANY_INVERSED_RELATION) {
+                $relation = $this->$relationName;
+                if($relation) {
+                    $relation->save();
+                }
+            }
         }
         return $this;
     }
