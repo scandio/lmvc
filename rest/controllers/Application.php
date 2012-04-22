@@ -1,6 +1,6 @@
 <?php
 
-class Application extends SecureController {
+class Application extends Controller {
 	
 	public static function index() {
         self::render();
