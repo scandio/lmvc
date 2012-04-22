@@ -7,11 +7,21 @@ abstract class Controller {
 	}
 	
 	public static function renderJson($renderArgs=null) {
+        if (is_object($renderArgs)) {
+            $renderArgs = array($renderArgs->__data);
+        }
 		self::prepareRenderArgs($renderArgs);
+        foreach (App::get()->renderArgs as $key => $renderArg) {
+            if (is_object($renderArg)) {
+                $result[$key] = $renderArg->__data;
+            } else {
+                $result[$key] = $renderArg;
+            }
+        }
 		header('Cache-Control: no-cache, must-revalidate');
 		header('Expires: Mon, 26 Jul 1964 07:00:00 GMT');
 		header('Content-type: application/json');
-		echo json_encode(App::get()->renderArgs);
+		echo json_encode($result);
 	}
 	
 	public static function render($renderArgs=array()) {

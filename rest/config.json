@@ -1,0 +1,7 @@
+    {
+    "db":"sqlite:db.sq3",
+    "appPath":"./",
+    "frameworkPath":"../framework/",
+    "modulePath":"../modules/",
+    "paths":["controllers", "models", "framework"]
+}

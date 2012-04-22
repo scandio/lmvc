@@ -1,0 +1,39 @@
+<script type="text/javascript">
+
+    $(function() {
+
+        $.get('tasks', function(result) {
+                for (i = 0; i < result.length; i++) {
+                    $('#task-list').append(renderLine(result[i]));
+                }
+        });
+
+    });
+
+    function renderLine(task) {
+        return '<li id="task'+task.id+'" data-id="'+task.id+'">'+task.description+' <span onclick="javascript:deleteTask('+task.id+')">DEL</span></li>';
+    }
+
+    function saveTask() {
+        $.post('tasks', {description: $('#description').val(), priority: null}, function(result) {
+            $('#task-list').append(renderLine(result[0]));
+        });
+    }
+
+    function deleteTask(id) {
+        $.ajax({
+            url: 'tasks/' + id,
+            type: 'DELETE',
+            success: function(result) {
+                if (result.result == 'ok') {
+                    $('#task'+id).remove();
+                }
+            }
+        });
+    }
+
+</script>
+
+<ul id="task-list"></ul>
+
+<input type="text" id="description" name="description" value=""><input type="button" value="OK" onclick="javascript:saveTask()">

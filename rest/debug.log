@@ -1,0 +1,1668 @@
+-----------------------
+SELECT tweet.* FROM tweet ORDER BY date desc
+-----------------------
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT tweet.* FROM tweet WHERE user_id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT tweet.* FROM tweet ORDER BY date desc
+-----------------------
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array-----------------------
+
+-----------------------
+SELECT tweet.* FROM tweet WHERE user_id = :id
+-----------------------
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array-----------------------
+
+-----------------------
+SELECT tweet.* FROM tweet ORDER BY date desc
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT tweet.* FROM tweet WHERE user_id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT tweet.* FROM tweet ORDER BY date desc
+-----------------------
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT tweet.* FROM tweet WHERE user_id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+-----------------------
+
+-----------------------
+SELECT tweet.* FROM tweet ORDER BY date desc
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT tweet.* FROM tweet WHERE user_id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT tweet.* FROM tweet ORDER BY date desc
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT tweet.* FROM tweet WHERE user_id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user ORDER BY username
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT tweet.* FROM tweet ORDER BY date desc
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT tweet.* FROM tweet WHERE user_id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array
+Array-----------------------
+
+-----------------------
+SELECT tweet.* FROM tweet ORDER BY date desc
+-----------------------
+#0  App::debugLog(3, SELECT tweet.* FROM tweet ORDER BY date desc) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(, date desc) called at [/Users/ckoch/Sites/lmvc/framework/model.php:113]
+#2  Model::findAll(date desc) called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:6]
+#3  Application::index()
+#4  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#5  App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#6  App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/modules/security/models/user.php:25]
+#4  User::getCurrentUser() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:7]
+#5  Application::index()
+#6  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#7  App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#8  App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT tweet.* FROM tweet WHERE user_id = :id
+-----------------------
+#0  App::debugLog(3, SELECT tweet.* FROM tweet WHERE user_id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(user_id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:42]
+#2  Model->__get(tweets) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:13]
+#3  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#4  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#5  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#6  Application::index()
+#7  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#8  App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#9  App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user ORDER BY username
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user ORDER BY username) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(, username) called at [/Users/ckoch/Sites/lmvc/framework/model.php:113]
+#2  Model::findAll(username) called at [/Users/ckoch/Sites/lmvc/modules/security/controllers/users.php:6]
+#3  Users::index()
+#4  call_user_func_array(Users::index, Array ()) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#5  App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#6  App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE username = :username AND password = :password
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE username = :username AND password = :password) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(username = :username AND password = :password, , Array ([username] => dolce,[password] => 5f8445871e97209ab1e8e4776a9ae37a)) called at [/Users/ckoch/Sites/lmvc/modules/security/models/user.php:20]
+#2  User::authenticate(dolce, didgpsa0) called at [/Users/ckoch/Sites/lmvc/modules/security/controllers/security.php:10]
+#3  Security::postLogin()
+#4  call_user_func_array(Security::postLogin, Array ()) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#5  App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#6  App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT tweet.* FROM tweet ORDER BY date desc
+-----------------------
+#0  App::debugLog(3, SELECT tweet.* FROM tweet ORDER BY date desc) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(, date desc) called at [/Users/ckoch/Sites/lmvc/framework/model.php:113]
+#2  Model::findAll(date desc) called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:6]
+#3  Application::index()
+#4  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#5  App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#6  App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/modules/security/models/user.php:25]
+#4  User::getCurrentUser() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:7]
+#5  Application::index()
+#6  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#7  App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#8  App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT tweet.* FROM tweet WHERE user_id = :id
+-----------------------
+#0  App::debugLog(3, SELECT tweet.* FROM tweet WHERE user_id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(user_id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:42]
+#2  Model->__get(tweets) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:13]
+#3  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#4  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#5  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#6  Application::index()
+#7  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#8  App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#9  App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE username = :username AND password = :password
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE username = :username AND password = :password) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(username = :username AND password = :password, , Array ([username] => dolce,[password] => 5f8445871e97209ab1e8e4776a9ae37a)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(username = :username AND password = :password, , Array ([username] => dolce,[password] => 5f8445871e97209ab1e8e4776a9ae37a)) called at [/Users/ckoch/Sites/lmvc/modules/security/models/user.php:20]
+#3  User::authenticate(dolce, didgpsa0) called at [/Users/ckoch/Sites/lmvc/modules/security/controllers/security.php:10]
+#4  Security::postLogin()
+#5  call_user_func_array(Security::postLogin, Array ()) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#6  App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#7  App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT tweet.* FROM tweet ORDER BY date desc
+-----------------------
+#0  App::debugLog(3, SELECT tweet.* FROM tweet ORDER BY date desc) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(, date desc) called at [/Users/ckoch/Sites/lmvc/framework/model.php:113]
+#2  Model::findAll(date desc) called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:6]
+#3  Application::index()
+#4  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#5  App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#6  App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/modules/security/models/user.php:24]
+#4  User::getCurrentUser() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:7]
+#5  Application::index()
+#6  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#7  App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#8  App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT tweet.* FROM tweet WHERE user_id = :id
+-----------------------
+#0  App::debugLog(3, SELECT tweet.* FROM tweet WHERE user_id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(user_id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:42]
+#2  Model->__get(tweets) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:13]
+#3  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#4  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#5  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#6  Application::index()
+#7  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#8  App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#9  App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+
+-----------------------
+SELECT user.* FROM user WHERE id = :id
+-----------------------
+#0  App::debugLog(3, SELECT user.* FROM user WHERE id = :id) called at [/Users/ckoch/Sites/lmvc/framework/model.php:101]
+#1  Model::find(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:117]
+#2  Model::findFirst(id = :id, , Array ([id] => 9)) called at [/Users/ckoch/Sites/lmvc/framework/model.php:122]
+#3  Model::findById(9) called at [/Users/ckoch/Sites/lmvc/framework/model.php:36]
+#4  Model->__get(user) called at [/Users/ckoch/Sites/lmvc/twitter/views/application/index.html:18]
+#5  include(/Users/ckoch/Sites/lmvc/twitter/views/application/index.html) called at [/Users/ckoch/Sites/lmvc/twitter/views/main.html:21]
+#6  include(/Users/ckoch/Sites/lmvc/twitter/views/main.html) called at [/Users/ckoch/Sites/lmvc/framework/controller.php:28]
+#7  Controller::render() called at [/Users/ckoch/Sites/lmvc/twitter/controllers/application.php:10]
+#8  Application::index()
+#9  call_user_func_array(Application::index, Array ([0] => )) called at [/Users/ckoch/Sites/lmvc/framework/App.php:125]
+#10 App->run() called at [/Users/ckoch/Sites/lmvc/framework/App.php:69]
+#11 App::dispatch() called at [/Users/ckoch/Sites/lmvc/twitter/index.php:7]
+-----------------------
+

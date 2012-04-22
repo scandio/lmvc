@@ -1,0 +1,129 @@
+INSERT INTO task (description, priority, created, done, deleted) VALUES (:description, :priority, :created, :done, :deleted)
+INSERT INTO task (description, priority, created, done, deleted) VALUES (:description, :priority, :created, :done, :deleted)
+SELECT task.* FROM task
+SELECT task.* FROM task
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task
+SELECT task.* FROM task
+SELECT task.* FROM task
+SELECT task.* FROM task
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task
+SELECT task.* FROM task
+SELECT task.* FROM task
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task
+SELECT task.* FROM task
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task
+SELECT task.* FROM task
+SELECT task.* FROM task
+SELECT task.* FROM task
+SELECT task.* FROM task
+SELECT task.* FROM task
+SELECT task.* FROM task
+SELECT task.* FROM task
+INSERT INTO task (description, priority, created, done, deleted) VALUES (:description, :priority, :created, :done, :deleted)
+SELECT task.* FROM task
+INSERT INTO task (description, priority, created, done, deleted) VALUES (:description, :priority, :created, :done, :deleted)
+SELECT task.* FROM task
+SELECT task.* FROM task
+INSERT INTO task (description, priority, created, done, deleted) VALUES (:description, :priority, :created, :done, :deleted)
+INSERT INTO task (description, priority, created, done, deleted) VALUES (:description, :priority, :created, :done, :deleted)
+INSERT INTO task (description, priority, created, done, deleted) VALUES (:description, :priority, :created, :done, :deleted)
+SELECT task.* FROM task
+INSERT INTO task (description, priority, created, done, deleted) VALUES (:description, :priority, :created, :done, :deleted)
+SELECT task.* FROM task
+INSERT INTO task (description, priority, created, done, deleted) VALUES (:description, :priority, :created, :done, :deleted)
+SELECT task.* FROM task
+SELECT task.* FROM task
+SELECT task.* FROM task
+SELECT task.* FROM task WHERE id = :id
+UPDATE task SET description = :description, created = :created, done = :done, deleted = :deleted, priority = :priority WHERE id = :id
+SELECT task.* FROM task
+SELECT task.* FROM task WHERE id = :id
+UPDATE task SET description = :description, created = :created, done = :done, deleted = :deleted, priority = :priority WHERE id = :id
+SELECT task.* FROM task
+SELECT task.* FROM task WHERE id = :id
+SELECT task.* FROM task
+SELECT task.* FROM task WHERE id = :id
+DELETE FROM task WHERE id = :id
+SELECT task.* FROM task
+SELECT task.* FROM task
+INSERT INTO task (description, priority, created, done, deleted) VALUES (:description, :priority, :created, :done, :deleted)
+INSERT INTO task (description, priority, created, done, deleted) VALUES (:description, :priority, :created, :done, :deleted)
+SELECT task.* FROM task WHERE id = :id
+DELETE FROM task WHERE id = :id
+SELECT task.* FROM task
+SELECT task.* FROM task WHERE id = :id
+DELETE FROM task WHERE id = :id
+SELECT task.* FROM task
+SELECT task.* FROM task WHERE id = :id
+DELETE FROM task WHERE id = :id
+SELECT task.* FROM task
+SELECT task.* FROM task
+INSERT INTO task (description, priority, created, done, deleted) VALUES (:description, :priority, :created, :done, :deleted)
+SELECT task.* FROM task WHERE id = :id
+DELETE FROM task WHERE id = :id
+SELECT task.* FROM task
+INSERT INTO task (description, priority, created, done, deleted) VALUES (:description, :priority, :created, :done, :deleted)
+SELECT task.* FROM task WHERE id = :id
+DELETE FROM task WHERE id = :id
+SELECT task.* FROM task
+INSERT INTO task (description, priority, created, done, deleted) VALUES (:description, :priority, :created, :done, :deleted)
+SELECT task.* FROM task WHERE id = :id
+DELETE FROM task WHERE id = :id
+SELECT task.* FROM task
+SELECT task.* FROM task
+SELECT task.* FROM task WHERE id = :id
+DELETE FROM task WHERE id = :id
+INSERT INTO task (description, priority, created, done, deleted) VALUES (:description, :priority, :created, :done, :deleted)
+SELECT task.* FROM task WHERE id = :id
+DELETE FROM task WHERE id = :id
+INSERT INTO task (description, priority, created, done, deleted) VALUES (:description, :priority, :created, :done, :deleted)
+INSERT INTO task (description, priority, created, done, deleted) VALUES (:description, :priority, :created, :done, :deleted)
+SELECT task.* FROM task WHERE id = :id
+DELETE FROM task WHERE id = :id
+SELECT task.* FROM task
+SELECT task.* FROM task
+INSERT INTO task (description, priority, created, done, deleted) VALUES (:description, :priority, :created, :done, :deleted)
+SELECT task.* FROM task WHERE id = :id
+DELETE FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+DELETE FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+DELETE FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+DELETE FROM task WHERE id = :id
+SELECT task.* FROM task WHERE id = :id
+DELETE FROM task WHERE id = :id
