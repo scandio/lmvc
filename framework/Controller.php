@@ -6,14 +6,14 @@ abstract class Controller {
 		App::get()->renderArgs = array_merge(App::get()->renderArgs, $renderArgs);
 	}
 	
-	public static function renderJson($renderArgs=null) {
-        if (is_object($renderArgs)) {
-            $renderArgs = array($renderArgs->__data);
+	public static function renderJson($renderArgs=null, ArrayBuilder $arrayBuilder=null) {
+        if (is_object($renderArgs) && $arrayBuilder instanceof ArrayBuilder) {
+            $renderArgs = $arrayBuilder::build($renderArgs);
         }
 		self::prepareRenderArgs($renderArgs);
         foreach (App::get()->renderArgs as $key => $renderArg) {
-            if (is_object($renderArg)) {
-                $result[$key] = $renderArg->__data;
+            if (is_object($renderArg) && $arrayBuilder instanceof ArrayBuilder) {
+                $result[$key] = $arrayBuilder::build($renderArg);
             } else {
                 $result[$key] = $renderArg;
             }

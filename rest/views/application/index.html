@@ -19,7 +19,8 @@
 
     function saveTask() {
         $.post('tasks', {description: $('#description').val(), priority: null}, function(result) {
-            $('#task-list').append(renderLine(result[0]));
+            $('#task-list').append(renderLine(result));
+            $('#description').val('');
         });
     }
 
@@ -37,8 +38,8 @@
 
     function updateTask(id) {
         $.get('tasks/' + id, function(result){
-            $('#description').val(result[0].description);
-            $('#description').data('id', result[0].id);
+            $('#description').val(result.description);
+            $('#description').data('id', result.id);
             $('#create').hide();
             $('#change').show();
             $('#change-ca').show();
@@ -58,7 +59,7 @@
             type: 'PUT',
             data: {description: $('#description').val(), done: 'no', deleted: 'no', priority: null},
             success: function(result) {
-                $('#task'+result[0].id).html(result[0].description);
+                $('#task'+result.id).html(result.description);
                 $('#description').val('');
                 $('#create').show();
                 $('#change').hide();

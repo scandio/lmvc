@@ -8,9 +8,9 @@ class Application extends Controller {
 
     public static function getTasks($id=null) {
         if (empty($id)) {
-            self::renderJson(Task::findAll());
+            self::renderJson(Task::findAll(), new ModelBuilder());
         } else {
-            self::renderJson(Task::findById($id));
+            self::renderJson(Task::findById($id), new ModelBuilder());
         }
     }
 
@@ -21,7 +21,7 @@ class Application extends Controller {
         $task->created = strftime('%Y-%m-%d %H:%M:%S');
         $task->done = 'no';
         $task->deleted = 'no';
-        self::renderJson($task->save());
+        self::renderJson($task->save(), new ModelBuilder());
     }
 
     public static function putTasks($id) {
@@ -31,7 +31,7 @@ class Application extends Controller {
             $task->done = App::get()->request->done;
             $task->deleted = App::get()->request->deleted;
             $task->priority = App::get()->request->priority;
-            self::renderJson($task->save());
+            self::renderJson($task->save(), new ModelBuilder());
         } else {
             self::renderJson(array("result" => "error"));
         }
