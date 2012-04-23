@@ -21,8 +21,7 @@ class Application extends Controller {
         $task->created = strftime('%Y-%m-%d %H:%M:%S');
         $task->done = 'no';
         $task->deleted = 'no';
-        $task->save();
-        self::renderJson(array($task));
+        self::renderJson($task->save());
     }
 
     public static function putTasks($id) {
@@ -39,8 +38,11 @@ class Application extends Controller {
     }
 
     public static function deleteTasks($id) {
-        Task::findById($id)->delete();
-        self::renderJson(array('result' => 'ok'));
+        if (Task::findById($id)->delete()) {
+            self::renderJson(array('result' => 'ok'));
+        } else {
+            self::renderJson(array('result' => 'error'));
+        }
     }
 
 }

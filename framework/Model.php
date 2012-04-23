@@ -104,7 +104,7 @@ abstract class Model {
         if(!is_null($this->id)) {
             $sql = SQLBuilder::delete(get_class($this));
             $stmt = App::get()->db()->prepare($sql);
-            $stmt->execute(array('id' => $this->id));
+            return $stmt->execute(array('id' => $this->id));
         }
     }
 

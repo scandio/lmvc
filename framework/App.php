@@ -24,6 +24,10 @@ class App {
         $this->params = $this->setAction($slug);
         $this->request = array_slice($_GET,1);
         $this->request = array_merge($this->request, $_POST);
+        if ($this->requestMethod == 'PUT' || $this->requestMethod == 'DELETE') {
+            parse_str(file_get_contents('php://input'), $params);
+            $this->request = array_merge($params);
+        }
     }
 
 	public static function get() {
