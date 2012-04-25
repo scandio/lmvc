@@ -104,7 +104,7 @@ class App {
 	}
 
 	public function __get($name) {
-        if (in_array($name, array('controller', 'action', 'requestMethod', 'host', 'uri', 'renderArgs'))) {
+        if (in_array($name, array('controller', 'action', 'requestMethod', 'host', 'uri', 'renderArgs', 'params'))) {
             $result = $this->$name;
         } elseif (in_array($name, array('request'))) {
             $result = (object)$this->$name;
