@@ -3,7 +3,7 @@
 	<head>
 		<title><?= $title ? $title : 'lmvc' ?></title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="<?= App::get()->uri ?>/public/style.css" type="text/css"/>
+		<link rel="stylesheet" href="<?= $app->uri ?>/public/style.css" type="text/css"/>
 		<script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
 		<script type="text/javascript">
 		</script>
@@ -11,14 +11,14 @@
 	<body>
     <div id="header">
         <ul class="nav">
-            <li><a href="<?= App::get()->uri ?>/">Twitter</a></li>
-            <li><a href="<?= App::get()->uri ?>/users">Users</a></li>
-            <li><a href="<?= App::get()->uri ?><?= (is_null($currentUser)) ? '/security/login' : '/security/logout' ?>"><?= (is_null($currentUser)) ? 'Login' : 'Logout' ?></a></li>
+            <li><a href="<?= $app->uri ?>/">Twitter</a></li>
+            <li><a href="<?= $app->uri ?>/users">Users</a></li>
+            <li><a href="<?= $app->uri ?><?= (is_null($currentUser)) ? '/security/login' : '/security/logout' ?>"><?= (is_null($currentUser)) ? 'Login' : 'Logout' ?></a></li>
             <li><?= (!is_null($currentUser)) ? $currentUser->username : 'Anonymous' ?></li>
         </ul>
     </div>
     <div id="content">
-        <?php include($view) ?>
+        <?php include($app->view) ?>
     </div>
     <div id="footer">
 

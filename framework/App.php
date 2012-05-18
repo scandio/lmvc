@@ -14,6 +14,7 @@ class App {
 	private $host;
 	private $uri;
     private $pdo=null;
+    private $view=null;
 
     private function __construct() {
         $this->host = $_SERVER['HTTP_HOST'];
@@ -104,7 +105,7 @@ class App {
 	}
 
 	public function __get($name) {
-        if (in_array($name, array('controller', 'action', 'requestMethod', 'host', 'uri', 'renderArgs', 'params'))) {
+        if (in_array($name, array('controller', 'action', 'requestMethod', 'host', 'uri', 'renderArgs', 'params', 'view'))) {
             $result = $this->$name;
         } elseif (in_array($name, array('request'))) {
             $result = (object)$this->$name;
@@ -117,7 +118,9 @@ class App {
     public function __set($name, $value) {
 		if ($name == 'renderArgs' && is_array($value)) {
 			$this->renderArgs = $value;
-		}
+		} elseif ($name == 'view') {
+            $this->view = $value;
+        }
 	}
 	
 	public function setRenderArg($name, $value) {

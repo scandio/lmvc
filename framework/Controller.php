@@ -27,15 +27,16 @@ abstract class Controller {
 	public static function render($renderArgs=array()) {
 		self::prepareRenderArgs($renderArgs);
 		extract(App::get()->renderArgs);
-		$view = App::get()->config->appPath . 'views/' . App::camelCaseTo(App::get()->controller) . '/' . App::camelCaseTo(App::get()->action) . '.html';
-        if (!file_exists($view)) {
+        $app = App::get();
+		$app->view = $app->config->appPath . 'views/' . App::camelCaseTo(App::get()->controller) . '/' . App::camelCaseTo(App::get()->action) . '.html';
+        if (!file_exists($app->view)) {
             $reflection = new ReflectionClass(get_called_class());
             $classFileName = $reflection->getFileName();
             $reducer = 'controllers/' . strtolower(App::get()->controller) . '.php';
             $module = end(explode('/', substr($classFileName, 0,  strpos($classFileName, $reducer)-1)));
-            $view = App::get()->config->modulePath . $module . '/views/' . strtolower(App::get()->controller) . '/' . strtolower(App::get()->action) . '.html';
+            $app->view = $app->config->modulePath . $module . '/views/' . strtolower($app->controller) . '/' . strtolower($app->action) . '.html';
         }
-		include(App::get()->config->appPath . 'views/main.html');
+		include($app->config->appPath . 'views/main.html');
 	}
 	
     public static function redirect($method) {
