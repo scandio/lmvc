@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head>
-		<title>Web App</title>
+		<title><?= ($title) ? $title : 'Web-App' ?></title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="<?= $app->uri ?>/less/compile/bootstrap/public/less/bootstrap.less" type="text/css"/>
 		<script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>

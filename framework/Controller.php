@@ -2,15 +2,19 @@
 
 abstract class Controller {
 
-	private static function prepareRenderArgs($renderArgs) {
-		App::get()->renderArgs = array_merge(App::get()->renderArgs, $renderArgs);
-	}
-	
+    public static function setRenderArg($name, $value) {
+        App::get()->setRenderArg($name, $value);
+    }
+
+    public static function setRenderArgs($renderArgs, $add=false) {
+        App::get()->renderArgs = ($add) ? array_merge(App::get()->renderArgs, $renderArgs) : $renderArgs;
+    }
+
 	public static function renderJson($renderArgs=null, ArrayBuilder $arrayBuilder=null) {
         if (is_object($renderArgs) && $arrayBuilder instanceof ArrayBuilder) {
             $renderArgs = $arrayBuilder::build($renderArgs);
         }
-		self::prepareRenderArgs($renderArgs);
+		self::setRenderArgs($renderArgs, true);
         foreach (App::get()->renderArgs as $key => $renderArg) {
             if (is_object($renderArg) && $arrayBuilder instanceof ArrayBuilder) {
                 $result[$key] = $arrayBuilder::build($renderArg);
@@ -25,7 +29,7 @@ abstract class Controller {
 	}
 	
 	public static function render($renderArgs=array()) {
-		self::prepareRenderArgs($renderArgs);
+		self::setRenderArgs($renderArgs, true);
 		extract(App::get()->renderArgs);
         $app = App::get();
 		$app->view = $app->config->appPath . 'views/' . App::camelCaseTo(App::get()->controller) . '/' . App::camelCaseTo(App::get()->action) . '.html';

@@ -5,8 +5,8 @@ class Application extends SecureController {
 	public static function index() {
         $tweets = Tweet::findAll('date desc');
         $currentUser = User::getCurrentUser();
-        App::get()->setRenderArg('currentUser', $currentUser);
-        App::get()->setRenderArg('tweets', $tweets);
+        self::setRenderArg('currentUser', $currentUser);
+        self::setRenderArg('tweets', $tweets);
         self::render();
 	}
 

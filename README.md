@@ -80,7 +80,7 @@ This renders the the view (template) path/views/controller/action.html. In this 
     class Accounts extends Controller {
 
         public static function index() {
-            App::get()->setRenderArg('name', 'John Doe');
+            self::setRenderArg('name', 'John Doe');
             self::render()
         }
 
