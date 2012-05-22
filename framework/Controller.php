@@ -38,7 +38,7 @@ abstract class Controller {
         if (!file_exists($app->view)) {
             $reflection = new ReflectionClass(get_called_class());
             $classFileName = $reflection->getFileName();
-            $reducer = 'controllers/' . strtolower(App::get()->controller) . '.php';
+            $reducer = 'controllers/' . App::get()->controller . '.php';
             $module = end(explode('/', substr($classFileName, 0,  strpos($classFileName, $reducer)-1)));
             $app->view = $app->config->modulePath . $module . '/views/' . strtolower($app->controller) . '/' . strtolower($app->action) . '.html';
         }

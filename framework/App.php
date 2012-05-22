@@ -1,18 +1,18 @@
 <?php
 
 class App {
-	
-	private static $object=null;
+
+    private static $object=null;
     private static $config=array();
 
-	private $controller;
-	private $action;
-	private $params;
-	private $request=array();
-	private $renderArgs=array();
-	private $requestMethod;
-	private $host;
-	private $uri;
+    private $controller;
+    private $action;
+    private $params;
+    private $request=array();
+    private $renderArgs=array();
+    private $requestMethod;
+    private $host;
+    private $uri;
     private $pdo=null;
     private $view=null;
 
@@ -31,12 +31,12 @@ class App {
         }
     }
 
-	public static function get() {
-		if (is_null(self::$object)) {
-			self::$object = new App();
-		}
-		return self::$object;
-	}
+    public static function get() {
+        if (is_null(self::$object)) {
+            self::$object = new App();
+        }
+        return self::$object;
+    }
 
     public static function initialize($configFile=null) {
         if (!is_null($configFile)) {
@@ -56,13 +56,13 @@ class App {
             return (!is_file($dirFile) && $dirFile != '.' && $dirFile != '..');
         });
         set_include_path(get_include_path() . self::getPath($modules));
-        spl_autoload_register(function ($classname){
-            spl_autoload($classname);
+        spl_autoload_register(function ($classname) {
+                @include($classname.'.php');
         });
     }
 
     private static function getPath($modules=array()) {
-        $result  = PATH_SEPARATOR . self::$config->frameworkPath . implode(PATH_SEPARATOR . self::$config->frameworkPath, self::$config->paths);
+        $result  = PATH_SEPARATOR . self::$config->frameworkPath . PATH_SEPARATOR . self::$config->frameworkPath . implode(PATH_SEPARATOR . self::$config->frameworkPath, self::$config->paths);
         $result .= PATH_SEPARATOR . self::$config->appPath . implode(PATH_SEPARATOR . self::$config->appPath, self::$config->paths);
         foreach ($modules as $module) {
             $result .= PATH_SEPARATOR . self::$config->modulePath . $module . '/' . implode(PATH_SEPARATOR . self::$config->modulePath . $module . '/' , self::$config->paths);
@@ -81,30 +81,30 @@ class App {
         return $this->pdo;
     }
 
-	private function setController($slug) {
-		$this->controller = ucfirst(App::camelCaseFrom($slug[0]));
-		if (!class_exists($this->controller)) {
-			$this->controller = 'Application';
-		} else {
-			$slug = array_slice($slug,1);
-		}
-		return $slug;
-	}
-	
-	private function setAction($slug) {
-		$this->action = self::camelCaseFrom($slug[0]);
-		if (is_callable($this->controller . '::' . strtolower($this->requestMethod) . ucfirst($this->action))) {
-			$this->action = strtolower($this->requestMethod) . ucfirst($this->action);
-			$slug = array_slice($slug,1);
-		} elseif (is_callable($this->controller . '::' . $this->action)) {
-			$slug = array_slice($slug,1);
-		} else {
-			$this->action = 'index';
-		}
-		return $slug;
-	}
+    private function setController($slug) {
+        $this->controller = ucfirst(App::camelCaseFrom($slug[0]));
+        if (!class_exists($this->controller)) {
+            $this->controller = 'Application';
+        } else {
+            $slug = array_slice($slug,1);
+        }
+        return $slug;
+    }
 
-	public function __get($name) {
+    private function setAction($slug) {
+        $this->action = self::camelCaseFrom($slug[0]);
+        if (is_callable($this->controller . '::' . strtolower($this->requestMethod) . ucfirst($this->action))) {
+            $this->action = strtolower($this->requestMethod) . ucfirst($this->action);
+            $slug = array_slice($slug,1);
+        } elseif (is_callable($this->controller . '::' . $this->action)) {
+            $slug = array_slice($slug,1);
+        } else {
+            $this->action = 'index';
+        }
+        return $slug;
+    }
+
+    public function __get($name) {
         if (in_array($name, array('controller', 'action', 'requestMethod', 'host', 'uri', 'renderArgs', 'params', 'view'))) {
             $result = $this->$name;
         } elseif (in_array($name, array('request'))) {
@@ -113,25 +113,25 @@ class App {
             $result = (object)self::$config;
         }
         return $result;
-	}
-	
+    }
+
     public function __set($name, $value) {
-		if ($name == 'renderArgs' && is_array($value)) {
-			$this->renderArgs = $value;
-		} elseif ($name == 'view') {
+        if ($name == 'renderArgs' && is_array($value)) {
+            $this->renderArgs = $value;
+        } elseif ($name == 'view') {
             $this->view = $value;
         }
-	}
-	
-	public function setRenderArg($name, $value) {
-		$this->renderArgs[$name] = $value;
-	}
+    }
 
-	public function run() {
+    public function setRenderArg($name, $value) {
+        $this->renderArgs[$name] = $value;
+    }
+
+    public function run() {
         call_user_func_array($this->controller . '::preProcess', $this->params);
         call_user_func_array($this->controller . '::' . $this->action, $this->params);
         call_user_func_array($this->controller . '::postProcess', $this->params);
-	}
+    }
 
     public static function camelCaseTo($camelCasedString, $delimiter='-') {
         return strtolower(preg_replace('/(?<=\\w)(?=[A-Z])/',$delimiter . "$1", $camelCasedString));
