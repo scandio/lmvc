@@ -7,7 +7,9 @@ abstract class Controller {
     }
 
     public static function setRenderArgs($renderArgs, $add=false) {
-        App::get()->renderArgs = ($add) ? array_merge(App::get()->renderArgs, $renderArgs) : $renderArgs;
+        if (!is_null($renderArgs)) {
+            App::get()->renderArgs = ($add) ? array_merge(App::get()->renderArgs, $renderArgs) : $renderArgs;
+        }
     }
 
 	public static function renderJson($renderArgs=null, ArrayBuilder $arrayBuilder=null) {
