@@ -18,7 +18,7 @@ class Application extends SecureController {
     public static function create() {
         $tweet = new Tweet();
         $tweet->date = strftime('%Y-%m-%d %H:%M:%S');
-        $tweet->content = App::get()->request->content;
+        $tweet->content = LVC::get()->request->content;
         $tweet->user = User::getCurrentUser();
         $tweet->save();
         self::redirect('Application::index');

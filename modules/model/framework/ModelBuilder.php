@@ -1,7 +1,7 @@
 <?php
 
 class ModelBuilder implements ArrayBuilder {
-    public static function build(Model $renderArgs) {
+    public static function build($renderArgs) {
         return $renderArgs->__data;
     }
 }

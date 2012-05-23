@@ -7,7 +7,7 @@ class TestIt extends Controller {
     }
 
     public static function testItNow() {
-        self::renderJson(array('result'=>'OK', 'controller' => App::get()->controller, 'action' => App::get()->action));
+        self::renderJson(array('result'=>'OK', 'controller' => LVC::get()->controller, 'action' => LVC::get()->action));
     }
 
 }

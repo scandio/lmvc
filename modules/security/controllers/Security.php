@@ -7,7 +7,7 @@ class Security extends Controller {
     }
 
     public static function postLogin() {
-        $user = User::authenticate(App::get()->request->username, App::get()->request->password);
+        $user = User::authenticate(LVC::get()->request->username, LVC::get()->request->password);
         if (is_object($user)) {
             $_SESSION['currentUser'] = $user->id;
             self::redirect($_SESSION['afterLogin']);

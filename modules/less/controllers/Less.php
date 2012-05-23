@@ -3,14 +3,22 @@
 class Less extends Controller {
 
     public static function compile() {
-        $file = implode('/', App::get()->params);
+        $cacheFile = implode('-', LVC::get()->params);
+        $file = implode('/', LVC::get()->params);
         if (!file_exists($file)) {
-            $file = App::get()->config->modulePath . $file;
+            $file = LVC::get()->config->modulePath . $file;
         }
-        include('lessc.inc.php');
-        $lessCompiler = new lessc(App::get()->config->appPath . $file);
+        if (file_exists($cacheFile) && filemtime($file) <= filemtime($cacheFile)) {
+            $cssStream = "/* cached result from less compiler */\n" . file_get_contents($cacheFile);
+        } else {
+            include('lessc.inc.php');
+            $lessCompiler = new lessc(LVC::get()->config->appPath . $file);
+            $cssStream = $lessCompiler->parse();
+            file_put_contents($cacheFile, $cssStream);
+            $cssStream = "/* compiled result from less compiler */\n" . $cssStream;
+        }
         header('Content-Type: text/css');
-        echo $lessCompiler->parse();
+        echo $cssStream;
     }
 
 }

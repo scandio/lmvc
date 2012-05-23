@@ -31,7 +31,7 @@ class Relation extends ArrayObject {
         foreach ($this->forSave as $key => $obj) {
             if ($this->relationType == MANY_TO_MANY_RELATION || $this->relationType == MANY_TO_MANY_INVERSED_RELATION) {
                 $sql = SQLBuilder::insertRelation(get_class($this->fromObj), $this->toClass, $this->relationType);
-                $stmt = App::get()->db()->prepare($sql);
+                $stmt = LVC::get()->db()->prepare($sql);
                 $stmt->execute(array($this->fromObj->id, $obj->id));
             }
         }

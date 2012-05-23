@@ -73,12 +73,12 @@ abstract class Model {
     public function save() {
         if (is_null($this->id)) {
             $sql = SQLBuilder::insert($this);
-            $stmt = App::get()->db()->prepare($sql);
+            $stmt = LVC::get()->db()->prepare($sql);
             $stmt->execute($this->getSaveData(true));
-            $this->id = App::get()->db()->lastInsertId();
+            $this->id = LVC::get()->db()->lastInsertId();
         } else {
             $sql = SQLBuilder::update($this);
-            $stmt = App::get()->db()->prepare($sql);
+            $stmt = LVC::get()->db()->prepare($sql);
             $stmt->execute($this->getSaveData());
         }
         foreach ($this->__relations as $relationName => $relationType ) {
@@ -103,7 +103,7 @@ abstract class Model {
     public function delete() {
         if(!is_null($this->id)) {
             $sql = SQLBuilder::delete(get_class($this));
-            $stmt = App::get()->db()->prepare($sql);
+            $stmt = LVC::get()->db()->prepare($sql);
             return $stmt->execute(array('id' => $this->id));
         }
     }
@@ -112,7 +112,7 @@ abstract class Model {
         $result = array();
         $class = get_called_class();
         $sql = SQLBuilder::select($class, $query, $order, $over);
-        $stmt = App::get()->db()->prepare($sql);
+        $stmt = LVC::get()->db()->prepare($sql);
         $stmt->execute($params);
         $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
         foreach ($records as $data) {

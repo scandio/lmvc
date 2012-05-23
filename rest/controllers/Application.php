@@ -16,8 +16,8 @@ class Application extends Controller {
 
     public static function postTasks() {
         $task = new Task();
-        $task->description = App::get()->request->description;
-        $task->priority = App::get()->request->priority;
+        $task->description = LVC::get()->request->description;
+        $task->priority = LVC::get()->request->priority;
         $task->created = strftime('%Y-%m-%d %H:%M:%S');
         $task->done = 'no';
         $task->deleted = 'no';
@@ -27,10 +27,10 @@ class Application extends Controller {
     public static function putTasks($id) {
         $task = Task::findById($id);
         if (is_object($task)) {
-            $task->description = App::get()->request->description;
-            $task->done = App::get()->request->done;
-            $task->deleted = App::get()->request->deleted;
-            $task->priority = App::get()->request->priority;
+            $task->description = LVC::get()->request->description;
+            $task->done = LVC::get()->request->done;
+            $task->deleted = LVC::get()->request->deleted;
+            $task->priority = LVC::get()->request->priority;
             self::renderJson($task->save(), new ModelBuilder());
         } else {
             self::renderJson(array("result" => "error"));

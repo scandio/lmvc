@@ -1,5 +1,5 @@
 <?php
 
 interface ArrayBuilder {
-    public static function build(Model $renderArgs);
+    public static function build($renderArgs);
 }

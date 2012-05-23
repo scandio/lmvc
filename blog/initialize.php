@@ -3,25 +3,25 @@ session_start();
 setlocale(LC_ALL, "de_DE");
 date_default_timezone_set('Europe/Berlin');
 
-include('../framework/App.php');
-App::initialize('config.json');
+include('../framework/LVC.php');
+LVC::initialize('config.json');
 
-App::get()->db()->exec("drop table user;");
-App::get()->db()->exec("CREATE TABLE user (id integer primary key autoincrement, username text unique not null, password text not null, fullname text);");
-App::get()->db()->exec("drop table article;");
-App::get()->db()->exec("create table article (id integer primary key autoincrement, user_id integer not null, date text not null, title text, teaser text, content text);");
+LVC::get()->db()->exec("drop table user;");
+LVC::get()->db()->exec("CREATE TABLE user (id integer primary key autoincrement, username text unique not null, password text not null, fullname text);");
+LVC::get()->db()->exec("drop table article;");
+LVC::get()->db()->exec("create table article (id integer primary key autoincrement, user_id integer not null, date text not null, title text, teaser text, content text);");
 
-App::get()->db()->exec("drop table tag;");
-App::get()->db()->exec("create table tag (id integer primary key autoincrement, name text);");
+LVC::get()->db()->exec("drop table tag;");
+LVC::get()->db()->exec("create table tag (id integer primary key autoincrement, name text);");
 
-App::get()->db()->exec("drop table article_tag;");
-App::get()->db()->exec("create table article_tag (article_id integer, tag_id integer);");
+LVC::get()->db()->exec("drop table article_tag;");
+LVC::get()->db()->exec("create table article_tag (article_id integer, tag_id integer);");
 
-App::get()->db()->exec("drop table location;");
-App::get()->db()->exec("create table location (id integer primary key autoincrement, article_id integer not null, longitude text, latitude text);");
+LVC::get()->db()->exec("drop table location;");
+LVC::get()->db()->exec("create table location (id integer primary key autoincrement, article_id integer not null, longitude text, latitude text);");
 
-App::get()->db()->exec("drop table comment;");
-App::get()->db()->exec("create table comment (id integer primary key autoincrement, article_id integer not null, user_id integer not null, date text not null, content text);");
+LVC::get()->db()->exec("drop table comment;");
+LVC::get()->db()->exec("create table comment (id integer primary key autoincrement, article_id integer not null, user_id integer not null, date text not null, content text);");
 
 $user = new User();
 $user->username = 'admin';
