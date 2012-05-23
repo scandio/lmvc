@@ -1,6 +1,6 @@
 [![endorse](http://api.coderwall.com/chriskoch/endorsecount.png)](http://coderwall.com/chriskoch)
 
-LMVC
+LMVC (cool)
 ====
 
 Learning Model View Controller
