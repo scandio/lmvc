@@ -1,0 +1,7 @@
+<?php foreach ($articles as $article): ?>
+<h2><?= $article->title ?></h2>
+<p><small><?= $article->date ?> | <?= $article->user->username ?></small></p>
+<p><?= $article->teaser ?></p>
+<p><?= $article->content ?></p>
+<p>tagged with: <?php foreach ($article->tags as $tag): ?><?= $tag->name ?>, <?php endforeach ?></p>
+<?php endforeach ?>
