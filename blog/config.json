@@ -1,7 +1,0 @@
-{
-    "db":"sqlite:blog.sq3",
-    "appPath":"./app/",
-    "frameworkPath":"../framework/",
-    "modulePath":"../modules/",
-    "paths":["controllers", "models", "framework"]
-}
