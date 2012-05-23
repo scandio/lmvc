@@ -1,43 +1,74 @@
 <div class="container">
     <div class="row">
         <div class="span10">
-            <p>a text for you</p>
+            <?= Snippets::test('OK'); ?>
         </div>
     </div>
     <div class="row">
-        <div class="span5">
-            <form class="form-horizontal">
+        <div class="span10">
+            <form class="">
                 <fieldset>
                     <legend>Kunde</legend>
-                        <div class="control-group">
-                            <label class="control-label" for="name">Name</label>
-                            <div class="controls">
-                                <input class="span3" id="name" name="name" type="text">
+                    <div class="row">
+                        <div class="span5">
+                            <div class="control-group">
+                                <label class="control-label" for="name">Name</label>
+                                <div class="controls">
+                                    <input class="span4" id="name" name="name" type="text">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="firstname">Vorname</label>
+                                <div class="controls">
+                                    <input class="span4" id="firstname" name="firstname" type="text">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="street">Straße</label>
+                                <div class="controls">
+                                    <input class="span4" id="street" name="street" type="text">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="control-group span1">
+                                    <label class="control-label" for="zip">PLZ</label>
+                                    <div class="controls">
+                                        <input class="span1" id="zip" name="zip" type="text">
+                                    </div>
+                                </div>
+                                <div class="control-group span3">
+                                    <label class="control-label" for="city">Ort</label>
+                                    <div class="controls">
+                                        <input class="span3" id="city" name="city" type="text">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="control-group">
-                            <label class="control-label" for="firstname">Vorname</label>
-                            <div class="controls">
-                                <input class="span3" id="firstname" name="firstname" type="text">
+                        <div class="span5">
+                            <div class="control-group">
+                                <label class="control-label" for="phone">Telefon</label>
+                                <div class="controls">
+                                    <input class="span4" id="phone" name="phone" type="text">
+                                </div>
                             </div>
-                        </div>
-                </fieldset>
-            </form>
-        </div>
-        <div class="span5">
-            <form class="form-horizontal">
-                <fieldset>
-                    <legend>Kunde</legend>
-                    <div class="control-group">
-                        <label class="control-label" for="name">Name</label>
-                        <div class="controls">
-                            <input class="span3" id="name" name="name" type="text">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="firstname">Vorname</label>
-                        <div class="controls">
-                            <input class="span3" id="firstname" name="firstname" type="text">
+                            <div class="control-group">
+                                <label class="control-label" for="fax">Telefax</label>
+                                <div class="controls">
+                                    <input class="span4" id="fax" name="fax" type="text">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="mail">E-Mail</label>
+                                <div class="controls">
+                                    <input class="span4" id="mail" name="mail" type="text">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="remarks">Bemerkungen</label>
+                                <div class="controls">
+                                    <textarea rows="3" class="span4" id="remarks" name="remarks"></textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </fieldset>

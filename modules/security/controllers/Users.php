@@ -15,9 +15,9 @@ class Users extends SecureController {
 	}
 
 	private static function fillSave($user) {
-		$user->username = App::get()->request->username;
-		$user->password = App::get()->request->password;
-		$user->fullname = App::get()->request->fullname;
+		$user->username = LVC::get()->request->username;
+		$user->password = LVC::get()->request->password;
+		$user->fullname = LVC::get()->request->fullname;
 		$user->save();
 		self::redirect('Users::index');
 	}
@@ -35,4 +35,5 @@ class Users extends SecureController {
 	public static function postEdit($id) {
 		self::fillSave(User::findById($id));
 	}
+
 }
