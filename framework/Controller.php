@@ -30,7 +30,7 @@ abstract class Controller {
         echo json_encode($result);
     }
 
-    public static function render($renderArgs=array()) {
+    public static function render($renderArgs=array(), $masterTemplate=null) {
         self::setRenderArgs($renderArgs, true);
         extract(LVC::get()->renderArgs);
         $app = LVC::get();
@@ -42,7 +42,11 @@ abstract class Controller {
             $module = end(explode('/', substr($classFileName, 0,  strpos($classFileName, $reducer)-1)));
             $app->view = $app->config->modulePath . $module . '/views/' . strtolower($app->controller) . '/' . strtolower($app->action) . '.html';
         }
-        include($app->config->appPath . 'views/main.html');
+        if (!is_null($masterTemplate)) {
+            include($masterTemplate);
+        } else {
+            include($app->config->appPath . 'views/main.html');
+        }
     }
 
     public static function redirect($method) {
