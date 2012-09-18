@@ -18,7 +18,7 @@ class LVC {
     private $protocol;
 
     private function __construct() {
-        $this->protocol = ($_SERVER['HTTPS']) ? 'https' : 'http';
+        $this->protocol = (isset($_SERVER['HTTPS'])) ? 'https' : 'http';
         $this->host = $_SERVER['HTTP_HOST'];
         $this->uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
         $this->requestMethod = $_SERVER['REQUEST_METHOD'];
@@ -127,6 +127,21 @@ class LVC {
 
     public function setRenderArg($name, $value) {
         $this->renderArgs[$name] = $value;
+    }
+
+    public function url($method, $params=null) {
+        if ($params && !is_array($params)) {
+            $params = array($params);
+        }
+        $method = explode('::', $method);
+        $controller = ($method[0] == 'Application') ? '/' : '/' . self::camelCaseTo($method[0]);
+        $action = ($method[1] == 'index') ? '/' : '/' . self::camelCaseTo($method[1]);
+        return $this->protocol . '://' .
+            $this->host .
+            $this->uri .
+            $controller .
+            (($action == '/') ? '' : $action) .
+            (($params) ?  '/' . implode('/', $params) : '');
     }
 
     public function run() {

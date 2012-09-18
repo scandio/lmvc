@@ -32,13 +32,15 @@ abstract class Controller {
 
     public static function render($renderArgs=array(), $masterTemplate=null) {
         self::setRenderArgs($renderArgs, true);
-        extract(LVC::get()->renderArgs);
+        $args = LVC::get()->renderArgs;
+        extract($args);
+        unset($args);
         $app = LVC::get();
-        $app->view = $app->config->appPath . 'views/' . LVC::camelCaseTo(LVC::get()->controller) . '/' . LVC::camelCaseTo(LVC::get()->action) . '.html';
+        $app->view = $app->config->appPath . 'views/' . LVC::camelCaseTo($app->controller) . '/' . LVC::camelCaseTo($app->action) . '.html';
         if (!file_exists($app->view)) {
             $reflection = new ReflectionClass(get_called_class());
             $classFileName = $reflection->getFileName();
-            $reducer = 'controllers/' . LVC::get()->controller . '.php';
+            $reducer = 'controllers/' . $app->controller . '.php';
             $module = end(explode('/', substr($classFileName, 0,  strpos($classFileName, $reducer)-1)));
             $app->view = $app->config->modulePath . $module . '/views/' . strtolower($app->controller) . '/' . strtolower($app->action) . '.html';
         }
@@ -49,11 +51,8 @@ abstract class Controller {
         }
     }
 
-    public static function redirect($method) {
-        $method = explode('::', $method);
-        $controller = ($method[0] == 'Application') ? '/' : '/' . LVC::camelCaseTo($method[0]);
-        $action = ($method[1] == 'index') ? '/' : '/' . LVC::camelCaseTo($method[1]);
-        header('Location: ' . LVC::get()->protocol . '://' . LVC::get()->host . LVC::get()->uri . $controller . (($controller == '/' && $action == '/') ? '' : $action) );
+    public static function redirect($method, $params=null) {
+        header('Location: ' . LVC::get()->url($method, $params));
     }
 
     public static function preProcess() {
