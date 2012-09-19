@@ -1,22 +1,70 @@
 <?php
 
+/**
+ * Basic application of LMVC
+ */
 class LVC {
 
+    /**
+     * @var LVC singleton object
+     */
     private static $object=null;
+
+    /**
+     * @var array application setting from config.json
+     */
     private static $config=array();
 
+    /**
+     * @var string name of the currently used controller
+     */
     private $controller;
+
+    /**
+     * @var string name of the currently used action
+     */
     private $action;
+
+    /**
+     * @var array list of parameter values from the URL
+     */
     private $params;
+
+    /**
+     * @var array all GET, POST, PUT and DELETE request variables
+     */
     private $request=array();
-    private $renderArgs=array();
+
+    /**
+     * @var string requestMethod like GET, POST, PUT and DELETE
+     */
     private $requestMethod;
+
+    /**
+     * @var string hostname of webserver
+     */
     private $host;
+
+    /**
+     * @var string server relative uri of the application
+     */
     private $uri;
-    private $pdo=null;
+
+    /**
+     * @var string filename of the current view
+     */
     private $view=null;
+
+    /**
+     * @var string http | https
+     */
     private $protocol;
 
+    /**
+     * Private constructor which creates the singleton object
+     *
+     * @return void
+     */
     private function __construct() {
         $this->protocol = (isset($_SERVER['HTTPS'])) ? 'https' : 'http';
         $this->host = $_SERVER['HTTP_HOST'];
@@ -33,6 +81,13 @@ class LVC {
         }
     }
 
+    /**
+     * returns the instance of the single ton object
+     * use it like LVC::get() from outside
+     *
+     * @static
+     * @return LVC
+     */
     public static function get() {
         if (is_null(self::$object)) {
             self::$object = new LVC();
@@ -40,19 +95,42 @@ class LVC {
         return self::$object;
     }
 
+    /**
+     * @static
+     * @param string $configFile file name of the json based cofing file
+     * @return void
+     */
     public static function initialize($configFile=null) {
         if (!is_null($configFile)) {
             LVC::configure(json_decode(file_get_contents($configFile)));
         } else {
-            LVC::configure((object)array('db' => 'sqlite:db.sq3', 'appPath'  => './', 'frameworkPath' => './framework/', 'modulePath' => './modules/', 'paths' => array('controllers', 'models', 'framework')));
+            LVC::configure((object)array(
+                'appPath'  => './',
+                'frameworkPath' => './framework/',
+                'modulePath' => './modules/',
+                'paths' => array('controllers', 'models', 'framework')
+            ));
         }
     }
 
+    /**
+     * configures the application and activates auto loader
+     *
+     * @static
+     * @param array $config assotiative array of all configurations
+     * @return void
+     */
     private static function configure($config) {
         self::$config = $config;
         self::setAutoload();
     }
 
+    /**
+     * activates auto loader from configuration
+     *
+     * @static
+     * @return void
+     */
     private static function setAutoload() {
         $modules = array_filter(scandir(self::$config->modulePath), function($dirFile) {
             return (!is_file($dirFile) && $dirFile != '.' && $dirFile != '..');
@@ -63,6 +141,13 @@ class LVC {
         });
     }
 
+    /**
+     * builds an include path for auto loader
+     *
+     * @static
+     * @param array $modules list of modules in path
+     * @return string an include path
+     */
     private static function getPath($modules=array()) {
         $result  = PATH_SEPARATOR . self::$config->frameworkPath . PATH_SEPARATOR . self::$config->frameworkPath . implode(PATH_SEPARATOR . self::$config->frameworkPath, self::$config->paths);
         $result .= PATH_SEPARATOR . self::$config->appPath . implode(PATH_SEPARATOR . self::$config->appPath, self::$config->paths);
@@ -72,17 +157,22 @@ class LVC {
         return $result;
     }
 
+    /**
+     * Dispatcher called by index.php in application root
+     *
+     * @static
+     * @return void
+     */
     public static function dispatch() {
         self::get()->run();
     }
 
-    public function db() {
-        if(is_null($this->pdo)) {
-            $this->pdo = new PDO(self::$config->db);
-        }
-        return $this->pdo;
-    }
-
+    /**
+     * sets the controller from slug
+     *
+     * @param array $slug the URL divided in pieces
+     * @return array the reduced slug
+     */
     private function setController($slug) {
         $this->controller = ucfirst(LVC::camelCaseFrom($slug[0]));
         if (!class_exists($this->controller)) {
@@ -93,6 +183,12 @@ class LVC {
         return $slug;
     }
 
+    /**
+     * sets the action from slug
+     *
+     * @param $slug the URL divided in pieces
+     * @return array the reduced slug
+     */
     private function setAction($slug) {
         $this->action = self::camelCaseFrom($slug[0]);
         if (is_callable($this->controller . '::' . strtolower($this->requestMethod) . ucfirst($this->action))) {
@@ -106,8 +202,14 @@ class LVC {
         return $slug;
     }
 
+    /**
+     * Some getters needed in other contexts
+     *
+     * @param string $name the name of the variable
+     * @return mixed the requested value
+     */
     public function __get($name) {
-        if (in_array($name, array('controller', 'action', 'requestMethod', 'host', 'uri', 'renderArgs', 'params', 'view', 'protocol'))) {
+        if (in_array($name, array('controller', 'action', 'requestMethod', 'host', 'uri', 'params', 'view', 'protocol'))) {
             $result = $this->$name;
         } elseif (in_array($name, array('request'))) {
             $result = (object)$this->$name;
@@ -117,18 +219,28 @@ class LVC {
         return $result;
     }
 
+    /**
+     * setters needed
+     *
+     * @param string $name the name of the variable
+     * @param mixed $value the value to set
+     * @return void
+     */
     public function __set($name, $value) {
-        if ($name == 'renderArgs' && is_array($value)) {
-            $this->renderArgs = $value;
-        } elseif ($name == 'view') {
+        if ($name == 'view') {
             $this->view = $value;
         }
     }
 
-    public function setRenderArg($name, $value) {
-        $this->renderArgs[$name] = $value;
-    }
-
+    /**
+     * generates an URL from a static class method with parameters
+     * from url('Application::index', $var) you get the URL
+     * /app/path/controller/action/{$var}
+     *
+     * @param string $method method name in static syntax like 'Application::index'
+     * @param string|array $params single value or array of parameters
+     * @return string the URL
+     */
     public function url($method, $params=null) {
         if ($params && !is_array($params)) {
             $params = array($params);
@@ -144,16 +256,37 @@ class LVC {
             (($params) ?  '/' . implode('/', $params) : '');
     }
 
+    /**
+     * runs the http request
+     *
+     * @return void
+     */
     public function run() {
         call_user_func_array($this->controller . '::preProcess', $this->params);
         call_user_func_array($this->controller . '::' . $this->action, $this->params);
         call_user_func_array($this->controller . '::postProcess', $this->params);
     }
 
+    /**
+     * Helper for string manipulation
+     *
+     * @static
+     * @param string $camelCasedString any camelCasedString
+     * @param string $delimiter optional default is '-'
+     * @return string a lower cased string with a delimiter before each hump
+     */
     public static function camelCaseTo($camelCasedString, $delimiter='-') {
         return strtolower(preg_replace('/(?<=\\w)(?=[A-Z])/',$delimiter . "$1", $camelCasedString));
     }
 
+    /**
+     * Helper for string manipulation
+     *
+     * @static
+     * @param string $otherString any string like 'test-string'
+     * @param string $delimiter optional default is '-'
+     * @return string a camelCasedString with humps for each found delimiter
+     */
     public static function camelCaseFrom($otherString, $delimiter='-') {
         return lcfirst(implode('', array_map(function($data) { return ucfirst($data); }, explode($delimiter, $otherString))));
     }
