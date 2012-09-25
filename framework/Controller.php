@@ -107,7 +107,7 @@ abstract class Controller {
         } else {
             $app->view = $app->config->appPath . 'views/' .
                 LVC::camelCaseTo($app->controller) . '/' .
-                LVC::camelCaseTo($app->action) . '.html';
+                LVC::camelCaseTo($app->actionName) . '.html';
             if (!file_exists($app->view)) {
                 $reflection = new ReflectionClass(get_called_class());
                 $classFileName = $reflection->getFileName();
@@ -115,7 +115,7 @@ abstract class Controller {
                 $module = end(explode('/', substr($classFileName, 0,  strpos($classFileName, $reducer)-1)));
                 $app->view = $app->config->modulePath . $module .
                     '/views/' . strtolower($app->controller) .
-                    '/' . strtolower($app->action) . '.html';
+                    '/' . strtolower($app->actionName) . '.html';
             }
         }
         if (!is_null($masterTemplate)) {

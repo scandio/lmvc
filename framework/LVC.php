@@ -21,9 +21,14 @@ class LVC {
     private $controller;
 
     /**
-     * @var string name of the currently used action
+     * @var string name of the currently used action method
      */
     private $action;
+
+    /**
+     * @var string real name of the current action without post, get, put
+     */
+    private $actionName;
 
     /**
      * @var array list of parameter values from the URL
@@ -135,7 +140,7 @@ class LVC {
         $modules = array_filter(scandir(self::$config->modulePath), function($dirFile) {
             return (!is_file($dirFile) && $dirFile != '.' && $dirFile != '..');
         });
-        set_include_path(get_include_path() . self::getPath($modules));
+            set_include_path(get_include_path() . self::getPath($modules));
         spl_autoload_register(function ($classname) {
             @include($classname.'.php');
         });
@@ -191,6 +196,7 @@ class LVC {
      */
     private function setAction($slug) {
         $this->action = self::camelCaseFrom($slug[0]);
+        $this->actionName = $this->action;
         if (is_callable($this->controller . '::' . strtolower($this->requestMethod) . ucfirst($this->action))) {
             $this->action = strtolower($this->requestMethod) . ucfirst($this->action);
             $slug = array_slice($slug,1);
@@ -198,6 +204,7 @@ class LVC {
             $slug = array_slice($slug,1);
         } else {
             $this->action = 'index';
+            $this->actionName = $this->action;
         }
         return $slug;
     }
@@ -209,7 +216,7 @@ class LVC {
      * @return mixed the requested value
      */
     public function __get($name) {
-        if (in_array($name, array('controller', 'action', 'requestMethod', 'host', 'uri', 'params', 'view', 'protocol'))) {
+        if (in_array($name, array('controller', 'action', 'actionName', 'requestMethod', 'host', 'uri', 'params', 'view', 'protocol'))) {
             $result = $this->$name;
         } elseif (in_array($name, array('request'))) {
             $result = (object)$this->$name;
@@ -251,7 +258,7 @@ class LVC {
         return $this->protocol . '://' .
             $this->host .
             $this->uri .
-            $controller .
+            (($controller == '/' && $action != '/') ? '' : $controller) .
             (($action == '/') ? '' : $action) .
             (($params) ?  '/' . implode('/', $params) : '');
     }
