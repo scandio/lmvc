@@ -6,20 +6,34 @@ abstract class SnippetHandler {
     protected static $prefix='';
 
     public static function __callStatic($name, $params) {
-        self::$snippetFile = LVC::get()->config->appPath . 'snippets/' . static::$prefix . LVC::camelCaseTo($name) . '.html';
-        self::$snippetFile = (file_exists(self::$snippetFile)) ? self::$snippetFile : LVC::get()->config->modulePath . 'snippets/snippets/' . static::$prefix . LVC::camelCaseTo($name) . '.html';
-        error_log(self::$snippetFile);
-        if (file_exists(self::$snippetFile)) {
-            ob_start();
-            if (method_exists(get_called_class(), $name)) {
-                call_user_func_array('static::' . $name, $params);
-            } else {
-                include(self::$snippetFile);
-            }
-            $result = ob_get_contents();
-            ob_end_clean();
+        if (method_exists(get_called_class(), $name)) {
+            call_user_func_array('static::' . $name, $params);
         } else {
-            $result = "\n<!-- No snippet file for " . get_called_class() . "::" . $name . "() exists. -->\n";
+            self::$snippetFile = LVC::get()->config->appPath .
+                'snippets/' . static::$prefix . LVC::camelCaseTo($name) . '.html';
+            if (!file_exists(self::$snippetFile)) {
+                $reflection = new ReflectionClass(get_called_class());
+                $classFileName = $reflection->getFileName();
+                $pathElements = explode(DIRECTORY_SEPARATOR, $classFileName);
+                if ($pathElements[count($pathElements)-4] == 'modules') {
+                    $module = $pathElements[count($pathElements)-3];
+                    $modulePath = DIRECTORY_SEPARATOR .
+                        implode(DIRECTORY_SEPARATOR, array_slice($pathElements, 1, count($pathElements)-4)) .
+                        DIRECTORY_SEPARATOR;
+                }
+                if ($module) {
+                    self::$snippetFile = $modulePath . $module .
+                        '/snippets/' . static::$prefix . LVC::camelCaseTo($name) . '.html';
+                }
+            }
+            if (file_exists(self::$snippetFile)) {
+                ob_start();
+                include(self::$snippetFile);
+                $result = ob_get_contents();
+                ob_end_clean();
+            } else {
+                $result = "\n<!-- No snippet file for " . get_called_class() . "::" . $name . "() exists. -->\n";
+            }
         }
         return $result;
     }

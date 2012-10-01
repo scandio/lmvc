@@ -117,9 +117,10 @@ class LVC {
         } else {
             LVC::configure((object)array(
                 'appPath'  => './',
-                'frameworkPath' => './framework/',
-                'modulePath' => './modules/',
-                'paths' => array('controllers', 'models', 'framework')
+                'appModulePath' => './modules/',
+                'frameworkPath' => '../lmvc/framework/',
+                'modulePath' => '../lmvc/modules/',
+                'paths' => array('controllers', 'framework')
             ));
         }
     }
@@ -143,27 +144,30 @@ class LVC {
      * @return void
      */
     private static function setAutoload() {
-        $modules = array_filter(scandir(self::$config->modulePath), function($dirFile) {
-            return (!is_file($dirFile) && $dirFile != '.' && $dirFile != '..');
-        });
-            set_include_path(get_include_path() . self::getPath($modules));
+        $path  = PATH_SEPARATOR . self::$config->frameworkPath . PATH_SEPARATOR . self::$config->frameworkPath .
+            implode(PATH_SEPARATOR . self::$config->frameworkPath, self::$config->paths);
+        $path .= PATH_SEPARATOR . self::$config->appPath .
+            implode(PATH_SEPARATOR . self::$config->appPath, self::$config->paths);
+        if (!empty(self::$config->appModulePath)) {
+            $path .= self::getModulePaths(self::$config->appModulePath);
+        }
+        if (!empty(self::$config->modulePath)) {
+            $path .= self::getModulePaths(self::$config->modulePath);
+        }
+        set_include_path(get_include_path() . $path);
         spl_autoload_register(function ($classname) {
             @include($classname.'.php');
         });
     }
 
-    /**
-     * builds an include path for auto loader
-     *
-     * @static
-     * @param array $modules list of modules in path
-     * @return string an include path
-     */
-    private static function getPath($modules=array()) {
-        $result  = PATH_SEPARATOR . self::$config->frameworkPath . PATH_SEPARATOR . self::$config->frameworkPath . implode(PATH_SEPARATOR . self::$config->frameworkPath, self::$config->paths);
-        $result .= PATH_SEPARATOR . self::$config->appPath . implode(PATH_SEPARATOR . self::$config->appPath, self::$config->paths);
+    private static function getModulePaths($modulePath) {
+        $result = '';
+        $modules = array_filter(scandir($modulePath), function($dirFile) {
+            return (!is_file($dirFile) && $dirFile != '.' && $dirFile != '..');
+        });
         foreach ($modules as $module) {
-            $result .= PATH_SEPARATOR . self::$config->modulePath . $module . '/' . implode(PATH_SEPARATOR . self::$config->modulePath . $module . '/' , self::$config->paths);
+            $result .= PATH_SEPARATOR . $modulePath . $module . DIRECTORY_SEPARATOR .
+                implode(PATH_SEPARATOR . $modulePath . $module . '/' , self::$config->paths);
         }
         return $result;
     }
