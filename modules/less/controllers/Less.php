@@ -8,7 +8,7 @@ class Less extends Controller {
         if (!file_exists(LVC::get()->config->appPath . $file)) {
             $file = LVC::get()->config->modulePath . $file;
         } else {
-            $file = LVC::get()->config->appPath .$file;
+            $file = LVC::get()->config->appPath . $file;
         }
         if (file_exists($cacheFile) && filemtime($file) <= filemtime($cacheFile)) {
             $cssStream = "/* cached result from less compiler */\n" . file_get_contents($cacheFile);
