@@ -1,9 +1,7 @@
-[![endorse](http://api.coderwall.com/chriskoch/endorsecount.png)](http://coderwall.com/chriskoch)
-
 LMVC (cool)
 ====
 
-Learning Model View Controller
+Lean Model View Controller
 ------------------------------
 
 This project contains a very small MVC framework written with simple PHP classes. It's not for production use but for learning purpose. It's developed with the following boundary conditions:
@@ -11,8 +9,9 @@ This project contains a very small MVC framework written with simple PHP classes
 * Just PHP - no external PHP libraries
 * Convention over configuration
 * No annotations or other stuff like that
+* No namespaces
 
-Currently there is no documentation for anything. But there is a simple tweet app implemented.
+Currently there is no documentation for anything.
 
 How To
 ------
@@ -114,7 +113,7 @@ has an output like
 
     {"name": "John Doe"}
 
-t.b.c.
+
 
 
 
