@@ -66,6 +66,11 @@ class LVC {
     private $protocol;
 
     /**
+     * @var string referer
+     */
+    private $referer;
+
+    /**
      * Private constructor which creates the singleton object
      *
      * @return void
@@ -73,6 +78,7 @@ class LVC {
     private function __construct() {
         $this->protocol = (isset($_SERVER['HTTPS'])) ? 'https' : 'http';
         $this->host = $_SERVER['HTTP_HOST'];
+        $this->referer = $_SERVER['HTTP_REFERER'];
         $this->uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
         $this->requestMethod = $_SERVER['REQUEST_METHOD'];
         $slug = explode('/', $_GET['app-slug']);
@@ -216,7 +222,7 @@ class LVC {
      * @return mixed the requested value
      */
     public function __get($name) {
-        if (in_array($name, array('controller', 'action', 'actionName', 'requestMethod', 'host', 'uri', 'params', 'view', 'protocol'))) {
+        if (in_array($name, array('controller', 'action', 'actionName', 'requestMethod', 'host', 'uri', 'params', 'view', 'protocol', 'referer'))) {
             $result = $this->$name;
         } elseif (in_array($name, array('request'))) {
             $result = (object)$this->$name;

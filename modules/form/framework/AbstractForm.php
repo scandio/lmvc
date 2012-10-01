@@ -20,7 +20,8 @@ abstract class AbstractForm {
         foreach ($this->fields as $property => $propertyValue) {
             foreach ($propertyValue as $validationMethod => $message) {
                 $this->validator = $validationMethod;
-                $this->$validationMethod($property, $request->$property);
+                $camelCasedMethod = LVC::get()->camelCaseFrom($validationMethod);
+                $this->$camelCasedMethod($property, $request->$property);
             }
         }
     }
