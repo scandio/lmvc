@@ -7,7 +7,7 @@ abstract class AbstractForm {
     private $validator = null;
 
     public function __construct() {
-        $reflection = new ReflectionClass(get_called_class());
+        $reflection = new ReflectionClass(get_class($this));
         $properties = $reflection->getDefaultProperties();
         foreach ($properties as $property => $propertyValue) {
             if (!empty($propertyValue)) {

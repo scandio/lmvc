@@ -160,6 +160,13 @@ class LVC {
         });
     }
 
+    /**
+     * scans the module path and adds all modules to a path string
+     *
+     * @static
+     * @param string $modulePath the path that will be scanned
+     * @return string include path
+     */
     private static function getModulePaths($modulePath) {
         $result = '';
         $modules = array_filter(scandir($modulePath), function($dirFile) {
