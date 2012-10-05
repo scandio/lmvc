@@ -7,10 +7,10 @@ abstract class SnippetHandler {
 
     public static function __callStatic($name, $params) {
         if (method_exists(get_called_class(), $name)) {
-            call_user_func_array('static::' . $name, $params);
+            $result = call_user_func_array('static::' . $name, $params);
         } else {
             self::$snippetFile = LVC::get()->config->appPath .
-                'snippets/' . static::$prefix . LVC::camelCaseTo($name) . '.html';
+                'snippets' . DIRECTORY_SEPARATOR . static::$prefix . LVC::camelCaseTo($name) . '.html';
             if (!file_exists(self::$snippetFile)) {
                 $reflection = new ReflectionClass(get_called_class());
                 $classFileName = $reflection->getFileName();
@@ -22,8 +22,8 @@ abstract class SnippetHandler {
                         DIRECTORY_SEPARATOR;
                 }
                 if ($module) {
-                    self::$snippetFile = $modulePath . $module .
-                        '/snippets/' . static::$prefix . LVC::camelCaseTo($name) . '.html';
+                    self::$snippetFile = $modulePath . $module . DIRECTORY_SEPARATOR .
+                        'snippets' . DIRECTORY_SEPARATOR . static::$prefix . LVC::camelCaseTo($name) . '.html';
                 }
             }
             if (file_exists(self::$snippetFile)) {

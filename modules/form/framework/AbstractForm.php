@@ -11,15 +11,10 @@ abstract class AbstractForm {
 
     public function __construct() {
         $reflection = new ReflectionClass(get_class($this));
-        $properties = $reflection->getDefaultProperties();
-        foreach ($properties as $property => $propertyValue) {
-            if (!empty($propertyValue)) {
-                $this->fields[$property] = $propertyValue;
-            }
-        }
+        $this->fields = $reflection->getDefaultProperties();
     }
 
-    public function validate($request) {
+    public function validate($request, $params=array()) {
         $this->request = $request;
         $this->params = $params;
         foreach ($this->fields as $property => $propertyValue) {

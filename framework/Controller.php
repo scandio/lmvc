@@ -94,8 +94,8 @@ abstract class Controller {
      *
      * @static
      * @param array $renderArgs optional an assotiative array of values
-     * @param null $template optional a file name like 'views/test/test.html' which overwrites the default
-     * @param null $masterTemplate optional a file name like 'views/test/test.html' which overwrites the default master
+     * @param string $template optional a file name like 'views/test/test.html' which overwrites the default
+     * @param string $masterTemplate optional a file name like 'views/test/test.html' which overwrites the default master
      * @return void
      */
     public static function render($renderArgs=array(), $template=null, $masterTemplate=null) {
