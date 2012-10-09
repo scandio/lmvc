@@ -2,24 +2,21 @@
 
 abstract class AbstractForm {
 
-    private $fields = array();
-    private $errors = null;
-    private $validator = null;
-    protected $request = null;
-    protected $params = array();
-
+    private $__formdata = null;
 
     public function __construct() {
+        $this->__formdata = new stdClass();
         $reflection = new ReflectionClass(get_class($this));
-        $this->fields = $reflection->getDefaultProperties();
+        $this->__formdata->fields = $reflection->getDefaultProperties();
+        unset($this->__formdata->fields['__formdata']);
     }
 
     public function validate($request, $params=array()) {
-        $this->request = $request;
-        $this->params = $params;
-        foreach ($this->fields as $property => $propertyValue) {
+        $this->__formdata->request = $request;
+        $this->__formdata->params = $params;
+        foreach ($this->__formdata->fields as $property => $propertyValue) {
             foreach ($propertyValue as $validator => $params) {
-                $this->validator = $validator;
+                $this->__formdata->validator = $validator;
                 $validationInfo = $this->getValidationInfo($validator);
                 if (!is_null($validationInfo)) {
                     $camelCasedMethod = $validationInfo['method'];
@@ -50,7 +47,7 @@ abstract class AbstractForm {
     }
 
     public function getErrors() {
-        return $this->errors;
+        return $this->__formdata->errors;
     }
 
     public function isValid() {
@@ -58,11 +55,19 @@ abstract class AbstractForm {
     }
 
     public function hasErrors() {
-        return is_array($this->errors);
+        return is_array($this->__formdata->errors);
     }
 
     public function setError($name) {
-        $this->errors[$name][$this->validator] = $this->fields[$name][$this->validator]['message'];
+        $this->__formdata->errors[$name][$this->__formdata->validator] = $this->__formdata->fields[$name][$this->__formdata->validator]['message'];
+    }
+
+    protected function request() {
+        return $this->__formdata->request;
+    }
+
+    protected function params() {
+        return $this->__formdata->params;
     }
 
 }
