@@ -58,8 +58,14 @@ abstract class AbstractForm {
         return is_array($this->__formdata->errors);
     }
 
-    public function setError($name) {
-        $this->__formdata->errors[$name][$this->__formdata->validator] = $this->__formdata->fields[$name][$this->__formdata->validator]['message'];
+    public function setError($name, $params=array(), $message=null) {
+        if (empty($message)) {
+            $message = $this->__formdata->fields[$name][$this->__formdata->validator]['message'];
+        }
+        if (count($params) > 0) {
+            $message = call_user_func_array('sprintf', array_merge((array)$message, $params));
+        }
+        $this->__formdata->errors[$name][$this->__formdata->validator] = $message;
     }
 
     protected function request() {
