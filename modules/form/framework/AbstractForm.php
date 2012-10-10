@@ -1,9 +1,38 @@
 <?php
 
+/**
+ * Form Validator class
+ * Create a class extendig from AbstractForm and define the form fields as
+ * an public members. write your own validator methods. use as method name the
+ * camelCased validator string.
+ *
+ * class MyForm extends AbstractForm {
+ *
+ *      public myField = array(
+ *          'my-validator' = array(
+ *              'message' = 'my error message for %s'
+ *          )
+ *      );
+ *
+ *      public function myValidator($name) {
+ *          if ($this->request->$name != 'LVC') {
+ *              $this->setError($name);
+ *          }
+ *      }
+ * }
+ *
+ * In an action you can use the validate(self::request()) method.
+ */
 abstract class AbstractForm {
 
+    /**
+     * @var null|stdClass hidden member for internal use
+     */
     private $__formdata = null;
 
+    /**
+     * reads the form members and fills __formdata
+     */
     public function __construct() {
         $this->__formdata = new stdClass();
         $reflection = new ReflectionClass(get_class($this));
@@ -11,6 +40,12 @@ abstract class AbstractForm {
         unset($this->__formdata->fields['__formdata']);
     }
 
+    /**
+     * validates the whole form from the request array
+     *
+     * @param $request the form request from LVC
+     * @param array $params optional additional parameters
+     */
     public function validate($request, $params=array()) {
         $this->__formdata->request = $request;
         $this->__formdata->params = $params;
@@ -26,8 +61,13 @@ abstract class AbstractForm {
         }
     }
 
+    /**
+     * checks which validator message is the one to be called
+     *
+     * @param string $validator validator name
+     * @return array|null name and rule for validator method
+     */
     private function getValidationInfo($validator) {
-
         $newValidator = $validator;
         $rule = array();
         while (!method_exists($this, LVC::camelCaseFrom($newValidator))) {
@@ -46,18 +86,36 @@ abstract class AbstractForm {
         );
     }
 
+    /**
+     * return the array of errors
+     *
+     * @return array assotiative array [field][validator] that contains the message
+     */
     public function getErrors() {
         return $this->__formdata->errors;
     }
 
+    /**
+     * @return bool wether the form is valid
+     */
     public function isValid() {
         return !$this->hasErrors();
     }
 
+    /**
+     * @return bool wether the form has errors
+     */
     public function hasErrors() {
         return is_array($this->__formdata->errors);
     }
 
+    /**
+     * validator methods sets an error with the method
+     *
+     * @param $name name of the form field
+     * @param array $params optional list of parameters if message uses sprintf variables
+     * @param null $message alternative message to  overwrite the original message
+     */
     public function setError($name, $params=array(), $message=null) {
         if (empty($message)) {
             $message = $this->__formdata->fields[$name][$this->__formdata->validator]['message'];
@@ -68,10 +126,16 @@ abstract class AbstractForm {
         $this->__formdata->errors[$name][$this->__formdata->validator] = $message;
     }
 
+    /**
+     * @return object the request from LVC
+     */
     protected function request() {
         return $this->__formdata->request;
     }
 
+    /**
+     * @return array the params from a validation call
+     */
     protected function params() {
         return $this->__formdata->params;
     }
