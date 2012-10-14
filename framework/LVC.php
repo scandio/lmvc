@@ -112,7 +112,7 @@ class LVC {
      * @return void
      */
     public static function initialize($configFile=null) {
-        if (!is_null($configFile)) {
+        if (!is_null($configFile) && file_exists($configFile)) {
             LVC::configure(json_decode(file_get_contents($configFile)));
         } else {
             LVC::configure((object)array(
