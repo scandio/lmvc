@@ -234,16 +234,16 @@ class LVC {
      */
     public function __get($name) {
         if (in_array($name, array(
-                'controller',
-                'action',
-                'actionName',
-                'requestMethod',
-                'host',
-                'uri',
-                'params',
-                'view',
-                'protocol',
-                'referer'
+            'action',
+            'actionName',
+            'controller',
+            'host',
+            'params',
+            'protocol',
+            'referer',
+            'requestMethod',
+            'uri',
+            'view'
         ))) {
             $result = $this->$name;
         } elseif (in_array($name, array('request'))) {
