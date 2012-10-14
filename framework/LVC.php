@@ -233,7 +233,18 @@ class LVC {
      * @return mixed the requested value
      */
     public function __get($name) {
-        if (in_array($name, array('controller', 'action', 'actionName', 'requestMethod', 'host', 'uri', 'params', 'view', 'protocol', 'referer'))) {
+        if (in_array($name, array(
+                'controller',
+                'action',
+                'actionName',
+                'requestMethod',
+                'host',
+                'uri',
+                'params',
+                'view',
+                'protocol',
+                'referer'
+        ))) {
             $result = $this->$name;
         } elseif (in_array($name, array('request'))) {
             $result = (object)$this->$name;
