@@ -312,7 +312,11 @@ class LVC {
      * @return string a camelCasedString with humps for each found delimiter
      */
     public static function camelCaseFrom($otherString, $delimiter='-') {
-        return lcfirst(implode('', array_map(function($data) { return ucfirst($data); }, explode($delimiter, $otherString))));
+        return lcfirst(
+            implode('',
+                array_map(function($data) { return ucfirst($data); }, explode($delimiter, $otherString))
+            )
+        );
     }
 
 }
