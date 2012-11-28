@@ -97,7 +97,7 @@ or
 
 or both. There is no specific template language. It's just PHP. Every render argument is accessible as a local variable.
 
-    <h1>Hello <?= $name ?></h1>
+    <h1>Hello <?= $name ?></h1>.
 
 Example for JSON rendering
 
@@ -109,7 +109,7 @@ Example for JSON rendering
 
     }
 
-has an output like
+has an output like 
 
     {"name": "John Doe"}
 
