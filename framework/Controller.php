@@ -138,6 +138,7 @@ abstract class Controller {
      */
     public static function redirect($method, $params=null) {
         header('Location: ' . LVC::get()->url($method, $params));
+        exit;
     }
 
     /**
