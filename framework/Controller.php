@@ -102,20 +102,22 @@ abstract class Controller {
         self::setRenderArgs($renderArgs, true);
         extract(self::$renderArgs);
         $app = LVC::get();
+
         if($template) {
             $app->view = $app->config->appPath . $template;
         } else {
-            $app->view = $app->config->appPath . 'views/' .
-                LVC::camelCaseTo($app->controller) . '/' .
+            $viewPath = 'views/' . LVC::camelCaseTo($app->controller) . '/' .
                 LVC::camelCaseTo($app->actionName) . '.html';
+            $app->view = $app->config->appPath . $viewPath;
             if (!file_exists($app->view)) {
                 $reflection = new ReflectionClass(get_called_class());
                 $classFileName = $reflection->getFileName();
                 $reducer = 'controllers/' . $app->controller . '.php';
                 $module = end(explode('/', substr($classFileName, 0,  strpos($classFileName, $reducer)-1)));
-                $app->view = $app->config->modulePath . $module .
-                    '/views/' . strtolower($app->controller) .
-                    '/' . strtolower($app->actionName) . '.html';
+                $app->view = $app->config->modulePath . $module . '/' . $viewPath;
+                if (!file_exists($app->view)) {
+                    $app->view = $app->config->appModulePath . $module . '/' . $viewPath;
+                }
             }
         }
         if (!is_null($masterTemplate)) {
@@ -138,6 +140,7 @@ abstract class Controller {
      */
     public static function redirect($method, $params=null) {
         header('Location: ' . LVC::get()->url($method, $params));
+        exit;
     }
 
     /**
