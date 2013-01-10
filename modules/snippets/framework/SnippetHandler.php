@@ -9,7 +9,9 @@ abstract class SnippetHandler {
         if (method_exists(get_called_class(), $name)) {
             $result = call_user_func_array('static::' . $name, $params);
         } else {
-            self::$snippetFile = LVC::get()->config->appPath .
+            $app = LVC::get();
+
+            self::$snippetFile = $app->config->appPath .
                 'snippets' . DIRECTORY_SEPARATOR . static::$prefix . LVC::camelCaseTo($name) . '.html';
             if (!file_exists(self::$snippetFile)) {
                 $reflection = new ReflectionClass(get_called_class());
