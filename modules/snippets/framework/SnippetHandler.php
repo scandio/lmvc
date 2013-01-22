@@ -6,6 +6,7 @@ abstract class SnippetHandler {
     protected static $prefix='';
 
     public static function __callStatic($name, $params) {
+        $result = "";
         if (method_exists(get_called_class(), $name)) {
             $result = call_user_func_array('static::' . $name, $params);
         } else {
@@ -29,10 +30,7 @@ abstract class SnippetHandler {
                 }
             }
             if (file_exists(self::$snippetFile)) {
-                ob_start();
                 include(self::$snippetFile);
-                $result = ob_get_contents();
-                ob_end_clean();
             } else {
                 $result = "\n<!-- No snippet file for " . get_called_class() . "::" . $name . "() exists. -->\n";
             }
