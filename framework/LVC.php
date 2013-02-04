@@ -3,17 +3,18 @@
 /**
  * Basic application of LMVC
  */
-class LVC {
+class LVC
+{
 
     /**
      * @var LVC singleton object
      */
-    private static $object=null;
+    private static $object = null;
 
     /**
      * @var array application setting from config.json
      */
-    private static $config=array();
+    private static $config = array();
 
     /**
      * @var string name of the currently used controller
@@ -38,7 +39,7 @@ class LVC {
     /**
      * @var array all GET, POST, PUT and DELETE request variables
      */
-    private $request=array();
+    private $request = array();
 
     /**
      * @var string requestMethod like GET, POST, PUT and DELETE
@@ -58,7 +59,7 @@ class LVC {
     /**
      * @var string filename of the current view
      */
-    private $view=null;
+    private $view = null;
 
     /**
      * @var string http | https
@@ -75,7 +76,8 @@ class LVC {
      *
      * @return void
      */
-    private function __construct() {
+    private function __construct()
+    {
         $this->protocol = (isset($_SERVER['HTTPS'])) ? 'https' : 'http';
         $this->host = $_SERVER['HTTP_HOST'];
         $this->referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null;
@@ -84,7 +86,7 @@ class LVC {
         $slug = explode('/', $_GET['app-slug']);
         $slug = $this->setController($slug);
         $this->params = $this->setAction($slug);
-        $this->request = array_slice($_GET,1);
+        $this->request = array_slice($_GET, 1);
         $this->request = array_merge($this->request, $_POST);
         if ($this->requestMethod == 'PUT' || $this->requestMethod == 'DELETE') {
             parse_str(file_get_contents('php://input'), $params);
@@ -99,7 +101,8 @@ class LVC {
      * @static
      * @return LVC
      */
-    public static function get() {
+    public static function get()
+    {
         if (is_null(self::$object)) {
             self::$object = new LVC();
         }
@@ -111,12 +114,13 @@ class LVC {
      * @param string $configFile file name of the json based cofing file
      * @return void
      */
-    public static function initialize($configFile=null) {
+    public static function initialize($configFile = null)
+    {
         if (!is_null($configFile) && file_exists($configFile)) {
             LVC::configure(json_decode(file_get_contents($configFile)));
         } else {
             LVC::configure((object)array(
-                'appPath'  => './',
+                'appPath' => './',
                 'appModulePath' => './modules/',
                 'frameworkPath' => '../lmvc/framework/',
                 'modulePath' => '../lmvc/modules/',
@@ -132,7 +136,8 @@ class LVC {
      * @param array $config assotiative array of all configurations
      * @return void
      */
-    private static function configure($config) {
+    private static function configure($config)
+    {
         self::$config = $config;
         self::setAutoload();
     }
@@ -143,8 +148,9 @@ class LVC {
      * @static
      * @return void
      */
-    private static function setAutoload() {
-        $path  = PATH_SEPARATOR . self::$config->frameworkPath . PATH_SEPARATOR . self::$config->frameworkPath .
+    private static function setAutoload()
+    {
+        $path = PATH_SEPARATOR . self::$config->frameworkPath . PATH_SEPARATOR . self::$config->frameworkPath .
             implode(PATH_SEPARATOR . self::$config->frameworkPath, self::$config->paths);
         $path .= PATH_SEPARATOR . self::$config->appPath .
             implode(PATH_SEPARATOR . self::$config->appPath, self::$config->paths);
@@ -156,7 +162,7 @@ class LVC {
         }
         set_include_path(get_include_path() . $path);
         spl_autoload_register(function ($classname) {
-            @include($classname.'.php');
+            @include($classname . '.php');
         });
     }
 
@@ -167,14 +173,15 @@ class LVC {
      * @param string $modulePath the path that will be scanned
      * @return string include path
      */
-    private static function getModulePaths($modulePath) {
+    private static function getModulePaths($modulePath)
+    {
         $result = '';
-        $modules = array_filter(scandir($modulePath), function($dirFile) {
+        $modules = array_filter(scandir($modulePath), function ($dirFile) {
             return (!is_file($dirFile) && $dirFile != '.' && $dirFile != '..');
         });
         foreach ($modules as $module) {
             $result .= PATH_SEPARATOR . $modulePath . $module . DIRECTORY_SEPARATOR .
-                implode(PATH_SEPARATOR . $modulePath . $module . '/' , self::$config->paths);
+                implode(PATH_SEPARATOR . $modulePath . $module . '/', self::$config->paths);
         }
         return $result;
     }
@@ -185,7 +192,8 @@ class LVC {
      * @static
      * @return void
      */
-    public static function dispatch() {
+    public static function dispatch()
+    {
         self::get()->run();
     }
 
@@ -195,12 +203,13 @@ class LVC {
      * @param array $slug the URL divided in pieces
      * @return array the reduced slug
      */
-    private function setController($slug) {
+    private function setController($slug)
+    {
         $this->controller = ucfirst(LVC::camelCaseFrom($slug[0]));
         if (!class_exists($this->controller)) {
             $this->controller = 'Application';
         } else {
-            $slug = array_slice($slug,1);
+            $slug = array_slice($slug, 1);
         }
         return $slug;
     }
@@ -211,14 +220,15 @@ class LVC {
      * @param $slug the URL divided in pieces
      * @return array the reduced slug
      */
-    private function setAction($slug) {
+    private function setAction($slug)
+    {
         $this->action = self::camelCaseFrom($slug[0]);
         $this->actionName = $this->action;
         if (is_callable($this->controller . '::' . strtolower($this->requestMethod) . ucfirst($this->action))) {
             $this->action = strtolower($this->requestMethod) . ucfirst($this->action);
-            $slug = array_slice($slug,1);
+            $slug = array_slice($slug, 1);
         } elseif (is_callable($this->controller . '::' . $this->action)) {
-            $slug = array_slice($slug,1);
+            $slug = array_slice($slug, 1);
         } else {
             $this->action = 'index';
             $this->actionName = $this->action;
@@ -232,7 +242,8 @@ class LVC {
      * @param string $name the name of the variable
      * @return mixed the requested value
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (in_array($name, array(
             'action',
             'actionName',
@@ -244,7 +255,8 @@ class LVC {
             'requestMethod',
             'uri',
             'view'
-        ))) {
+        ))
+        ) {
             $result = $this->$name;
         } elseif (in_array($name, array('request'))) {
             $result = (object)$this->$name;
@@ -261,7 +273,8 @@ class LVC {
      * @param mixed $value the value to set
      * @return void
      */
-    public function __set($name, $value) {
+    public function __set($name, $value)
+    {
         if ($name == 'view') {
             $this->view = $value;
         }
@@ -276,7 +289,8 @@ class LVC {
      * @param string|array $params single value or array of parameters
      * @return string the URL
      */
-    public function url($method, $params=null) {
+    public function url($method, $params = null)
+    {
         if ($params && !is_array($params)) {
             $params = array($params);
         }
@@ -288,7 +302,7 @@ class LVC {
             $this->uri .
             (($controller == '/' && $action != '/') ? '' : $controller) .
             (($action == '/') ? '' : $action) .
-            (($params) ?  '/' . implode('/', $params) : '');
+            (($params) ? (($controller == '/') ? '' : '/') . implode('/', $params) : '');
     }
 
     /**
@@ -296,7 +310,8 @@ class LVC {
      *
      * @return void
      */
-    public function run() {
+    public function run()
+    {
         call_user_func_array($this->controller . '::preProcess', $this->params);
         call_user_func_array($this->controller . '::' . $this->action, $this->params);
         call_user_func_array($this->controller . '::postProcess', $this->params);
@@ -310,8 +325,9 @@ class LVC {
      * @param string $delimiter optional default is '-'
      * @return string a lower cased string with a delimiter before each hump
      */
-    public static function camelCaseTo($camelCasedString, $delimiter='-') {
-        return strtolower(preg_replace('/(?<=\\w)(?=[A-Z])/',$delimiter . "$1", $camelCasedString));
+    public static function camelCaseTo($camelCasedString, $delimiter = '-')
+    {
+        return strtolower(preg_replace('/(?<=\\w)(?=[A-Z])/', $delimiter . "$1", $camelCasedString));
     }
 
     /**
@@ -322,10 +338,13 @@ class LVC {
      * @param string $delimiter optional default is '-'
      * @return string a camelCasedString with humps for each found delimiter
      */
-    public static function camelCaseFrom($otherString, $delimiter='-') {
+    public static function camelCaseFrom($otherString, $delimiter = '-')
+    {
         return lcfirst(
             implode('',
-                array_map(function($data) { return ucfirst($data); }, explode($delimiter, $otherString))
+                array_map(function ($data) {
+                    return ucfirst($data);
+                }, explode($delimiter, $otherString))
             )
         );
     }
