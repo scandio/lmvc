@@ -302,7 +302,7 @@ class LVC
             $this->uri .
             (($controller == '/' && $action != '/') ? '' : $controller) .
             (($action == '/') ? '' : $action) .
-            (($params) ? (($controller == '/') ? '' : '/') . implode('/', $params) : '');
+            (($params) ? (($controller == '/' && $action == '/') ? '' : '/') . implode('/', $params) : '');
     }
 
     /**
