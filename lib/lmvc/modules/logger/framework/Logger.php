@@ -1,5 +1,7 @@
 <?php
 
+namespace lmvc\modules\logger\framework;
+
 /**
  * Logger writes in the Apache error log file
  * if no mode is given PROD mode is assumed

@@ -1,5 +1,7 @@
 <?php
 
+namespace lmvc\framework;
+
 /**
  * Static class for each action controller
  *

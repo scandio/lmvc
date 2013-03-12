@@ -1,5 +1,7 @@
 <?php
 
+namespace lmvc\modules\mustache\controllers;
+
 class MustacheRest extends Controller {
 
     public static function render($template) {

@@ -1,5 +1,7 @@
 <?php
 
+namespace lmvc\modules\form\framework;
+
 class Form extends AbstractForm {
 
     public function mandatory($name) {

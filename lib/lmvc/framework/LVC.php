@@ -1,5 +1,7 @@
 <?php
 
+namespace lmvc\framework;
+
 /**
  * Basic application of LMVC
  */
@@ -122,8 +124,8 @@ class LVC
             LVC::configure((object)array(
                 'appPath' => './',
                 'appModulePath' => './modules/',
-                'frameworkPath' => '../lmvc/framework/',
-                'modulePath' => '../lmvc/modules/',
+                'frameworkPath' => '../lmvc/lib/lmvc/framework/',
+                'modulePath' => '../lmvc/lib/lmvc/modules/',
                 'paths' => array('controllers', 'framework')
             ));
         }

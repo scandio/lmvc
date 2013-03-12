@@ -1,5 +1,7 @@
 <?php
 
+namespace lmvc\modules\mustache\framework;
+
 include(LVC::get()->config->modulePath . 'mustache/Mustache/Autoloader.php');
 Mustache_Autoloader::register();
 

@@ -1,5 +1,7 @@
 <?php
 
+namespace lmvc\framework;
+
 /**
  * Interface for RenderJson ArrayBuilder
  * Return always an array

@@ -1,5 +1,7 @@
 <?php
 
+namespace lmvc\modules\snippets\framework;
+
 abstract class SnippetHandler {
 
     protected static $snippetFile;

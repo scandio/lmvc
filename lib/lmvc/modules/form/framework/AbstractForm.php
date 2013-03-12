@@ -1,5 +1,7 @@
 <?php
 
+namespace lmvc\modules\form\framework;
+
 /**
  * Form Validator class
  * Create a class extendig from AbstractForm and define the form fields as

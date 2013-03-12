@@ -1,5 +1,7 @@
 <?php
 
+namespace lmvc\modules\less\controllers;
+
 class Less extends Controller {
 
     public static function compile() {

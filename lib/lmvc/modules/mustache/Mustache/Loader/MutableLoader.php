@@ -1,5 +1,7 @@
 <?php
 
+namespace lmvc\modules\mustache\Mustache\Loader;
+
 /*
  * This file is part of Mustache.php.
  *

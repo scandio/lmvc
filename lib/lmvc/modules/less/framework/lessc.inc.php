@@ -1,5 +1,7 @@
 <?php
 
+namespace lmvc\modules\less\framework;
+
 /**
  * lessphp v0.3.4-2
  * http://leafo.net/lessphp
