@@ -2,6 +2,8 @@
 
 namespace lmvc\modules\less\controllers;
 
+use \lmvc\LVC;
+
 class Less extends Controller {
 
     public static function compile() {

@@ -2,6 +2,8 @@
 
 namespace lmvc\modules\logger\framework;
 
+use \lmvc\LVC;
+
 /**
  * Logger writes in the Apache error log file
  * if no mode is given PROD mode is assumed

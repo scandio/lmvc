@@ -1,6 +1,6 @@
 <?php
 
-namespace lmvc\framework;
+namespace lmvc;
 
 /**
  * Basic application of LMVC

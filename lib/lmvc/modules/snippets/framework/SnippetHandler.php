@@ -2,6 +2,8 @@
 
 namespace lmvc\modules\snippets\framework;
 
+use \lmvc\LVC;
+
 abstract class SnippetHandler {
 
     protected static $snippetFile;

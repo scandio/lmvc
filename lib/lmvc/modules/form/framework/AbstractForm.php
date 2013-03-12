@@ -2,6 +2,8 @@
 
 namespace lmvc\modules\form\framework;
 
+use \lmvc\LVC;
+
 /**
  * Form Validator class
  * Create a class extendig from AbstractForm and define the form fields as

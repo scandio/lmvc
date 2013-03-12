@@ -2,6 +2,8 @@
 
 namespace lmvc\framework;
 
+use \lmvc\LVC;
+
 /**
  * Static class for each action controller
  *
