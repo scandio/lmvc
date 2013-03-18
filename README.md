@@ -62,7 +62,7 @@ Try to call
 
 ### Rendering views
 
-Currently LMVC supports to rendering options. First the standard HTML rendering. Second the JSON output. The class Controller is having two static methods for that. All data that have to be passed to the template or to JSON must be set by setRenderArg().
+Currently LMVC supports two rendering options. First the standard HTML rendering. Second the JSON output. The class Controller is having two static methods for that. All data that have to be passed to the template or to JSON must be set by setRenderArg().
 
 Example for HTML rendering:
 
@@ -74,7 +74,7 @@ Example for HTML rendering:
 
     }
 
-This renders the the view (template) path/views/controller/action.html. In this case views/accounts/index.html. To pass some data to the template you can...
+This renders the view (template) path/views/controller/action.html. In this case views/accounts/index.html. To pass some data to the template you can...
 
     class Accounts extends Controller {
 
