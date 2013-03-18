@@ -2,7 +2,7 @@
 
 namespace Scandio\lmvc\modules\logger\framework;
 
-use \Scandio\lmvc\LVC;
+use \Scandio\lmvc\framework\LVC;
 
 /**
  * Logger writes in the Apache error log file

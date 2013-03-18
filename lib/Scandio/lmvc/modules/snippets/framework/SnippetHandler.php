@@ -2,7 +2,7 @@
 
 namespace Scandio\lmvc\modules\snippets\framework;
 
-use \Scandio\lmvc\LVC;
+use \Scandio\lmvc\framework\LVC;
 
 abstract class SnippetHandler {
 

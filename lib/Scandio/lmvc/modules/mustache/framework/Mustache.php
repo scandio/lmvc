@@ -2,7 +2,7 @@
 
 namespace Scandio\lmvc\modules\mustache\framework;
 
-use \Scandio\lmvc\LVC;
+use \Scandio\lmvc\framework\LVC;
 
 include(LVC::get()->config->modulePath . 'mustache/Mustache/Autoloader.php');
 Mustache_Autoloader::register();

@@ -2,7 +2,7 @@
 
 namespace Scandio\lmvc\framework;
 
-use \Scandio\lmvc\LVC;
+use \Scandio\lmvc\framework\LVC;
 
 /**
  * Static class for each action controller

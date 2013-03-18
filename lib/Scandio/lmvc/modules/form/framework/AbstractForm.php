@@ -2,7 +2,7 @@
 
 namespace Scandio\lmvc\modules\form\framework;
 
-use \Scandio\lmvc\LVC;
+use \Scandio\lmvc\framework\LVC;
 
 /**
  * Form Validator class
