@@ -123,15 +123,17 @@ class LVC
      */
     public static function initialize($configFile = null)
     {
+        $default = array(
+            'appPath' => './',
+            'controllers' => array('\\controllers'),
+            'viewPath' => array('./views/'),
+            'modules' => array()
+        );
+
         if (!is_null($configFile) && file_exists($configFile)) {
-            LVC::configure(json_decode(file_get_contents($configFile)));
+            LVC::configure(json_decode(file_get_contents($configFile)), $default);
         } else {
-            LVC::configure((object)array(
-                'appPath' => './',
-                'controllers' => array('\\controllers'),
-                'viewPath' => array('./views/'),
-                'modules' => array()
-            ));
+            LVC::configure($default);
         }
     }
 
@@ -139,18 +141,41 @@ class LVC
      * configures the application
      *
      * @static
-     * @param array $config assotiative array of all configurations
+     * @param object $config all configurations
+     * @param array $default associative array with default configurations
      * @return void
      */
-    private static function configure($config)
+    private static function configure($config, $default=null)
     {
+        if (!is_null($default)) {
+            foreach (array_keys($default) as $entry) {
+                if (!isset($config->$entry)) {
+                    $config->$entry = $default->$entry;
+                }
+            }
+        }
         self::$config = $config;
-        // TODO: init modules - config.json: "modules": ["Scandio\\test\\form"]
+
         foreach ($config->modules as $module) {
-            $bootstrap = $module . '\\Bootstrap';
-            $module = new $bootstrap;
-            if (is_subclass_of($module, '\\Scandio\\lmvc\\framework\\Bootstrap')) {
-                $module->initialize();
+            self::registerBootstrapNamespace($module);
+        }
+
+        if (isset($config->appNamespace)) {
+            self::registerBootstrapNamespace($config->appNamespace);
+        }
+    }
+
+    /**
+     * Used to initialize modules and potentially the app itself
+     *
+     * @param string $module namespace specification as a string that contains a class 'Bootstrap'
+     */
+    private static function registerBootstrapNamespace($module) {
+        $bootstrap = $module . '\\Bootstrap';
+        if (class_exists($bootstrap)) {
+            $moduleLoader = new $bootstrap;
+            if (is_subclass_of($moduleLoader, '\\Scandio\\lmvc\\framework\\Bootstrap')) {
+                $moduleLoader->initialize();
             }
         }
     }
