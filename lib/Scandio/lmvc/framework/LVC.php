@@ -150,7 +150,7 @@ class LVC
         if (!is_null($default)) {
             foreach (array_keys($default) as $entry) {
                 if (!isset($config->$entry)) {
-                    $config->$entry = $default->$entry;
+                    $config->$entry = $default[$entry];
                 }
             }
         }
