@@ -17,6 +17,7 @@ abstract class SnippetHandler {
         } else {
             self::$snippetFile = self::searchSnippet(static::$prefix . LVC::camelCaseTo($name) . '.html');
             if (self::$snippetFile) {
+                $app = LVC::get();
                 include(self::$snippetFile);
             } else {
                 $result = "\n<!-- No snippet file for " . get_called_class() . "::" . $name . "() exists. -->\n";
