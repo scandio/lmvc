@@ -54,7 +54,11 @@ abstract class SnippetHandler {
      * @return string|bool either the snippet's full path or false
      */
     private function searchSnippet($snippet) {
-        foreach (self::$snippetPath as $path) {
+        $class = get_called_class();
+        if (!isset(self::$snippetPath[$class])) {
+            return false;
+        }
+        foreach (self::$snippetPath[$class] as $path) {
             $snippetPath = LVC::get()->config->appPath . $path . DIRECTORY_SEPARATOR . $snippet;
             if (file_exists($snippetPath)) {
                 return $snippetPath;
