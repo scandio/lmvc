@@ -15,8 +15,6 @@ abstract class SnippetHandler {
         if (method_exists(get_called_class(), $name)) {
             $result = call_user_func_array('static::' . $name, $params);
         } else {
-            $app = LVC::get();
-
             self::$snippetFile = self::searchSnippet(static::$prefix . LVC::camelCaseTo($name) . '.html');
             if (self::$snippetFile) {
                 include(self::$snippetFile);

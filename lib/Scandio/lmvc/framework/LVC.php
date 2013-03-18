@@ -286,7 +286,7 @@ class LVC
         if (is_callable($this->controllerFQCN . '::' . strtolower($this->requestMethod) . ucfirst($this->action))) {
             $this->action = strtolower($this->requestMethod) . ucfirst($this->action);
             $slug = array_slice($slug, 1);
-        } elseif (is_callable($this->controller . '::' . $this->action)) {
+        } elseif (is_callable($this->controllerFQCN . '::' . $this->action)) {
             $slug = array_slice($slug, 1);
         } else {
             $this->action = 'index';
