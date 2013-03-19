@@ -17,10 +17,10 @@ abstract class SnippetHandler {
         } else {
             self::$snippetFile = self::searchSnippet(static::$prefix . LVC::camelCaseTo($name) . '.html');
             if (self::$snippetFile) {
-                $app = LVC::get();
+                $app = LVC::get(); // should be available in the snippet's scope as in views for convenience
                 include(self::$snippetFile);
             } else {
-                $result = "\n<!-- No snippet file for " . get_called_class() . "::" . $name . "() exists. -->\n";
+                $result = PHP_EOL . "<!-- No snippet file for " . get_called_class() . "::" . $name . "() exists. -->" . PHP_EOL;
             }
         }
         return $result;
@@ -37,7 +37,9 @@ abstract class SnippetHandler {
         } elseif (is_string($path)) {
             $snippetPath = $path;
         } else {
-            // TODO: Error - couldn't register SnippetDirectory
+            echo PHP_EOL . "<!-- Couldn't register SnippetDirectory:" . PHP_EOL;
+            var_dump($path);
+            echo "-->" . PHP_EOL;
             return;
         }
 
