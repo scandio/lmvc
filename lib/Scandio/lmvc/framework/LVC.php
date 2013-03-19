@@ -9,6 +9,16 @@ class LVC
 {
 
     /**
+     * @var array default configuration to use if a property was not provided
+     */
+    private static $defaultConfig = array(
+        'appPath' => './',
+        'controllers' => array('\\controllers'),
+        'viewPath' => array('./views/'),
+        'modules' => array()
+    );
+
+    /**
      * @var LVC singleton object
      */
     private static $object = null;
@@ -123,17 +133,10 @@ class LVC
      */
     public static function initialize($configFile = null)
     {
-        $default = array(
-            'appPath' => './',
-            'controllers' => array('\\controllers'),
-            'viewPath' => array('./views/'),
-            'modules' => array()
-        );
-
         if (!is_null($configFile) && file_exists($configFile)) {
-            LVC::configure(json_decode(file_get_contents($configFile)), $default);
+            LVC::configure(json_decode(file_get_contents($configFile)), self::$defaultConfig);
         } else {
-            LVC::configure($default);
+            LVC::configure((object)self::$defaultConfig);
         }
     }
 
@@ -156,8 +159,8 @@ class LVC
         }
         self::$config = $config;
 
-        foreach ($config->modules as $module) {
-            self::registerBootstrapNamespace($module);
+        foreach (self::getModulePaths($config->modules) as $modulePath) {
+            self::registerBootstrapNamespace($modulePath);
         }
 
         if (isset($config->appNamespace)) {
@@ -166,11 +169,48 @@ class LVC
     }
 
     /**
+     * splits up the namespace specification(s) and determines their namespaces
+     *
+     * @static
+     * @param object|array|string $module namespace specification(s) for modules to load
+     * @return array determined namespaces
+     */
+    private static function getModulePaths($module)
+    {
+        $modulePaths = array();
+
+        if (is_object($module)) {
+            foreach (get_object_vars($module) as $package => $submodules) {
+                foreach (self::getModulePaths($submodules) as $submodule) {
+                    $modulePaths[] = $package . '\\' . $submodule;
+                }
+            }
+        } elseif (is_array($module)) {
+            foreach ($module as $entry) {
+                foreach (self::getModulePaths($entry) as $modulePath) {
+                    $modulePaths[] = $modulePath;
+                }
+            }
+        } elseif (is_string($module)) {
+            $modulePaths[] = $module;
+        } else {
+            echo PHP_EOL . "<!-- Couldn't register ModuleNamespace:" . PHP_EOL;
+            var_dump($module);
+            echo "-->" . PHP_EOL;
+        }
+
+        return $modulePaths;
+    }
+
+    /**
      * Used to initialize modules and potentially the app itself
      *
+     * @static
      * @param string $module namespace specification as a string that contains a class 'Bootstrap'
+     * @return void
      */
-    private static function registerBootstrapNamespace($module) {
+    private static function registerBootstrapNamespace($module)
+    {
         $bootstrap = $module . '\\Bootstrap';
         if (class_exists($bootstrap)) {
             $moduleLoader = new $bootstrap;
@@ -183,7 +223,9 @@ class LVC
     /**
      * registers a new controller namespace to search for the controllers
      *
+     * @static
      * @param object|array|string $controller namespace specification (a controller instance or specified as strings)
+     * @return void
      */
     public static function registerControllerNamespace($controller)
     {
@@ -205,7 +247,9 @@ class LVC
     /**
      * registers a new view directory to search for the views
      *
+     * @static
      * @param array|string $path specifies the directory to register
+     * @return void
      */
     public static function registerViewDirectory($path)
     {
