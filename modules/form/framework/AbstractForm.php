@@ -89,21 +89,21 @@ abstract class AbstractForm {
     /**
      * return the array of errors
      *
-     * @return array assotiative array [field][validator] that contains the message
+     * @return array associative array [field][validator] that contains the message
      */
     public function getErrors() {
         return $this->__formdata->errors;
     }
 
     /**
-     * @return bool wether the form is valid
+     * @return bool whether the form is valid
      */
     public function isValid() {
         return !$this->hasErrors();
     }
 
     /**
-     * @return bool wether the form has errors
+     * @return bool whether the form has errors
      */
     public function hasErrors() {
         return is_array($this->__formdata->errors);
