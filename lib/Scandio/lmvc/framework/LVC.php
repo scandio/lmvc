@@ -194,7 +194,9 @@ class LVC
         } elseif (is_string($controller)) {
             $namespace = $controller;
         } else {
-            // TODO: Error - couldn't register ControllerNamespace
+            echo PHP_EOL . "<!-- Couldn't register ControllerNamespace:" . PHP_EOL;
+            var_dump($controller);
+            echo "-->" . PHP_EOL;
             return;
         }
         array_unshift(self::$config->controllers, $namespace);
@@ -212,7 +214,9 @@ class LVC
         } elseif (is_string($path)) {
             $viewPath = $path;
         } else {
-            // TODO: Error - couldn't register ViewDirectory
+            echo PHP_EOL . "<!-- Couldn't register ViewDirectory:" . PHP_EOL;
+            var_dump($path);
+            echo "-->" . PHP_EOL;
             return;
         }
         array_unshift(self::$config->viewPath, $viewPath);
@@ -242,9 +246,10 @@ class LVC
         if (!self::searchController()) {
             $this->controller = 'Application';
             if (!self::searchController()) {
-                // TODO: ERROR
-                echo "<pre>couldn't find either '" . ucfirst(LVC::camelCaseFrom($slug[0])) . "' or '" . $this->controller . "' in the following namespaces:" . PHP_EOL . PHP_EOL;
+                echo PHP_EOL . "<!-- Couldn't find either the Controller '" . ucfirst(LVC::camelCaseFrom($slug[0])) .
+                    "' or '" . $this->controller . "' in the following namespaces:" . PHP_EOL . PHP_EOL;
                 var_dump(self::$config->controllers);
+                echo "-->" . PHP_EOL;
                 exit;
             }
         } else {
