@@ -38,8 +38,8 @@ abstract class AbstractForm {
      * reads the form members and fills __formdata
      */
     public function __construct() {
-        $this->__formdata = new stdClass();
-        $reflection = new ReflectionClass(get_class($this));
+        $this->__formdata = new \stdClass();
+        $reflection = new \ReflectionClass(get_class($this));
         $this->__formdata->fields = $reflection->getDefaultProperties();
         unset($this->__formdata->fields['__formdata']);
     }
