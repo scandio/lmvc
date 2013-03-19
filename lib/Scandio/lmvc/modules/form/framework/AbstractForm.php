@@ -6,9 +6,9 @@ use \Scandio\lmvc\framework\LVC;
 
 /**
  * Form Validator class
- * Create a class extendig from AbstractForm and define the form fields as
- * an public members. write your own validator methods. use as method name the
- * camelCased validator string.
+ * Create a class extending from AbstractForm and define the form fields as
+ * public members. Write your own validator methods and use their camelCased
+ * validator string as method name.
  *
  * class MyForm extends AbstractForm {
  *
@@ -25,7 +25,7 @@ use \Scandio\lmvc\framework\LVC;
  *      }
  * }
  *
- * In an action you can use the validate(self::request()) method.
+ * In an action you can use it like validate(self::request());
  */
 abstract class AbstractForm {
 
