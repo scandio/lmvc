@@ -214,7 +214,7 @@ class LVC
         $bootstrap = $module . '\\Bootstrap';
         if (class_exists($bootstrap)) {
             $moduleLoader = new $bootstrap;
-            if (is_subclass_of($moduleLoader, '\\Scandio\\lmvc\\framework\\Bootstrap')) {
+            if (is_subclass_of($moduleLoader, '\\Scandio\\lmvc\\Bootstrap')) {
                 $moduleLoader->initialize();
             }
         }
