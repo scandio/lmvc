@@ -1,8 +1,8 @@
 <?php
 
-namespace Scandio\lmvc\framework;
+namespace Scandio\lmvc;
 
-use \Scandio\lmvc\framework\LVC;
+use \Scandio\lmvc\LVC;
 
 /**
  * Static class for each action controller

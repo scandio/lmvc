@@ -1,6 +1,6 @@
 <?php
 
-namespace Scandio\lmvc\framework;
+namespace Scandio\lmvc;
 
 /**
  * Basic application of LMVC

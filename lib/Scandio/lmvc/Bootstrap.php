@@ -1,8 +1,6 @@
 <?php
 
-namespace Scandio\lmvc\framework;
-
-use \Scandio\lmvc\framework\LVC;
+namespace Scandio\lmvc;
 
 abstract class Bootstrap {
     public abstract function initialize();
