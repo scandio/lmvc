@@ -121,9 +121,10 @@ abstract class Controller {
     /**
      * searches for the view in the registered directories
      *
+     * @static
      * @return string|bool either the view's full path or false
      */
-    private function searchView($view)
+    private static function searchView($view)
     {
         $config = LVC::get()->config;
 
