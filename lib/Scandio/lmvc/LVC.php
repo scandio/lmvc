@@ -394,7 +394,7 @@ class LVC
     /**
      * generates an URL from a static class method with parameters
      * from url('Application::index', $var) you get the URL
-     * /app/path/controller/action/{$var}
+     * http://host.com/app/path/controller/action/{$var}
      *
      * @param string $method method name in static syntax like 'Application::index'
      * @param string|array $params single value or array of parameters
@@ -402,15 +402,26 @@ class LVC
      */
     public function url($method, $params = null)
     {
+        return $this->protocol . '://' . $this->host . $this->uri($method, $params);
+    }
+
+    /**
+     * generates an URI from a static class method with parameters
+     * from uri('Application::index', $var) you get the URI
+     * /app/path/controller/action/{$var}
+     *
+     * @param string $method method name in static syntax like 'Application::index'
+     * @param string|array $params single value or array of parameters
+     * @return string the URI
+     */
+    public function uri($method, $params = null) {
         if ($params && !is_array($params)) {
             $params = array($params);
         }
         $method = explode('::', $method);
         $controller = ($method[0] == 'Application') ? '/' : '/' . LVC::camelCaseTo($method[0]);
         $action = ($method[1] == 'index') ? '/' : '/' . LVC::camelCaseTo($method[1]);
-        return $this->protocol . '://' .
-            $this->host .
-            $this->uri .
+        return $this->uri .
             (($controller == '/' && $action != '/') ? '' : $controller) .
             (($action == '/') ? '' : $action) .
             (($params) ? (($controller == '/' && $action == '/') ? '' : '/') . implode('/', $params) : '');
