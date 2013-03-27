@@ -1,5 +1,7 @@
 <?php
 
+namespace Scandio\lmvc;
+
 /**
  * Interface for RenderJson ArrayBuilder
  * Return always an array

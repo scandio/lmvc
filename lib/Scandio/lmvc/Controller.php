@@ -1,5 +1,9 @@
 <?php
 
+namespace Scandio\lmvc;
+
+use \Scandio\lmvc\LVC;
+
 /**
  * Static class for each action controller
  *
@@ -96,35 +100,41 @@ abstract class Controller {
      * @param array $renderArgs optional an assotiative array of values
      * @param string $template optional a file name like 'views/test/test.html' which overwrites the default
      * @param string $masterTemplate optional a file name like 'views/test/test.html' which overwrites the default master
+     * @return void
      */
     public static function render($renderArgs=array(), $template=null, $masterTemplate=null) {
         self::setRenderArgs($renderArgs, true);
         extract(self::$renderArgs);
         $app = LVC::get();
 
-        if($template) {
+        if ($template) {
             $app->view = $app->config->appPath . $template;
         } else {
-            $viewPath = 'views/' . LVC::camelCaseTo($app->controller) . '/' .
-                LVC::camelCaseTo($app->actionName) . '.html';
-            $app->view = $app->config->appPath . $viewPath;
-            if (!file_exists($app->view)) {
-                $reflection = new ReflectionClass(get_called_class());
-                $classFileName = $reflection->getFileName();
-                $reducer = 'controllers/' . $app->controller . '.php';
-                $module = end(explode('/', substr($classFileName, 0,  strpos($classFileName, $reducer)-1)));
-                $app->view = $app->config->modulePath . $module . '/' . $viewPath;
-                if (!file_exists($app->view)) {
-                    $app->view = $app->config->appModulePath . $module . '/' . $viewPath;
-                }
+            $app->view = self::searchView(LVC::camelCaseTo($app->controller) . DIRECTORY_SEPARATOR . LVC::camelCaseTo($app->actionName) . '.html');
+        }
+        if (is_null($masterTemplate)) {
+            $masterTemplate = self::searchView('main.html');
+        }
+        include($masterTemplate);
+    }
+
+    /**
+     * searches for the view in the registered directories
+     *
+     * @static
+     * @return string|bool either the view's full path or false
+     */
+    private static function searchView($view)
+    {
+        $config = LVC::get()->config;
+
+        foreach ($config->viewPath as $path) {
+            $viewPath = $config->appPath . $path . DIRECTORY_SEPARATOR . $view;
+            if (file_exists($viewPath)) {
+                return $viewPath;
             }
         }
-        if (!is_null($masterTemplate)) {
-            include($masterTemplate);
-        } else {
-            include($app->config->appPath . 'views/main.html');
-        }
-        return true;
+        return false;
     }
 
     /**
@@ -136,10 +146,11 @@ abstract class Controller {
      * @static
      * @param string $method name of class and action in static syntax like Application::index without brackets
      * @param string|array $params optional one value or an array of values to enhance the generated URL
+     * @return void
      */
     public static function redirect($method, $params=null) {
         header('Location: ' . LVC::get()->url($method, $params));
-        return true;
+        exit;
     }
 
     /**

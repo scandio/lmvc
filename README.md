@@ -9,7 +9,7 @@ This project contains a very small MVC framework written with simple PHP classes
 * Just PHP - no external PHP libraries
 * Convention over configuration
 * No annotations or other stuff like that
-* No namespaces
+* PSR-0 standard
 
 Currently there is no documentation for anything.
 
@@ -44,11 +44,11 @@ To develop your own controller create a file with the same name like the class i
 
 Create a class as a descendant of class Controller
 
-    class Accounts extends Controller { }
+    class Accounts extends \Scandio\lmvc\framework\Controller { }
 
 Create a public static method named like the action you want to call
 
-    class Accounts extends Controller {
+    class Accounts extends \Scandio\lmvc\framework\Controller {
 
         public static function index() {
             print_r('ok');
@@ -74,9 +74,9 @@ Example for HTML rendering:
 
     }
 
-This renders the view (template) path/views/controller/action.html. In this case views/accounts/index.html. To pass some data to the template you can...
+This renders the view (template) registeredViewPaths/controller/action.html. In this case views/accounts/index.html. To pass some data to the template you can...
 
-    class Accounts extends Controller {
+    class Accounts extends \Scandio\lmvc\framework\Controller {
 
         public static function index() {
             self::setRenderArg('name', 'John Doe');
@@ -101,7 +101,7 @@ or both. There is no specific template language. It's just PHP. Every render arg
 
 Example for JSON rendering
 
-    class Accounts extends Controller {
+    class Accounts extends \Scandio\lmvc\framework\Controller {
 
         public static function index() {
             self::renderJson(array('name' => 'John Doe'));
