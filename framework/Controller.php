@@ -96,7 +96,6 @@ abstract class Controller {
      * @param array $renderArgs optional an assotiative array of values
      * @param string $template optional a file name like 'views/test/test.html' which overwrites the default
      * @param string $masterTemplate optional a file name like 'views/test/test.html' which overwrites the default master
-     * @return void
      */
     public static function render($renderArgs=array(), $template=null, $masterTemplate=null) {
         self::setRenderArgs($renderArgs, true);
@@ -125,6 +124,7 @@ abstract class Controller {
         } else {
             include($app->config->appPath . 'views/main.html');
         }
+        return true;
     }
 
     /**
@@ -136,11 +136,10 @@ abstract class Controller {
      * @static
      * @param string $method name of class and action in static syntax like Application::index without brackets
      * @param string|array $params optional one value or an array of values to enhance the generated URL
-     * @return void
      */
     public static function redirect($method, $params=null) {
         header('Location: ' . LVC::get()->url($method, $params));
-        exit;
+        return true;
     }
 
     /**
