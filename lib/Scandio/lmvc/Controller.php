@@ -18,7 +18,7 @@ use \Scandio\lmvc\LVC;
 abstract class Controller {
 
     /**
-     * @var array assotitive array of values for rendering
+     * @var array associative array of values for rendering
      */
     private static $renderArgs=array();
 
@@ -40,7 +40,7 @@ abstract class Controller {
      * $add is set to true
      *
      * @static
-     * @param array $renderArgs an assotiative array
+     * @param array $renderArgs an associative array
      * @param bool $add optional set to true if you want to merge existing data with $renderArgs
      * @return void
      */
@@ -67,11 +67,12 @@ abstract class Controller {
      * to develop a own ArrayBuilder class for conversion
      *
      * @static
-     * @param array $renderArgs optional an assotiative array of values
+     * @param array $renderArgs optional an associative array of values
      * @param ArrayBuilder $arrayBuilder optional your converter class based on ArrayBuilder interface
      * @return void
      */
     public static function renderJson($renderArgs=null, ArrayBuilder $arrayBuilder=null) {
+        $result = [];
         if (is_object($renderArgs) && $arrayBuilder instanceof ArrayBuilder) {
             $renderArgs = $arrayBuilder::build($renderArgs);
         }
@@ -97,10 +98,10 @@ abstract class Controller {
      * of $renderArgs to local variables which may be used in the template
      *
      * @static
-     * @param array $renderArgs optional an assotiative array of values
+     * @param array $renderArgs optional an associative array of values
      * @param string $template optional a file name like 'views/test/test.html' which overwrites the default
      * @param string $masterTemplate optional a file name like 'views/test/test.html' which overwrites the default master
-     * @return void
+     * @return bool
      */
     public static function render($renderArgs=array(), $template=null, $masterTemplate=null) {
         self::setRenderArgs($renderArgs, true);
@@ -116,12 +117,14 @@ abstract class Controller {
             $masterTemplate = self::searchView('main.html');
         }
         include($masterTemplate);
+        return true;
     }
 
     /**
      * searches for the view in the registered directories
      *
      * @static
+     * @param $view
      * @return string|bool either the view's full path or false
      */
     private static function searchView($view)
