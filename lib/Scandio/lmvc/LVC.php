@@ -24,7 +24,7 @@ class LVC
     private static $object = null;
 
     /**
-     * @var array application setting from config.json
+     * @var object|array application setting from config.json
      */
     private static $config = array();
 
@@ -64,7 +64,7 @@ class LVC
     private $requestMethod;
 
     /**
-     * @var string hostname of webserver
+     * @var string hostname of web server
      */
     private $host;
 
@@ -91,7 +91,7 @@ class LVC
     /**
      * Private constructor which creates the singleton object
      *
-     * @return void
+     * @return \Scandio\lmvc\LVC
      */
     private function __construct()
     {
@@ -180,9 +180,9 @@ class LVC
         $modulePaths = array();
 
         if (is_object($module)) {
-            foreach (get_object_vars($module) as $package => $submodules) {
-                foreach (self::getModulePaths($submodules) as $submodule) {
-                    $modulePaths[] = $package . '\\' . $submodule;
+            foreach (get_object_vars($module) as $package => $subModules) {
+                foreach (self::getModulePaths($subModules) as $subModule) {
+                    $modulePaths[] = $package . '\\' . $subModule;
                 }
             }
         } elseif (is_array($module)) {
@@ -352,6 +352,7 @@ class LVC
      */
     public function __get($name)
     {
+        $result = null;
         if (in_array($name, array(
             'action',
             'actionName',
