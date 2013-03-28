@@ -325,7 +325,7 @@ class LVC
     /**
      * sets the action from slug
      *
-     * @param $slug the URL divided in pieces
+     * @param array $slug the URL divided in pieces
      * @return array the reduced slug
      */
     private function setAction($slug)
