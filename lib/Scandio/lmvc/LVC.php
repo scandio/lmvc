@@ -148,7 +148,7 @@ class LVC
      * @param array $default associative array with default configurations
      * @return void
      */
-    private static function configure($config, $default=null)
+    private static function configure($config, $default = null)
     {
         if (!is_null($default)) {
             foreach (array_keys($default) as $entry) {
@@ -415,7 +415,8 @@ class LVC
      * @param string|array $params single value or array of parameters
      * @return string the URI
      */
-    public function uri($method, $params = null) {
+    public function uri($method, $params = null)
+    {
         if ($params && !is_array($params)) {
             $params = array($params);
         }

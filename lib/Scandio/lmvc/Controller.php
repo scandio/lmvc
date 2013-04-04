@@ -15,12 +15,12 @@ use \Scandio\lmvc\LVC;
  * @author ckoch
  * @abstract
  */
-abstract class Controller {
-
+abstract class Controller
+{
     /**
      * @var array associative array of values for rendering
      */
-    private static $renderArgs=array();
+    private static $renderArgs = array();
 
     /**
      * set a single render argument which is used
@@ -31,7 +31,8 @@ abstract class Controller {
      * @param mixed $value any kind of value.
      * @return void
      */
-    public static function setRenderArg($name, $value) {
+    public static function setRenderArg($name, $value)
+    {
         self::$renderArgs[$name] = $value;
     }
 
@@ -44,7 +45,8 @@ abstract class Controller {
      * @param bool $add optional set to true if you want to merge existing data with $renderArgs
      * @return void
      */
-    public static function setRenderArgs($renderArgs, $add=false) {
+    public static function setRenderArgs($renderArgs, $add = false)
+    {
         if (!is_null($renderArgs)) {
             self::$renderArgs = ($add) ? array_merge(self::$renderArgs, $renderArgs) : $renderArgs;
         }
@@ -57,7 +59,8 @@ abstract class Controller {
      * @static
      * @return object simple PHP object with all request data
      */
-    public static function request() {
+    public static function request()
+    {
         return LVC::get()->request;
     }
 
@@ -67,18 +70,19 @@ abstract class Controller {
      * to develop a own ArrayBuilder class for conversion
      *
      * @static
-     * @param array $renderArgs optional an associative array of values
-     * @param ArrayBuilder $arrayBuilder optional your converter class based on ArrayBuilder interface
-     * @return void
+     * @param null|array|object $renderArgs optional an associative array of values
+     * @param ArrayBuilderInterface $arrayBuilder optional your converter class based on ArrayBuilder interface
+     * @return bool
      */
-    public static function renderJson($renderArgs=null, ArrayBuilder $arrayBuilder=null) {
+    public static function renderJson($renderArgs = null, ArrayBuilderInterface $arrayBuilder = null)
+    {
         $result = [];
-        if (is_object($renderArgs) && $arrayBuilder instanceof ArrayBuilder) {
+        if (is_object($renderArgs) && $arrayBuilder instanceof ArrayBuilderInterface) {
             $renderArgs = $arrayBuilder::build($renderArgs);
         }
         self::setRenderArgs($renderArgs, true);
         foreach (self::$renderArgs as $key => $renderArg) {
-            if (is_object($renderArg) && $arrayBuilder instanceof ArrayBuilder) {
+            if (is_object($renderArg) && $arrayBuilder instanceof ArrayBuilderInterface) {
                 $result[$key] = $arrayBuilder::build($renderArg);
             } else {
                 $result[$key] = $renderArg;
@@ -88,6 +92,7 @@ abstract class Controller {
         header('Expires: Mon, 26 Jul 1964 07:00:00 GMT');
         header('Content-type: application/json');
         echo json_encode($result);
+        return true;
     }
 
     /**
@@ -103,11 +108,11 @@ abstract class Controller {
      * @param string $masterTemplate optional a file name like 'views/test/test.html' which overwrites the default master
      * @return bool
      */
-    public static function render($renderArgs=array(), $template=null, $masterTemplate=null) {
+    public static function render($renderArgs = array(), $template = null, $masterTemplate = null)
+    {
         self::setRenderArgs($renderArgs, true);
         extract(self::$renderArgs);
         $app = LVC::get();
-
         if ($template) {
             $app->view = $app->config->appPath . $template;
         } else {
@@ -130,7 +135,6 @@ abstract class Controller {
     private static function searchView($view)
     {
         $config = LVC::get()->config;
-
         foreach ($config->viewPath as $path) {
             $viewPath = $config->appPath . $path . DIRECTORY_SEPARATOR . $view;
             if (file_exists($viewPath)) {
@@ -151,7 +155,8 @@ abstract class Controller {
      * @param string|array $params optional one value or an array of values to enhance the generated URL
      * @return void
      */
-    public static function redirect($method, $params=null) {
+    public static function redirect($method, $params = null)
+    {
         header('Location: ' . LVC::get()->url($method, $params));
         exit;
     }
@@ -162,7 +167,8 @@ abstract class Controller {
      * @static
      * @return void
      */
-    public static function preProcess() {
+    public static function preProcess()
+    {
 
     }
 
@@ -172,8 +178,8 @@ abstract class Controller {
      * @static
      * @return void
      */
-    public static function postProcess() {
+    public static function postProcess()
+    {
 
     }
-
 }

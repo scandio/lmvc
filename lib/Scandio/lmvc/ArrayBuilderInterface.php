@@ -6,12 +6,13 @@ namespace Scandio\lmvc;
  * Interface for RenderJson ArrayBuilder
  * Return always an array
  */
-interface ArrayBuilder {
+interface ArrayBuilderInterface
+{
 
     /**
      * @static
      * @abstract
-     * @param $renderArgs array of mixed data
+     * @param array $renderArgs array of mixed data
      * @return array
      */
     public static function build($renderArgs);

@@ -69,7 +69,7 @@ Example for HTML rendering:
     class Accounts extends Controller {
 
         public static function index() {
-            self::render()
+            return self::render()
         }
 
     }
@@ -80,7 +80,7 @@ This renders the view (template) registeredViewPaths/controller/action.html. In 
 
         public static function index() {
             self::setRenderArg('name', 'John Doe');
-            self::render()
+            return self::render()
         }
 
     }

@@ -2,6 +2,10 @@
 
 namespace Scandio\lmvc;
 
-abstract class Bootstrap {
+abstract class Bootstrap
+{
+    /**
+     * @return void
+     */
     public abstract function initialize();
 }
