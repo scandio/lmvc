@@ -153,12 +153,12 @@ abstract class Controller
      * @static
      * @param string $method name of class and action in static syntax like Application::index without brackets
      * @param string|array $params optional one value or an array of values to enhance the generated URL
-     * @return void
+     * @return bool
      */
     public static function redirect($method, $params = null)
     {
         header('Location: ' . LVC::get()->url($method, $params));
-        exit;
+        return true;
     }
 
     /**

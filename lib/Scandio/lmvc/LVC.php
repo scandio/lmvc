@@ -241,7 +241,7 @@ class LVC
             echo "-->" . PHP_EOL;
             return;
         }
-        array_unshift(self::$config->controllers, $namespace);
+        self::$config->controllers[] = $namespace;
     }
 
     /**
@@ -263,7 +263,7 @@ class LVC
             echo "-->" . PHP_EOL;
             return;
         }
-        array_unshift(self::$config->viewPath, $viewPath);
+        self::$config->viewPath[] = $viewPath;
     }
 
     /**
