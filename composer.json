@@ -5,7 +5,6 @@
     "keywords": ["php", "library", "mvc", "scandio"],
     "homepage": "https://github.com/scandio/lmvc",
     "license": "MIT",
-
     "authors": [
         {
             "name": "Scandio GmbH",
