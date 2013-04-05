@@ -169,7 +169,7 @@ abstract class Controller
      */
     public static function preProcess()
     {
-
+        return true;
     }
 
     /**
@@ -180,6 +180,6 @@ abstract class Controller
      */
     public static function postProcess()
     {
-
+        return true;
     }
 }
