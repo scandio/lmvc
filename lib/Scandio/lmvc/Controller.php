@@ -136,7 +136,7 @@ abstract class Controller
     {
         $config = LVC::get()->config;
         foreach ($config->viewPath as $path) {
-            $viewPath = $config->appPath . $path . DIRECTORY_SEPARATOR . $view;
+            $viewPath = ((substr($path, 0, 1) == '/') ? '' : $config->appPath) . $path . DIRECTORY_SEPARATOR . $view;
             if (file_exists($viewPath)) {
                 return $viewPath;
             }
