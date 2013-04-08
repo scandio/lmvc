@@ -436,12 +436,8 @@ class LVC
      */
     public function run()
     {
-        if (method_exists($this->controllerFQCN, 'preProcess')) {
-            $result = call_user_func_array($this->controllerFQCN . '::preProcess', $this->params);
-        } else {
-            $result = true;
-        }
-        if ($result === true) {
+        if (method_exists($this->controllerFQCN, 'preProcess')
+            || (call_user_func_array($this->controllerFQCN . '::preProcess', $this->params) === true)) {
             call_user_func_array($this->controllerFQCN . '::' . $this->action, $this->params);
         }
         call_user_func_array($this->controllerFQCN . '::postProcess', $this->params);
