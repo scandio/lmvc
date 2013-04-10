@@ -157,10 +157,21 @@ class LVC
                 }
             }
         }
+        $controllers = $config->controllers;
+        $viewPaths = $config->viewPath;
+        unset($config->controllers);
+        unset($config->viewPath);
         self::$config = $config;
 
         foreach (self::getModulePaths($config->modules) as $modulePath) {
             self::registerBootstrapNamespace($modulePath);
+        }
+
+        foreach ($controllers as $controller) {
+            self::registerControllerNamespace($controller);
+        }
+        foreach ($viewPaths as $viewPath) {
+            self::registerViewDirectory($viewPath);
         }
 
         if (isset($config->appNamespace)) {
@@ -206,16 +217,16 @@ class LVC
      * Used to initialize modules and potentially the app itself
      *
      * @static
-     * @param string $module namespace specification as a string that contains a class 'Bootstrap'
+     * @param string $namespace namespace specification as a string that contains a class 'Bootstrap'
      * @return void
      */
-    private static function registerBootstrapNamespace($module)
+    private static function registerBootstrapNamespace($namespace)
     {
-        $bootstrap = $module . '\\Bootstrap';
+        $bootstrap = $namespace . '\\Bootstrap';
         if (class_exists($bootstrap)) {
-            $moduleLoader = new $bootstrap;
-            if (is_subclass_of($moduleLoader, '\\Scandio\\lmvc\\Bootstrap')) {
-                $moduleLoader->initialize();
+            $namespaceLoader = new $bootstrap;
+            if (is_subclass_of($namespaceLoader, '\\Scandio\\lmvc\\Bootstrap')) {
+                $namespaceLoader->initialize();
             }
         }
     }
