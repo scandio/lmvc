@@ -254,7 +254,7 @@ class LVC
     public static function registerViewDirectory($path)
     {
         if (is_array($path)) {
-            $viewPath = implode(DIRECTORY_SEPARATOR, $path);
+            $viewPath = implode('/', $path);
         } elseif (is_string($path)) {
             $viewPath = $path;
         } else {

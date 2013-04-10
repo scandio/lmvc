@@ -116,7 +116,7 @@ abstract class Controller
         if ($template) {
             $app->view = $app->config->appPath . $template;
         } else {
-            $app->view = self::searchView(LVC::camelCaseTo($app->controller) . DIRECTORY_SEPARATOR . LVC::camelCaseTo($app->actionName) . '.html');
+            $app->view = self::searchView(LVC::camelCaseTo($app->controller) . '/' . LVC::camelCaseTo($app->actionName) . '.html');
         }
         if (is_null($masterTemplate)) {
             $masterTemplate = self::searchView('main.html');
@@ -136,7 +136,7 @@ abstract class Controller
     {
         $config = LVC::get()->config;
         foreach ($config->viewPath as $path) {
-            $viewPath = ((substr($path, 0, 1) == '/') ? '' : $config->appPath) . $path . DIRECTORY_SEPARATOR . $view;
+            $viewPath = ((substr($path, 0, 1) == '/') ? '' : $config->appPath) . $path . '/' . $view;
             if (file_exists($viewPath)) {
                 return $viewPath;
             }
