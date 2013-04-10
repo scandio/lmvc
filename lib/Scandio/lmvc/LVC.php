@@ -13,7 +13,9 @@ class LVC
      */
     private static $defaultConfig = array(
         'appPath' => './',
-        'controllers' => array('\\controllers'),
+        'controllers' => array(),
+        'controllerPath' => array('\\controllers'),
+        'views' => array(),
         'viewPath' => array('./views/'),
         'modules' => array()
     );
@@ -157,21 +159,17 @@ class LVC
                 }
             }
         }
-        $controllers = $config->controllers;
-        $viewPaths = $config->viewPath;
-        $config->controllers = [];
-        $config->viewPath = [];
         self::$config = $config;
 
         foreach (self::getModulePaths($config->modules) as $modulePath) {
             self::registerBootstrapNamespace($modulePath);
         }
 
-        foreach ($controllers as $controller) {
+        foreach ($config->controllers as $controller) {
             self::registerControllerNamespace($controller);
         }
-        foreach ($viewPaths as $viewPath) {
-            self::registerViewDirectory($viewPath);
+        foreach ($config->views as $view) {
+            self::registerViewDirectory($view);
         }
 
         if (isset($config->appNamespace)) {
@@ -252,7 +250,7 @@ class LVC
             echo "-->" . PHP_EOL;
             return;
         }
-        array_unshift(self::$config->controllers, $namespace);
+        array_unshift(self::$config->controllerPath, $namespace);
     }
 
     /**
@@ -303,7 +301,7 @@ class LVC
             if (!self::searchController()) {
                 echo PHP_EOL . "<!-- Couldn't find either the Controller '" . ucfirst(LVC::camelCaseFrom($slug[0])) .
                     "' or '" . $this->controller . "' in the following namespaces:" . PHP_EOL . PHP_EOL;
-                var_dump(self::$config->controllers);
+                var_dump(self::$config->controllerPath);
                 echo "-->" . PHP_EOL;
                 exit;
             }
@@ -322,7 +320,7 @@ class LVC
     {
         $controllerFound = false;
 
-        foreach (self::$config->controllers as $path) {
+        foreach (self::$config->controllerPath as $path) {
             if (class_exists($path . '\\' . $this->controller)) {
                 $this->controllerNamespace = $path;
                 $controllerFound = true;
