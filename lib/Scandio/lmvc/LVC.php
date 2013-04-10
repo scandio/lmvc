@@ -13,10 +13,10 @@ class LVC
      */
     private static $defaultConfig = array(
         'appPath' => './',
-        'controllers' => array(),
-        'controllerPath' => array('\\controllers'),
-        'views' => array(),
-        'viewPath' => array('./views/'),
+        'controllers' => array('controllers'),
+        'controllerPath' => array(),
+        'views' => array('./views/'),
+        'viewPath' => array(),
         'modules' => array()
     );
 
