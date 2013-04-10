@@ -159,8 +159,8 @@ class LVC
         }
         $controllers = $config->controllers;
         $viewPaths = $config->viewPath;
-        unset($config->controllers);
-        unset($config->viewPath);
+        $config->controllers = [];
+        $config->viewPath = [];
         self::$config = $config;
 
         foreach (self::getModulePaths($config->modules) as $modulePath) {
