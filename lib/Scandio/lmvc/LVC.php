@@ -102,7 +102,7 @@ class LVC
         $this->referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null;
         $this->uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
         $this->requestMethod = $_SERVER['REQUEST_METHOD'];
-        $slug = explode('/', $_GET['app-slug']);
+        $slug = ($_GET['app-slug']) ? explode('/', $_GET['app-slug']) : array();
         $slug = $this->setController($slug);
         $this->params = $this->setAction($slug);
         $this->request = array_slice($_GET, 1);
