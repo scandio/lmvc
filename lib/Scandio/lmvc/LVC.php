@@ -339,6 +339,7 @@ class LVC
      */
     private function setAction($slug)
     {
+        $slug = (isset($slug[0])) ? $slug : array("");
         $this->action = LVC::camelCaseFrom($slug[0]);
         $this->actionName = $this->action;
         if (is_callable($this->controllerFQCN . '::' . strtolower($this->requestMethod) . ucfirst($this->action))) {
