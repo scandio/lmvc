@@ -69,13 +69,38 @@ abstract class Controller
      * if there are complex objects in $renderArgs you need
      * to develop a own ArrayBuilder class for conversion
      *
+     * if it's set a callback method name in the GET parameter
+     * a java script method will be submitted
+     *
      * @static
      * @param null|array|object $renderArgs optional an associative array of values
+     * @param int $httpCode
      * @param ArrayBuilderInterface $arrayBuilder optional your converter class based on ArrayBuilder interface
      * @return bool
      */
-    public static function renderJson($renderArgs = null, ArrayBuilderInterface $arrayBuilder = null)
+    public static function renderJson($renderArgs = null, $httpCode = 200, ArrayBuilderInterface $arrayBuilder = null)
     {
+        http_response_code($httpCode);
+        header('Cache-Control: no-cache, must-revalidate');
+        header('Expires: Mon, 26 Jul 1964 07:00:00 GMT');
+        $json = static::buildJson($renderArgs, $arrayBuilder);
+        if (isset($_GET['callback']) && !empty($_GET['callback'])) {
+            $callback = $_GET['callback'];
+            $json = $callback . '( return ' . $json . ');';
+            header('Content-type: application/javascript');
+        } else {
+            header('Content-type: application/json');
+        }
+        echo $json;
+        return true;
+    }
+
+    /**
+     * @param null|array $renderArgs
+     * @param ArrayBuilderInterface $arrayBuilder
+     * @return string
+     */
+    protected static function buildJson($renderArgs = null, ArrayBuilderInterface $arrayBuilder = null) {
         $result = [];
         if (is_object($renderArgs) && $arrayBuilder instanceof ArrayBuilderInterface) {
             $renderArgs = $arrayBuilder::build($renderArgs);
@@ -88,11 +113,7 @@ abstract class Controller
                 $result[$key] = $renderArg;
             }
         }
-        header('Cache-Control: no-cache, must-revalidate');
-        header('Expires: Mon, 26 Jul 1964 07:00:00 GMT');
-        header('Content-type: application/json');
-        echo json_encode($result);
-        return true;
+        return json_encode($result);
     }
 
     /**
@@ -165,7 +186,7 @@ abstract class Controller
      * override it if your controller need a pre processor method
      *
      * @static
-     * @return void
+     * @return bool
      */
     public static function preProcess()
     {
@@ -176,7 +197,7 @@ abstract class Controller
      * override it if your controller needs a post processor method
      *
      * @static
-     * @return void
+     * @return bool
      */
     public static function postProcess()
     {
