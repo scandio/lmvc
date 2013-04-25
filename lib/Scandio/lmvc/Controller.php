@@ -74,7 +74,7 @@ abstract class Controller
      *
      * @static
      * @param null|array|object $renderArgs optional an associative array of values
-     * @param int $httpCode
+     * @param int $httpCode optional a valid http status code like 200, 403, 404 or 500 defaults to 200
      * @param ArrayBuilderInterface $arrayBuilder optional your converter class based on ArrayBuilder interface
      * @return bool
      */
