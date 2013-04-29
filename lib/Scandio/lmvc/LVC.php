@@ -21,14 +21,9 @@ class LVC
     );
 
     /**
-     * @var LVC singleton object
+     * @var \Scandio\lmvc\LVC singleton object
      */
     private static $object = null;
-
-    /**
-     * @var object|array application setting from config.json
-     */
-    private static $config = array();
 
     /**
      * @var string name of the currently used controller
@@ -114,11 +109,11 @@ class LVC
     }
 
     /**
-     * returns the instance of the single ton object
+     * returns the instance of the singleton object
      * use it like LVC::get() from outside
      *
      * @static
-     * @return LVC
+     * @return \Scandio\lmvc\LVC
      */
     public static function get()
     {
@@ -159,7 +154,7 @@ class LVC
                 }
             }
         }
-        self::$config = $config;
+        LVCConfig::initialize($config);
 
         foreach (self::getModulePaths($config->modules) as $modulePath) {
             self::registerBootstrapNamespace($modulePath);
@@ -250,7 +245,7 @@ class LVC
             echo "-->" . PHP_EOL;
             return;
         }
-        array_unshift(self::$config->controllerPath, $namespace);
+        array_unshift(LVCConfig::get()->controllerPath, $namespace);
     }
 
     /**
@@ -272,7 +267,7 @@ class LVC
             echo "-->" . PHP_EOL;
             return;
         }
-        array_unshift(self::$config->viewPath, $viewPath);
+        array_unshift(LVCConfig::get()->viewPath, $viewPath);
     }
 
     /**
@@ -301,7 +296,7 @@ class LVC
             if (!self::searchController()) {
                 echo PHP_EOL . "<!-- Couldn't find either the Controller '" . ucfirst(LVC::camelCaseFrom($slug[0])) .
                     "' or '" . $this->controller . "' in the following namespaces:" . PHP_EOL . PHP_EOL;
-                var_dump(self::$config->controllerPath);
+                var_dump(LVCConfig::get()->controllerPath);
                 echo "-->" . PHP_EOL;
                 exit;
             }
@@ -320,7 +315,7 @@ class LVC
     {
         $controllerFound = false;
 
-        foreach (self::$config->controllerPath as $path) {
+        foreach (LVCConfig::get()->controllerPath as $path) {
             if (class_exists($path . '\\' . $this->controller)) {
                 $this->controllerNamespace = $path;
                 $controllerFound = true;
@@ -380,8 +375,8 @@ class LVC
             $result = $this->$name;
         } elseif (in_array($name, array('request'))) {
             $result = (object)$this->$name;
-        } elseif (in_array($name, array('config'))) {
-            $result = (object)self::$$name;
+        } elseif ($name === 'config') {
+            $result = LVCConfig::get();
         } elseif (in_array($name, array('controllerFQCN'))) { // Fully Qualified Class Name
             $result = $this->controllerNamespace . '\\' . $this->controller;
         }
