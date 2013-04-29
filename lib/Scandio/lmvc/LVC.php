@@ -9,18 +9,6 @@ class LVC
 {
 
     /**
-     * @var array default configuration to use if a property was not provided
-     */
-    private static $defaultConfig = array(
-        'appPath' => './',
-        'controllers' => array('controllers'),
-        'controllerPath' => array(),
-        'views' => array('./views/'),
-        'viewPath' => array(),
-        'modules' => array()
-    );
-
-    /**
      * @var \Scandio\lmvc\LVC singleton object
      */
     private static $object = null;
@@ -124,38 +112,17 @@ class LVC
     }
 
     /**
+     * initializes the application
+     *
      * @static
      * @param string $configFile file name of the json based config file
      * @return void
      */
     public static function initialize($configFile = null)
     {
-        if (!is_null($configFile) && file_exists($configFile)) {
-            LVC::configure(json_decode(file_get_contents($configFile)), self::$defaultConfig);
-        } else {
-            LVC::configure((object)self::$defaultConfig);
-        }
-    }
+        LVCConfig::initialize($configFile);
 
-    /**
-     * configures the application
-     *
-     * @static
-     * @param object $config all configurations
-     * @param array $default associative array with default configurations
-     * @return void
-     */
-    private static function configure($config, $default = null)
-    {
-        if (!is_null($default)) {
-            foreach (array_keys($default) as $entry) {
-                if (!isset($config->$entry)) {
-                    $config->$entry = $default[$entry];
-                }
-            }
-        }
-        LVCConfig::initialize($config);
-
+        $config = LVCConfig::get();
         foreach (self::getModulePaths($config->modules) as $modulePath) {
             self::registerBootstrapNamespace($modulePath);
         }
