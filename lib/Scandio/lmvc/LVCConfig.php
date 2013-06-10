@@ -26,7 +26,7 @@ class LVCConfig {
      * use it like LVCConfig::get() from outside
      *
      * @static
-     * @return \Scandio\lmvc\LVCConfig
+     * @return object
      */
     public static function get()
     {
