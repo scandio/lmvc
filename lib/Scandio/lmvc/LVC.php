@@ -369,6 +369,8 @@ class LVC
      * from url('Application::index', $var) you get the URL
      * http://host.com/app/path/controller/action/{$var}
      *
+     * also accepts absolute paths like '/public/stylesheets/style.css' and builds the full URL for it.
+     *
      * @param string $method method name in static syntax like 'Application::index'
      * @param string|array $params single value or array of parameters
      * @return string the URL
@@ -383,12 +385,17 @@ class LVC
      * from uri('Application::index', $var) you get the URI
      * /app/path/controller/action/{$var}
      *
+     * also accepts absolute paths like '/public/stylesheets/style.css' and directly returns them for convenience.
+     *
      * @param string $method method name in static syntax like 'Application::index'
      * @param string|array $params single value or array of parameters
      * @return string the URI
      */
     public function uri($method, $params = null)
     {
+        if (is_string($method) && substr($method, 0, 1) === '/') {
+            return $method;
+        }
         if ($params && !is_array($params)) {
             $params = array($params);
         }
