@@ -409,6 +409,53 @@ class LVC
     }
 
     /**
+     * simple conntection to the assetpipeline module.
+     * returns/parses a url to the assets specified in array and option which will be handled by the
+     * responsible pipe if the over all assetpipeline is loaded as a module on request.
+     * if the assetpipline is not active it routes the call through the $app->uri()-method.
+     *
+     * Note: If the assetpipeline is inactive the call-routing can only handle a string!
+     *
+     * @param array|array $assets containing asset(s) as in ['jquery.js', 'myplugin.js'] (will be concatenated)
+     * @param array $options for assetpipeline as e.g. ['min'] for asset minification
+     * @return string the URI to the requested asset(s)
+     */
+    public function assets($assets, $options = []) {
+        if ( !in_array('Scandio\lmvc\modules\assetpipeline', LVCConfig::get()->modules) ) {
+            return $this->uri($assets);
+        }
+
+        $pipe = pathinfo($assets[count($assets) - 1], PATHINFO_EXTENSION);
+
+        return $this->url('assetpipeline::' . $pipe, array_merge($options, $assets));
+    }
+
+    /**
+     * simple conntection to the assetpipeline image module.
+     * Allowing for automatic image resizing.
+     * if the assetpipline is not active it routes the call through the $app->uri()-method.
+     *
+     * @param array $img stating which image shall be loaded
+     * @param array $options for e.g. w and h of image (['w' => 800, 'h' => 600])
+     *
+     * @return string the URI to the requested asset(s)
+     */
+    public function image($img, $options = []) {
+        $img = (array) $img;
+
+        if ( !in_array('Scandio\lmvc\modules\assetpipeline', LVCConfig::get()->modules) ) {
+            return $this->uri($img);
+        }
+
+        $optionsAsString = "";
+        if (isset($options['w']) && isset($options['h'])) {
+            $optionsAsString = "?w=" . $options['w'] . "&h=" . $options['h'];
+        }
+
+        return $this->url('assetpipeline::img', implode(DIRECTORY_SEPARATOR, $img)) . $optionsAsString;
+    }
+
+    /**
      * runs the http request
      *
      * @return void
