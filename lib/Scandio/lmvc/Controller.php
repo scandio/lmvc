@@ -125,12 +125,14 @@ abstract class Controller
      *
      * @static
      * @param array $renderArgs optional an associative array of values
+     * @param int $httpCode optional a valid http status code like 200, 403, 404 or 500 defaults to 200
      * @param string $template optional a file name like 'views/test/test.html' which overwrites the default
      * @param string $masterTemplate optional a file name like 'views/test/test.html' which overwrites the default master
      * @return bool
      */
-    public static function render($renderArgs = array(), $template = null, $masterTemplate = null)
+    public static function render($renderArgs = array(), $httpCode = 200, $template = null, $masterTemplate = null)
     {
+        http_response_code($httpCode);
         self::setRenderArgs($renderArgs, true);
         extract(self::$renderArgs);
         $app = LVC::get();
