@@ -216,6 +216,27 @@ class LVC
     }
 
     /**
+     * Checks if an lmvc-module is loaded/requested in app's config-file.
+     *
+     * @static
+     * @param object|array|string $module namespace specification (a module instance or specified as strings)
+     * @return bool flag indicating if module is loaded
+     */
+    public static function hasModule($module) {
+        $namespace = "";
+
+        if (is_object($module)) {
+            $namespace = implode('\\', array_slice(explode('\\', get_class($module)), 0, -1));
+        } elseif (is_array($module)) {
+            $namespace = implode('\\', $module);
+        } elseif (is_string($module)) {
+            $namespace = $module;
+        }
+
+        return in_array($namespace, LVCConfig::get()->modules);
+    }
+
+    /**
      * registers a new view directory to search for the views
      *
      * @static
