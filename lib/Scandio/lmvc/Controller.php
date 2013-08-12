@@ -129,8 +129,9 @@ abstract class Controller
      * @param string $masterTemplate optional a file name like 'views/test/test.html' which overwrites the default master
      * @return bool
      */
-    public static function render($renderArgs = array(), $template = null, $masterTemplate = null)
+    public static function render($renderArgs = array(), $template = null, $httpCode = 200, $masterTemplate = null)
     {
+        http_response_code($httpCode);
         self::setRenderArgs($renderArgs, true);
         extract(self::$renderArgs);
         $app = LVC::get();
