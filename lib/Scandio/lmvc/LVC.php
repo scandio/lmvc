@@ -409,6 +409,57 @@ class LVC
     }
 
     /**
+     * Simple conntection to the assetpipeline module.
+     * returns/parses a url to the assets specified in array and option which will be handled by the
+     * responsible pipe if the assetpipeline itself is loaded as a module during the request.
+     * If the assetpipline is not active it routes the call through the $app->uri() method.
+     *
+     * Note: If the assetpipeline is inactive the call-routing can only handle a string!
+     *
+     * @param array|array $assets containing asset(s) as in ['jquery.js', 'myplugin.js'] (will be concatenated)
+     * @param array $options for assetpipeline as e.g. ['min'] for asset minification
+     * @return string the URI to the requested asset(s)
+     */
+    public function assets($assets, $options = array()) {
+        # Checks if module is loaded in config
+        if ( !in_array('Scandio\lmvc\modules\assetpipeline', LVCConfig::get()->modules) ) {
+            return $this->uri($assets);
+        }
+
+        # Determines pipe by last file's extension, different files in one request is madness
+        $pipe = pathinfo($assets[count($assets) - 1], PATHINFO_EXTENSION);
+
+        # Return the url with its options
+        return $this->url('assetpipeline::' . $pipe, array_merge($options, $assets));
+    }
+
+    /**
+     * Simple conntection to the assetpipeline image module.
+     * Allowing for automatic image resizing.
+     * If the assetpipline is not active it routes the call through the $app->uri() method.
+     *
+     * @param array $img stating image to be loaded
+     * @param array $options for e.g. w and h of image (['w' => 800, 'h' => 600], scales proportionally)
+     *
+     * @return string the URI to the requested asset(s)
+     */
+    public function image($img, $options = array()) {
+        # Checks if module is loaded in config
+        if ( !in_array('Scandio\lmvc\modules\assetpipeline', LVCConfig::get()->modules) ) {
+            return $this->uri($img);
+        }
+
+        # Parses param to array, no type check needed
+        $img = (array) $img;
+
+        # Builds query string from options array
+        $queryString = "?" . http_build_query($options);
+
+        # Return the url with its options
+        return $this->url('assetpipeline::img', implode(DIRECTORY_SEPARATOR, $img)) . $queryString;
+    }
+
+    /**
      * runs the http request
      *
      * @return void
