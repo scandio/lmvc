@@ -140,7 +140,9 @@ abstract class Controller
         } else {
             $app->view = self::searchView(LVC::camelCaseTo($app->controller) . '/' . LVC::camelCaseTo($app->actionName) . '.html');
         }
-        if (is_null($masterTemplate)) {
+        if (!is_null($masterTemplate)) {
+            $masterTemplate = $app->config->appPath . $masterTemplate;
+        } else {
             $masterTemplate = self::searchView('main.html');
         }
         include($masterTemplate);
