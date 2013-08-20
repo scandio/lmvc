@@ -166,7 +166,7 @@ class LVC
             $modulePaths[] = $module;
         } else {
             echo PHP_EOL . "<!-- Couldn't register ModuleNamespace:" . PHP_EOL;
-            var_dump($module);
+            print_r($module);
             echo "-->" . PHP_EOL;
         }
 
@@ -208,7 +208,7 @@ class LVC
             $namespace = $controller;
         } else {
             echo PHP_EOL . "<!-- Couldn't register ControllerNamespace:" . PHP_EOL;
-            var_dump($controller);
+            print_r($controller);
             echo "-->" . PHP_EOL;
             return;
         }
@@ -251,7 +251,7 @@ class LVC
             $viewPath = $path;
         } else {
             echo PHP_EOL . "<!-- Couldn't register ViewDirectory:" . PHP_EOL;
-            var_dump($path);
+            print_r($path);
             echo "-->" . PHP_EOL;
             return;
         }
@@ -284,7 +284,7 @@ class LVC
             if (!self::searchController()) {
                 echo PHP_EOL . "<!-- Couldn't find either the Controller '" . ucfirst(LVC::camelCaseFrom($slug[0])) .
                     "' or '" . $this->controller . "' in the following namespaces:" . PHP_EOL . PHP_EOL;
-                var_dump(LVCConfig::get()->controllerPath);
+                print_r(LVCConfig::get()->controllerPath);
                 echo "-->" . PHP_EOL;
                 exit;
             }
