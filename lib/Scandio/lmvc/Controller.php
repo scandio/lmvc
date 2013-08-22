@@ -78,6 +78,29 @@ abstract class Controller
      * @param ArrayBuilderInterface $arrayBuilder optional your converter class based on ArrayBuilder interface
      * @return bool
      */
+    public static function renderHtml($html, $httpCode = 200)
+    {
+        http_response_code($httpCode);
+        header('Cache-Control: no-cache, must-revalidate');
+        header('Expires: Mon, 26 Jul 1964 07:00:00 GMT');
+        echo $html;
+        return true;
+    }
+
+    /**
+     * renders the $renderArgs Array to a valid JSON output
+     * if there are complex objects in $renderArgs you need
+     * to develop an own ArrayBuilder class for conversion
+     *
+     * if it's set a callback method name in the GET parameter
+     * a javascript method will be submitted
+     *
+     * @static
+     * @param null|array|object $renderArgs optional an associative array of values
+     * @param int $httpCode optional a valid http status code like 200, 403, 404 or 500 defaults to 200
+     * @param ArrayBuilderInterface $arrayBuilder optional your converter class based on ArrayBuilder interface
+     * @return bool
+     */
     public static function renderJson($renderArgs = null, $httpCode = 200, ArrayBuilderInterface $arrayBuilder = null)
     {
         http_response_code($httpCode);
