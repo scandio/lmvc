@@ -2,7 +2,12 @@
 
 namespace Scandio\lmvc;
 
-class LVCConfig {
+/**
+ * Class Config
+ * @package Scandio\lmvc
+ */
+class Config
+{
 
     /**
      * @var array default configuration to use if a property was not provided
@@ -23,7 +28,7 @@ class LVCConfig {
 
     /**
      * returns the instance of the singleton object
-     * use it like LVCConfig::get() from outside
+     * use it like Config::get() from outside
      *
      * @static
      * @return object
@@ -36,6 +41,11 @@ class LVCConfig {
         return self::$config;
     }
 
+    /**
+     * Merges default configuration of with a json config file
+     *
+     * @param $configFile path and file name of a valid json config file
+     */
     public static function initialize($configFile)
     {
         if (!is_null($configFile) && file_exists($configFile)) {
