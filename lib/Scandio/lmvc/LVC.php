@@ -186,7 +186,7 @@ class LVC
         $bootstrap = $namespace . '\\Bootstrap';
         if (class_exists($bootstrap)) {
             $namespaceLoader = new $bootstrap;
-            if (is_subclass_of($namespaceLoader, '\\Scandio\\lmvc\\Bootstrap')) {
+            if($namespaceLoader instanceof BootstrapInterface) {
                 $namespaceLoader->initialize();
             }
         }
