@@ -44,7 +44,7 @@ class Config
     /**
      * Merges default configuration of with a json config file
      *
-     * @param $configFile path and file name of a valid json config file
+     * @param string|null $configFile path and file name of a valid json config file
      */
     public static function initialize($configFile)
     {

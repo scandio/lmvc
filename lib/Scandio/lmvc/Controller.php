@@ -2,8 +2,6 @@
 
 namespace Scandio\lmvc;
 
-use \Scandio\lmvc\LVC;
-
 /**
  * Static class for each action controller
  *
@@ -73,9 +71,10 @@ abstract class Controller
      * a java script method will be submitted
      *
      * @static
-     * @param null|array|object $renderArgs optional an associative array of values
+     * @param $html
      * @param int $httpCode optional a valid http status code like 200, 403, 404 or 500 defaults to 200
-     * @param ArrayBuilderInterface $arrayBuilder optional your converter class based on ArrayBuilder interface
+     * @internal param array|null|object $renderArgs optional an associative array of values
+     * @internal param \Scandio\lmvc\ArrayBuilderInterface $arrayBuilder optional your converter class based on ArrayBuilder interface
      * @return bool
      */
     public static function renderHtml($html, $httpCode = 200)
@@ -149,6 +148,7 @@ abstract class Controller
      * @static
      * @param array $renderArgs optional an associative array of values
      * @param string $template optional a file name like 'views/test/test.html' which overwrites the default
+     * @param int $httpCode
      * @param string $masterTemplate optional a file name like 'views/test/test.html' which overwrites the default master
      * @return bool
      */
