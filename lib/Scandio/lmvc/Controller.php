@@ -63,82 +63,6 @@ abstract class Controller
     }
 
     /**
-     * renders the $renderArgs Array to a valid JSON output
-     * if there are complex objects in $renderArgs you need
-     * to develop a own ArrayBuilder class for conversion
-     *
-     * if it's set a callback method name in the GET parameter
-     * a java script method will be submitted
-     *
-     * @static
-     * @param $html
-     * @param int $httpCode optional a valid http status code like 200, 403, 404 or 500 defaults to 200
-     * @internal param array|null|object $renderArgs optional an associative array of values
-     * @internal param \Scandio\lmvc\ArrayBuilderInterface $arrayBuilder optional your converter class based on ArrayBuilder interface
-     * @return bool
-     */
-    public static function renderHtml($html, $httpCode = 200)
-    {
-        http_response_code($httpCode);
-        header('Cache-Control: no-cache, must-revalidate');
-        header('Expires: Mon, 26 Jul 1964 07:00:00 GMT');
-        echo $html;
-        return true;
-    }
-
-    /**
-     * renders the $renderArgs Array to a valid JSON output
-     * if there are complex objects in $renderArgs you need
-     * to develop an own ArrayBuilder class for conversion
-     *
-     * if it's set a callback method name in the GET parameter
-     * a javascript method will be submitted
-     *
-     * @static
-     * @param null|array|object $renderArgs optional an associative array of values
-     * @param int $httpCode optional a valid http status code like 200, 403, 404 or 500 defaults to 200
-     * @param ArrayBuilderInterface $arrayBuilder optional your converter class based on ArrayBuilder interface
-     * @return bool
-     */
-    public static function renderJson($renderArgs = null, $httpCode = 200, ArrayBuilderInterface $arrayBuilder = null)
-    {
-        http_response_code($httpCode);
-        header('Cache-Control: no-cache, must-revalidate');
-        header('Expires: Mon, 26 Jul 1964 07:00:00 GMT');
-        $json = static::buildJson($renderArgs, $arrayBuilder);
-        if (isset($_GET['callback']) && !empty($_GET['callback'])) {
-            $callback = $_GET['callback'];
-            $json = $callback . '( return ' . $json . ');';
-            header('Content-type: application/javascript');
-        } else {
-            header('Content-type: application/json');
-        }
-        echo $json;
-        return true;
-    }
-
-    /**
-     * @param null|array $renderArgs
-     * @param ArrayBuilderInterface $arrayBuilder
-     * @return string
-     */
-    protected static function buildJson($renderArgs = null, ArrayBuilderInterface $arrayBuilder = null) {
-        $result = [];
-        if (is_object($renderArgs) && $arrayBuilder instanceof ArrayBuilderInterface) {
-            $renderArgs = $arrayBuilder::build($renderArgs);
-        }
-        self::setRenderArgs($renderArgs, true);
-        foreach (self::$renderArgs as $key => $renderArg) {
-            if (is_object($renderArg) && $arrayBuilder instanceof ArrayBuilderInterface) {
-                $result[$key] = $arrayBuilder::build($renderArg);
-            } else {
-                $result[$key] = $renderArg;
-            }
-        }
-        return json_encode($result);
-    }
-
-    /**
      * Renders a HTML view. It loads the corresponding view automatically
      * The naming convention for a view is Application::index() opens views/application/index.html
      * and views/main.html have to exists as master template. You can overwrite
@@ -154,41 +78,12 @@ abstract class Controller
      */
     public static function render($renderArgs = array(), $template = null, $httpCode = 200, $masterTemplate = null)
     {
-        http_response_code($httpCode);
-        self::setRenderArgs($renderArgs, true);
-        extract(self::$renderArgs);
-        $app = LVC::get();
-        if ($template) {
-            $app->view = $app->config->appPath . $template;
+        if (isset(Config::get()->rendererClass) && class_exists(Config::get()->rendererClass)) {
+            $rendererClass = Config::get()->rendererClass;
         } else {
-            $app->view = self::searchView(LVC::camelCaseTo($app->controller) . '/' . LVC::camelCaseTo($app->actionName) . '.html');
+            $rendererClass = '\Scandio\lmvc\PHPRenderer';
         }
-        if (!is_null($masterTemplate)) {
-            $masterTemplate = $app->config->appPath . $masterTemplate;
-        } else {
-            $masterTemplate = self::searchView('main.html');
-        }
-        include($masterTemplate);
-        return true;
-    }
-
-    /**
-     * searches for the view in the registered directories
-     *
-     * @static
-     * @param $view
-     * @return string|bool either the view's full path or false
-     */
-    private static function searchView($view)
-    {
-        $config = LVC::get()->config;
-        foreach ($config->viewPath as $path) {
-            $viewPath = ((substr($path, 0, 1) == '/') ? '' : $config->appPath) . $path . '/' . $view;
-            if (file_exists($viewPath)) {
-                return $viewPath;
-            }
-        }
-        return false;
+        return $rendererClass::render($renderArgs, $template, $httpCode, $masterTemplate);
     }
 
     /**
